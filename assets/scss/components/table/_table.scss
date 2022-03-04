@@ -1,0 +1,33 @@
+.table-new {
+  border: 1px solid #dbdbdb;
+  margin: 3em auto;
+  max-width: 780px;
+
+  th,
+  td {
+    padding: 0 30px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  thead th {
+    background: #37474f;
+    color: $color-white;
+    font-family: $fontFamily-noto;
+    font-size: 11px;
+    line-height: 1.36;
+    padding-bottom: .75em;
+    padding-top: .75em;
+    text-transform: uppercase;
+  }
+
+  tbody {
+    tr + tr {
+      border-top: 1px solid #d8d8d8;
+    }
+    td {
+      padding-bottom: 1.5em;
+      padding-top: 1.5em;
+    }
+  }
+}

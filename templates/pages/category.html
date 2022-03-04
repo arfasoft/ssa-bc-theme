@@ -1,0 +1,37 @@
+---
+category:
+products:
+---
+{{#partial "head"}}
+    {{#if pagination.category.previous}}
+        <link rel="prev" href="{{pagination.category.previous}}">
+    {{/if}}
+    {{#if pagination.category.next}}
+        <link rel="next" href="{{pagination.category.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+
+    {{#if category.name '===' 'Sound Deadening'}}
+        {{> components/redesign/pages/hub category=category}}
+    {{else if category.name '===' 'Sound Blocking'}}
+        {{> components/redesign/pages/hub category=category}}
+    {{else if category.name '===' 'Sound Absorbing'}}
+        {{> components/redesign/pages/hub category=category}}
+    {{else if category.name '===' 'Heat Insulation'}}
+        {{> components/redesign/pages/hub category=category}}
+    {{else if category.name '===' 'Soundproofing'}}
+        {{> components/redesign/pages/soundproofing category=category}}
+    {{else if category.name '===' 'Acoustics'}}
+        {{> components/redesign/pages/home-products-hub category=category}}
+    {{else if category.name '===' 'Heat Shields'}}
+        {{> components/redesign/pages/home-products-hub category=category}}
+    {{else if category.name '===' 'Acoustic Panels'}}
+        {{> components/redesign/pages/home-products-hub category=category}}
+    {{else}}
+        {{> components/original/pages/category category=category}}
+    {{/if}}
+
+{{/partial}}
+{{> layout/base}}

@@ -1,0 +1,30 @@
+<header class="header" role="banner">
+  {{> components/common/ie-warning}}
+  <div class="navUser-wrap">
+      {{> components/common/navigation}}
+  </div>
+  <div class="header-row">
+      <div class="mobileMenu-toggle-wrap">
+          <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+              <span class="hamburger-icon"></span>
+          </a>
+         {{> components/common/navigation-mobile}}
+      </div>
+      <h1 class="logo-wrapper">
+          <a href="/">
+              {{> components/brand/logo}}
+          </a>
+      </h1>
+      <div class="navPages-container-upper" id="menu" data-menu>
+          {{> components/common/navigation-menu}}
+      </div>
+      <div class="phone-cta">
+          <h3>Call Today</h3>
+          <h4>
+              <span class="phone-cta-icon"></span>
+              <a href="tel:+18006798511">1.800.679.8511</a>
+          </h4>
+      </div>
+  </div>
+  {{{region name="header_bottom"}}}
+</header>

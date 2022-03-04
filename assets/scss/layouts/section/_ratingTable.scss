@@ -1,0 +1,52 @@
+.rating-table {
+  margin: 40px auto;
+  max-width: 940px;
+
+  thead {
+    border-bottom: 3px solid #28343a;
+
+    th {
+      vertical-align: bottom;
+    }
+  }
+
+  th,
+  td {
+    padding: 22px;
+    vertical-align: top;
+  }
+
+  th {
+    font-family: $fontFamily-montserrat;
+    font-size: 16px;
+    line-height: 1.18;
+    text-align: left;
+
+    @include desktop-up {
+      font-size: 18px;
+    }
+  }
+
+  td {
+    p {
+      margin: 0;
+    }
+  }
+
+  &__highlighted-cell {
+    background: rgba(#0277bd, .1);
+    text-align: center !important;
+  }
+
+  h3 {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    text-transform: uppercase;
+    
+    @include desktop-up {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  }
+}

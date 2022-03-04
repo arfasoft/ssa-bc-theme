@@ -1,0 +1,75 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#if brand.image}}
+    <div class="brand-image-container">
+        <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage brand.image 'thumb_size'}}">
+    </div>
+{{/if}}
+{{{snippet 'brand'}}}
+<div class="page">
+    <aside class="page-sidebar" id="faceted-search-container">
+        {{> components/brand/sidebar}}
+    </aside>
+
+    <main class="page-content" id="product-listing-container">
+        <h1 class="page-heading">{{brand.name}}</h1>
+        <p>
+            Vibrating metal is loud. Most people would rather live in a quiet, calm environment. The combination of
+            these two facts has birthed an entire industry of sound deadening materials for automotive applications. 
+            Sound deadening for cars usually is describing a process called <a href="/sound-deadening/">vibration damping</a>,
+            which is a material is adhered to the metal surface to reduce vibrational noise (or structural noise).
+            There are two primary categories of vibration dampers used in vehicles: sound deadening mats and
+            sound deadening liquids.
+        </p>
+        <p>
+            Every sound deadening mat has a constraint layer (often aluminum foil) and an elastomeric material that
+            also acts as an adhesive. There’s a lot of math and science behind it, but basically the quality of the 
+            materials, the thickness of the materials, and the quality of the bond formed with the application surface
+            determines the effectiveness of the sound deadener. 
+            </p>
+            <p>
+            Second Skin has developed it’s own formula that we use in our Damplifier Pro and Damplifier sound deadening
+            mats. We have not yet found a mat that performs better than Damplifier Pro (we use labs to test). The #1 thing 
+            to remember about sound deadening mats is that you’re looking for butyl rubber, not asphalt. People buy asphalt
+            because it’s cheaper and they often don’t know better. Unfortunately, you end up spending more because asphalt
+            performs so much worse (butyl damps 3-10x better depending on temperature and the brand), has been known to
+            fail and fall off, and outgases chemicals when heated – class 2B carcinogen type of chemicals. The choice is there for you though.
+            </p>
+            <p>
+            Sound deadening liquids work the same way as the mats, but they can be painted or sprayed on instead of rolled
+            on with a hand roller. We have our own proprietary formula here too. Spectrum is a water based, viscoelastic polymer
+            formulated for peak vibration damping and adhesion. It’s rustproof, waterproof, chemical resistant, flame resistant,
+            non-toxic, and dries odorless with a seamless, black finish. Just like with the mats, there are low quality options
+            out there. Anything in an aerosol won’t have a nozzle big enough to spray particles big enough for effective sound 
+            deadening. They are very convenient to use, but we choose not to offer <a href="/sound-deadening/soundproofing-liquid-sprays-and-paints/">sound deadening spray</a>
+            in a can because it just doesn’t work all that well.
+            </p>
+            <p>
+                So there you have it. Mats or liquids. Pick what’s right for you. Even if you decide not to go with Second Skin,
+                we’re happy to help you figure out your project.
+            </p>
+        {{#if brand.products}}
+            {{> components/brand/product-listing}}
+        {{else}}
+            <p>{{lang 'brands.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+{{/partial}}
+{{> layout/base}}

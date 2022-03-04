@@ -1,0 +1,57 @@
+.text-and-photo {
+  background: #37474F;
+  color: $color-white;
+  font-size: 15px;
+  padding: 60px 0;
+  position: relative;
+
+  @include desktop-up {
+    padding: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-white;
+  }
+
+  h3 {
+    font-size: 2em;
+    font-weight: $fontWeight-semibold;
+    margin: 0 0 1em;
+    text-transform: none;
+  }
+
+  li + li {
+    margin-top: 1.5em;
+  }
+
+  &__inner {
+    @include clearfix;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 998px;
+    padding: 0 24px;
+  }
+
+  &__image {
+    display: none;
+
+    @include desktop-up {
+      background-color: $color-white;
+      background-position: center right;
+      background-repeat: no-repeat;
+      bottom: 0;
+      display: block;
+      left: 0;
+      position: absolute;
+      right: calc(50% + 40px);
+      top: 0;
+    }
+  }
+
+  &__col {
+    @include desktop-up {
+      @include grid-column(6);
+      padding: 80px 0;
+    }
+  }
+}

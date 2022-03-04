@@ -1,0 +1,324 @@
+---
+products:
+    featured:
+        limit: 3
+---
+{{#partial "hero"}}
+    {{#if template_file '===' 'pages/home'}}
+        {{#if banners.bottom}}
+        <div class="banners" data-banner-location="bottom">
+            <div class="banner">
+                {{{limit banners.bottom 1}}}
+            </div>
+        </div>
+        {{/if}}
+    {{/if}}
+    
+    {{> components/hero/sound-map }}
+    
+    {{{snippet 'home_content'}}}
+{{/partial}}
+
+{{#partial "page"}}
+
+<div class="main full">
+    <section class="remarks">
+        <div class="container">
+            <div class="remarks__content-wrapper">
+                <div class="remarks__item  remark">
+                    <img class="remark__image lazyload" data-sizes="auto" data-src="{{cdn 'webdav:remark-flag.png'}}" alt="USA Flag">
+                    <h3 class="remark__text">Made in the<br><span>United States</span></h3>
+                </div>
+                <div class="remarks__item  remark">
+                    <img class="remark__image lazyload" data-sizes="auto" data-src="{{cdn 'webdav:remark-wcc.png'}}" alt="West Coast Customs logo">
+                    <h3 class="remark__text">Endorsed by <span>West Coast Customs</span></h3>
+                </div>
+                <div class="remarks__item  remark">
+                    <img class="remark__image founded2000 lazyload" data-sizes="auto" data-src="{{cdn 'webdav:remark-founded2000-updated-1x.png'}}" alt="19 years">
+                    <h3 class="remark__text">Committed to Excellence<span> since 2000</span></h3>
+                </div>
+                <div class="remarks__item  remark">
+                    <img class="remark__image lazyload" data-sizes="auto" data-src="{{cdn 'webdav:remark-stars.png'}}" alt="Stars">
+                    <h3 class="remark__text">Average Customer <span>Review is 4.80+ Stars</span></h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-products">
+        <div class="container">
+            <h3>Our Most Popular Products</h3>
+            {{#if products.featured}}
+                <ul class="featured-products__product-list">
+                    {{#each products.featured}}
+                        <li class="featured-products__product-item">
+                            <div class="featured-products__product featured-product">
+                                <a class="featured-product__image-link" href="{{url}}">
+                                    <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage image 'gallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
+                                </a>
+                                <div class="featured-product__info">
+                                    <h4><a href="{{url}}">{{name}}</a></h4>
+                                    <footer class="featured-product__footer">
+                                        <div class="featured-product__info-row">
+                                            <span class="featured-product__price">
+                                                {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                                                    {{> components/products/price price=price}}
+                                                {{else}}
+                                                    {{> components/common/login-for-pricing}}
+                                                {{/or}}
+                                            </span>
+                                            <div class="trustspot-inline-category" data-product-sku="{{id}}"></div>   
+                                        </div>
+                                        <a href="{{url}}" class="btn-new btn-new--primary">Shop Now</a>
+                                    </footer>
+                                </div>
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+        </div>
+    </section>
+
+    <section class="cta-blocks">
+        <article class="cta-blocks__block-wrapper">
+            <div class="container">
+                <div class="cta-blocks__block">
+                    <div class="cta-blocks__block-content">
+                        <h3>Sound Deadening</h3>
+                        <p>
+                            Sound deadening is the hidden secret behind the upholstery of any real car
+                            project. If you didn't already know that, you're in luck because you've stumbled
+                            into the right place. If you did know that and have a noise or heat issue, we
+                            look forward to helping you solve your automotive insulation goals.
+                        </p>
+                        <a href="/sound-deadening/" class="btn-new btn-new--primary">Learn More</a>
+                    </div>
+                </div>
+                <figure class="cta-blocks__block-image lazyload" data-bg="{{cdn 'webdav:home-damplifier-pro.jpg'}}"></figure>
+            </div>
+        </article>
+        <article class="cta-blocks__block-wrapper">
+            <div class="container">
+                <div class="cta-blocks__block">
+                    <div class="cta-blocks__block-content">
+                        <h3>Sound Blocking</h3>
+                        <p>
+                            Road noise is a &hellip; frustrating part of driving, and some cars are worse
+                            than others. Whether you have an expensive car audio system or are tired of having
+                            to yell while driving down the highway, investing in some quality sound blocking
+                            will give you control over what you hear in your car cabin.
+                        </p>
+                        <a href="/sound-blocking/" class="btn-new btn-new--primary">Learn More</a>
+                    </div>
+                </div>
+                <figure class="cta-blocks__block-image lazyload" data-bg="{{cdn 'webdav:home-llp.jpg'}}"></figure>
+            </div>
+        </article>
+        <article class="cta-blocks__block-wrapper">
+            <div class="container">
+                <div class="cta-blocks__block">
+                    <div class="cta-blocks__block-content">
+                        <h3>Sound Absorption</h3>
+                        <p>
+                            If you're looking for peace and quiet inside your vehicle, quiet things
+                            down with sound absorption materials. Noise has been shown to decrease
+                            the quality of our living spaces and add stress to our lives. Soundproof
+                            foam will reduce interior noise and echos to improve the environment in
+                            your car.
+                        </p>
+                        <a href="/sound-absorbing/" class="btn-new btn-new--primary">Learn More</a>
+                    </div>
+                </div>
+                <figure class="cta-blocks__block-image lazyload" data-bg="{{cdn 'webdav:home-mega-zorbe.jpg'}}"></figure>
+            </div>
+        </article>
+        <article class="cta-blocks__block-wrapper">
+            <div class="container">
+                <div class="cta-blocks__block">
+                    <div class="cta-blocks__block-content">
+                        <h3>Heat Insulation</h3>
+                        <p>
+                            Heat insulation is a very practical solution. We insulate our houses to save
+                            energy and create more comfortable living environments. The average person
+                            spends anywhere from days to years of his or her life in a vehicle, so we've
+                            developed a product line to ensure your car feels like home.
+                        </p>
+                        <a href="/heat-insulation/" class="btn-new btn-new--primary">Learn More</a>
+                    </div>
+                </div>
+                <figure class="cta-blocks__block-image lazyload" data-bg="{{cdn 'webdav:home-hwp.jpg'}}"></figure>
+            </div>
+        </article>
+    </section>
+
+    <section class="why-ssa">
+        <div class="why-ssa__figure-wrapper">
+            <div class="why-ssa__figure lazyload" data-bg="{{cdn 'webdav:why-ssa-car.jpg'}}"></div>
+        </div>
+        <div class="container">
+            <h3 class="why-ssa__heading">Why Second Skin Audio?</h3>
+            <article class="why-ssa__cta">
+                <h4 class="why-ssa__cta-heading">High Quality</h4>
+                <p>
+                    Two things matter for high quality sound deadening in cars — the quality of rubber and the
+                    thickness of the materials. Second Skin deadening materials combine a butyl rubber, elastomeric
+                    material with a thick, high-quality foil. 100% asphalt-free.
+                    <strong>Engineered in the USA and simple to install.</strong>
+                </p>
+            </article>
+            <article class="why-ssa__cta">
+                <h4 class="why-ssa__cta-heading">Value Priced</h4>
+                <p>
+                    Whether you have rattling metal distorting your car speakers, an automotive restoration project,
+                    or want to create a bubble of comfort for yourself as you drive down the highway,
+                    you won’t find butyl rubber this thick at a better price than we offer every day.
+                </p>
+            </article>
+            <article class="why-ssa__cta">
+                <h4 class="why-ssa__cta-heading">Best Customer Service</h4>
+                <p>
+                    When you call us, you speak with a person. We’re not just here to help you find
+                    the best sound and thermal insulation solution for your auto, but we get just
+                    as excited about your projects as you do.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    {{> components/installer/home }}
+
+    <section class="container container--home-video">
+        {{> components/products/videos-products embedCode="Jxgq6dm0VsA" }}
+    </section>
+
+    <section class="customer-love">
+        <h3 class="customer-love__heading">Our Customers Love Us</h3>
+        <img class="customer-love__stars lazyload" data-src="{{cdn 'webdav:5stars.jpg'}}" data-sizes="auto" alt="Our customers give us 5 stars" />
+        <div data-slick='{ "customerLove": true }'>
+            <div>
+                <figure>
+                    <h4>I am blown away</h4>
+                    <blockquote>We skinned the entire vehicle floor, walls, door, and roof with Second Skin
+                        Damplifier Pro and Luxury Liner Pro foam padding. I am blown away by how
+                        quiet and dead the sheet metal is. I would have to layer up a competitor
+                        product three, four, sometimes five layers thick to achieve the same
+                        results. Awesome stuff man!</blockquote>
+                    <figcaption>Chad Utt, West Coast Customs, Operations Manager</figcaption>
+                </figure>
+            </div>
+            <div>
+                <figure>
+                    <h4>I choose Second Skin</h4>
+                    <blockquote>When it comes to making 50 year old classic Mopar muscle cars quiet, I choose Second Skin</blockquote>
+                    <figcaption>Mark Worman, Graveyard Carz, Mopar Guru</figcaption>
+                </figure>
+            </div>
+            <div>
+                <figure>
+                    <h4>This stuff is amazing</h4>
+                    <blockquote>This is the first time I've ever had a car with sound deadener, and I gotta say
+                        this stuff is amazing. My 91' Nissan 240SX rides as quiet as a new Mercedes! My
+                        speakers sound more defined and it doesn't sound like midgets wrestling in the
+                        trunk. I've installed other sound deadeners on other vehicles before and the
+                        ease of installation is awesome, and it stays put! Way to go Second Skin,
+                        awesome product!</blockquote>
+                    <figcaption>Broc E., Customer</figcaption>
+                </figure>
+            </div>
+            <div>
+                <figure>
+                    <h4>I could have heard a pin drop</h4>
+                    <blockquote>I learned about Second Skin through Steve Meade, and needed to eliminate some
+                        vibrations. Second Skin did all that AND THEN SOME! Driving in the rain used to
+                        be ULTRA LOUD and I could never even think of talking on the phone. Driving home
+                        from my buddy's after we applied the Second Skin, it was raining. I didn't even
+                        realize it! I could have heard a pin drop and this was just with SS on the ROOF!</blockquote>
+                    <figcaption>Michael, Customer</figcaption>
+                </figure>
+            </div>
+            <div>
+                <figure>
+                    <h4>Yours was far superior</h4>
+                    <blockquote>Just wanted to say your product(s) are AMAZING! Just finished using Damplifier
+                        Pro on the doors of my truck (outer and inner layer per door) and what a night
+                        and day difference. The truck just "feels" so much better. I regrettably bought
+                        (the other guy's product) for my rear cab and am shocked at the
+                        difference/effectiveness between the two. Yours was far superior. Keep up the
+                        great work/products; you're the best!</blockquote>
+                    <figcaption>Sean R., Customer</figcaption>
+                </figure>
+            </div>
+            <div>
+                <figure>
+                    <h4>We have not found a comparable product</h4>
+                    <blockquote>We restore Jeeps. The vehicles are naturally prone to vibrations and road noise.
+                        With the added high performance exhaust systems, it was impossible to achieve
+                        acceptable sound quality from the stereo systems. We ordered Damplifier Pro,
+                        received it in 2 days, applied it in a half hour and the results are amazing. We
+                        have since then added a layer of Luxury Liner Pro. These are high performance
+                        off-road vehicles with the comfort and sound insulation superior to the average
+                        vehicle on the highway. For the price and quality, we have not found a
+                        comparable product.</blockquote>
+                    <figcaption>Rick B., Customer</figcaption>
+                </figure>
+            </div>
+            <div>
+                <figure>
+                    <h4>The change is just unbelievable</h4>
+                    <blockquote>My champion 1967 Austin Mini Cooper S restoration was physically painful to
+                        drive with practically no OEM dampening, race exhaust and a high-revving 1300
+                        four-banger. My ears would ring after just five minutes. After just two packs of
+                        Damplifier Pro we can have a quiet conversation inside - it's completely
+                        different car. Now the whole family can enjoy it and I can even drive the kids
+                        to school. The change is just unbelievable. Thanks to Second Skin I'll be able
+                        to justify a Focal/Fosgate/Rainbow stereo in a car that used to sound like the
+                        inside of a cement mixer.</blockquote>
+                    <figcaption>Todd D., Customer</figcaption>
+                </figure>
+            </div>
+            <div>
+                <figure>
+                    <h4>By FAR the best product I've used</h4>
+                    <blockquote>I decided to try the Second Skin Damplifier Pro and my Lord, this is by FAR the
+                        best product I've used! I found the thicker foil to be actually easier to work
+                        with. I know this doesn't sound right but it just seems to mold better into
+                        creases and is rock solid once installed. I have used some other productsthat
+                        wouldn't quite stay put once position but the thicker foil seems to have solved
+                        that. All I can say is my car was once considered a "touring" car, but now has
+                        become a LUXURY touring car! Thanks for making great product Second Skin!</blockquote>
+                    <figcaption>Aubrey C., Customer</figcaption>
+                </figure>
+            </div>
+            <div>
+                <figure>
+                    <h4>I'm a believer</h4>
+                    <blockquote>I tested Second Skin’s 40 mill Damplifier product vs an asphalt based 110 mil
+                        thick and vs an 80 mil thick butyl. I applied samples to 2.5" x 6" heavy gauge
+                        steel clips I got from a lumber yard and hung them from wire in my garage. After
+                        striking each one with a hammer to hear for myself which one was more effective
+                        I was blow away by how much more effective Damplifier was. I thought the 40 mil
+                        thickness was going to be its weakness and I was wrong. It was by far the most
+                        effective one at reducing the vibrations and ping after my hammer struck. I was
+                        a skeptic but now I'm a believer.</blockquote>
+                    <figcaption>Average Audiophile, Converted Skeptic</figcaption>
+                </figure>
+            </div>
+            <div>
+                <figure>
+                    <h4>Felt like it was a new car</h4>
+                    <blockquote>I have convinced people to not get rid of their 10 year old cars simply by using
+                        some Damplifier Pro and some Luxury Liner Pro because they felt like it was a
+                        new car. In my own car, I go about 85mph every day to work so road noise was a
+                        huge issue even in my already quiet car by normal standards. Now I enjoy almost
+                        airplane like silence as I glide down the road listening to my choice of radio
+                        at a moderate volume while I wake up and prepare for the day to come.</blockquote>
+                    <figcaption>Jeffrey H., Customer</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+</div>
+{{/partial}}
+{{> layout/base}}

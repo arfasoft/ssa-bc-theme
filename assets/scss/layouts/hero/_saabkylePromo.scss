@@ -1,0 +1,30 @@
+.hero--saabkyle-promo {
+  background: #000 no-repeat center center / cover;
+  padding: 50px 0;
+  text-align: center;
+
+  @include desktop-up {
+    padding: 100px 0;
+  }
+
+  img {
+    width: 300px;
+
+    @include desktop-up {
+      width: auto;
+    }
+  }
+
+  h1 {
+    color: $color-white;
+    font-family: $fontFamily-montserrat;
+    font-size: 32px;
+    font-weight: $fontWeight-bold;
+    margin: 0;
+    text-transform: none;
+
+    @include desktop-up {
+      font-size: 66px;
+    }
+  }
+}

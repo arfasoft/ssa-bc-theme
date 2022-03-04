@@ -1,0 +1,32 @@
+.contact-form {
+  @include desktop-up {
+    padding: 0;
+  }
+
+  p {
+    font-size: 18px;
+    margin: 0 0 2em;
+    
+    a {
+      color: #fff;
+    }
+  }
+
+  .button {
+    background: #fff;
+    color: #004c8c;
+    font-size: 14px;
+  }
+
+  &__desktop {
+    @include desktop-down {
+      display: none;
+    }
+  }
+
+  &__mobile-only {
+    @include desktop-up {
+      display: none;
+    }
+  }
+}

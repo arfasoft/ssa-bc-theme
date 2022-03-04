@@ -1,0 +1,15 @@
+<div class="body {{#if template_file '===' 'pages/home'}}home{{/if}}">
+    {{#block "hero"}} {{/block}}
+    {{#if template_file '===' 'pages/home'}}
+        {{#block "page"}} {{/block}}
+    {{else if template_file '===' 'pages/category'}}
+        {{#block "page"}} {{/block}}
+    {{else if template '===' 'pages/custom/page/saabkyle-promo'}}
+        {{#block "page"}} {{/block}}
+    {{else}}
+    <div class="container">
+        {{#block "page"}} {{/block}}
+    </div>
+    {{/if}}
+    {{> components/common/modal}}
+</div>

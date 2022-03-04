@@ -1,0 +1,54 @@
+.popular-product {
+  font-family: $fontFamily-noto;
+  font-size: 15px;
+  padding: 100px 0;
+
+  &__inner {
+    @include tablet-up {
+      @include grid-row;
+    }
+  }
+  
+  &__inner,
+  .container {
+    padding: 0 24px;
+
+    @include tablet-up {
+      max-width: 998px;
+    }
+  }
+
+  &__col {
+    @include tablet-up {
+      @include grid-column(6);
+    }
+  }
+
+  h3 {
+    font-family: $fontFamily-montserrat;
+    font-size: 2em;
+    font-weight: $fontWeight-semibold;
+    margin: 0 0 .75em;
+    text-transform: none;
+
+    span {
+      display: block;
+    }
+  }
+
+  ul {
+    font-size: .866em;
+    line-height: 1.84;
+    margin-left: 2.25em;
+    padding: 0;
+
+    li + li {
+      margin-top: .5em;
+    }
+  }
+
+  &__footer {
+    margin: 1.5em 0 0;
+    text-align: center;
+  }
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ locale_name }}">
+    <head>
+        <title>{{ head.title }}</title>
+        {{{ resourceHints }}}
+        {{{ head.meta_tags }}}
+        {{{ head.config }}}
+        {{#block "head"}} {{/block}}
+
+        <link href="{{ head.favicon }}" rel="shortcut icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Karla&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet"> 
+
+        <script>
+            // Change document class from no-js to js so we can detect this in css
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+        </script>
+
+        {{ getFontsCollection }}
+        <script defer src="//use.fontawesome.com/14aa5078c1.js"></script>
+        {{{stylesheet '/assets/css/theme.css'}}}
+
+        {{> components/css/styles}}
+
+        {{{head.scripts}}}
+        {{{head.rsslinks}}}
+
+        {{inject 'themeSettings' theme_settings}}
+        {{inject 'genericError' (lang 'common.generic_error')}}
+        {{inject 'maintenanceMode' settings.maintenance}}
+        {{inject 'urls' urls}}
+        {{inject 'template' template}}
+        {{{snippet 'htmlhead'}}}
+        {{#if page_type '===' 'product'}}
+            {{> components/common/facebook-like}}
+        {{else if page_type '===' 'blog' }}
+            {{> components/common/facebook-like}}
+        {{else if page_type '===' 'blog_post' }}
+            {{> components/common/facebook-like}}
+        {{/if}}
+
+        <script>
+            var theme_settings = {
+                show_fast_cart: {{theme_settings.show_fast_cart}},
+                sf_tk: '{{ settings.storefront_api.token }}'
+            };
+        </script>
+
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PP299BP');</script>
+        <!-- End Google Tag Manager -->
+        
+        <!-- Trustspot -->
+        <link rel="preload" href="https://trustspot.io/index.php/api/pub/product_widget_css/7096/widget.css" as="style">
+        <link rel="stylesheet" href="https://trustspot.io/index.php/api/pub/product_widget_css/7096/widget.css" media="print" onload="this.media='all'">
+        <!-- End Trustspot -->
+        
+        <!-- ShareASale -->
+        <script>var shareasaleBCSSCID=shareasaleBCGetParameterByName("sscid");function shareasaleBCSetCookie(e,a,r,s,t){if(e&&a){var o,C=s?"; path="+s:"",n=t?"; domain="+t:"",i="";r&&((o=new Date).setTime(o.getTime()+r),i="; expires="+o.toUTCString()),document.cookie=e+"="+a+i+C+n}}function shareasaleBCGetParameterByName(e,a){a||(a=window.location.href),e=e.replace(/[\[\]]/g,"\\$&");var r=new RegExp("[?&]"+e+"(=([^&#]*)|&|#|$)").exec(a);return r?r[2]?decodeURIComponent(r[2].replace(/\+/g," ")):"":null}shareasaleBCSSCID&&shareasaleBCSetCookie("shareasaleBCSSCID",shareasaleBCSSCID,94670778e4,"/");</script>
+        <!-- End ShareASale-->
+
+
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PP299BP"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        {{{snippet 'header'}}}
+        <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
+
+        {{#if settings.privacy_cookie}}
+            {{> components/common/cookie}}
+        {{/if}}
+
+        {{> components/common/header }}
+        {{> components/common/body }}
+        {{> components/common/footer }}
+
+        <script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
+        <script src="{{cdn 'assets/dist/theme-bundle.main.js'}}"></script>
+
+        <script>
+            // Exported in app.js
+            window.stencilBootstrap("{{page_type}}", {{jsContext}}).load();
+        </script>
+
+        {{{footer.scripts}}}
+        {{{snippet 'footer'}}}
+        
+        <!-- Trustspot -->
+        <script>trustspot_key='f5ac5fc351b81ac41f929076db47d41bd57abfa076f8fa6777a7e1e5009b421cfd9d8377d72f1d62a8703f0637ae6984641730ab38347016ac11ccfd603e91b5';</script>
+        <script src="https://trustspot.io/assets/js/trustspot_product_reviews.js"></script>​
+        <!-- End Trustspot -->
+        
+        
+        <link rel="preload" href="https://trustspot.io/index.php/api/pub/product_widget_css/7096/widget.css" as="style" onload="this.rel='stylesheet'" type="text/css" />
+        <noscript>
+            <link href="https://trustspot.io/index.php/api/pub/product_widget_css/7096/widget.css" rel="stylesheet" type="text/css">
+        </noscript>
+    </body>
+</html>

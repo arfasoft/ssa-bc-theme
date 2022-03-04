@@ -1,0 +1,100 @@
+// =============================================================================
+// BUTTONS (CSS)
+// =============================================================================
+
+.button {
+    line-height: 1rem;
+    transition: all 0.15s ease;
+
+    + .button {
+        margin-left: 0;
+
+        @include breakpoint("medium") {
+            margin-left: spacing("half");
+        }
+    }
+}
+
+.button[disabled] {
+    cursor: not-allowed;
+}
+
+.button--icon {
+
+    svg {
+        fill: stencilColor("button--icon-svg-color");
+    }
+}
+
+.btn-new {
+    border: 1px solid $color-white;
+    color: $color-white;
+    display: inline-block;
+    font-family: $fontFamily-montserrat;
+    font-size: 13px;
+    margin-bottom: .75em;
+    padding: .4em 1.615em .5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .2s ease;
+    transition-property: color, background-color, border-color;
+    vertical-align: middle;
+    
+    + #{&} {
+        margin-left: .75em;
+    }
+
+    .icon {
+        height: 1.8em;
+        margin: .5em;
+        width: 1.8em;
+
+        * {
+            fill: $color-white;
+        }
+    }
+
+    &:hover {
+        color: $color-white;
+    }
+
+    &--big {
+        font-size: 20px;
+        padding: 1em 2em;
+        width: 100%;
+    }
+
+    &--primary {
+        background: $color-brand;
+        border: 0;
+
+        &:hover {
+            background-color: lighten($color-brand, 10%);
+        }
+    }
+
+    &--secondary {
+        background-color: rgba($color-white, 0);
+        border-width: 2px;
+
+        &:hover {
+            background-color: rgba($color-white, .25);
+        }
+    }
+
+    &--dark {
+        background-color: $color-greyDarker;
+        border: 0;
+
+        &:hover {
+            background-color: lighten($color-greyDarker, 10%);
+        }
+    }
+}
+
+.btn-large {
+    font-size: 16px;
+    font-weight: bold;
+    padding: .5em 1.615em .6em;
+}
+

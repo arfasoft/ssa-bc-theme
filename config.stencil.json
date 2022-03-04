@@ -1,0 +1,27 @@
+{
+  "normalStoreUrl": "https://www.secondskinaudio.com/",
+  "port": 3000,
+  "clientId": "e7pui2uiczudwnv2or5ycsw31chhr48",
+  "customLayouts": {
+    "brand": {
+      "_accessories-tools.html": "/accessories-tools/",
+      "_foam-insulation.html": "/foam-insulation/",
+      "_jute-insulation.html": "/jute-insulation/",
+      "_mass-loaded-vinyl.html": "/mass-loaded-vinyl/",
+      "_partial-vehicle-kits.html": "/partial-vehicle-kits/",
+      "_radiant-barriers.html": "/radiant-barriers/",
+      "_second-skin-audio.html": "/second-skin-audio/",
+      "_second-skin-gear.html": "/second-skin-gear/",
+      "_sound-deadening-liquids.html": "/sound-deadening-liquids/",
+      "_sound-deadening-mats.html": "/sound-deadening-mats/",
+      "_tools-accessories.html": "/tools-accessories/",
+      "_vehicle-build-kits.html": "/vehicle-build-kits/"
+    },
+    "category": {},
+    "page": {
+      "saabkyle-promo": "/team-second-skin/saabkyle04/",
+      "car-sound-deadening.html": "/p/car-sound-deadening/"
+    },
+    "product": {}
+  }
+}

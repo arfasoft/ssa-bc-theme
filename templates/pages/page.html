@@ -1,0 +1,35 @@
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+{{#if page.id '===' 9}}
+    {{> components/products/square-feet-calc wrap=0 title="What's the Square Footage of My Vehicle?" }}
+{{/if}}
+
+<main class="page">
+
+    <h1 class="page-heading">{{ page.title }}</h1>
+
+    <div class="page-content">
+        {{#replace '%%Syndicate%%' page.content}}
+            {{> components/page/rss_feed}}
+        {{else}}
+            {{{page.content}}}
+        {{/replace}}
+    </div>
+
+    {{#if page.feed}}
+        <ul>
+            {{#each page.feed}}
+                <li>
+                    <h6><a href="{{url}}" target="_blank">{{title}}</a></h6>
+                    <p>{{content}}</p>
+                </li>
+            {{/each}}
+        </ul>
+    {{/if}}
+</main>
+
+{{/partial}}
+
+{{> layout/base}}

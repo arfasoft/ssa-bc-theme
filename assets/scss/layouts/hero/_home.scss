@@ -1,0 +1,564 @@
+.hero--home {
+  background: #000;
+  color: $color-white;
+  font-family: $fontFamily-noto;
+  font-size: 13px;
+  line-height: 1.6;
+  position: relative;
+ 
+
+  @include tablet {
+    padding: 0;
+  }
+
+  @include desktop-up {
+    padding: 0;
+  }
+
+  .container {
+    @include desktop-down {
+      padding: 0;
+
+      .hero__content-inner {
+        text-align: center;
+      }
+    }
+  }
+
+  .hero__promo-image {
+    &--mobile {
+      background-position: center ;
+      width: 100%;
+      height: 282px;
+      background-color: #ECDCDD;
+
+      @media screen and (min-width: 525px) and (max-width: ($media-width-desktop - 1)) {
+        width: 100%;
+        max-width: 635px;
+        margin: 0 auto;
+
+      }
+
+      @include desktop-up {
+        display: none;
+      }
+    }
+
+    &--desktop {
+
+      @include desktop-up {
+        background-size: cover;
+        background-position: center center;
+        display: block;
+        height: 100%;
+        left: calc(50% - 45px);
+        position: absolute;
+        width: 650px;
+      }
+    }
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $color-white;
+    font-family: $fontFamily-montserrat;
+    line-height: 1.233;
+    margin: 0;
+    text-transform: none;
+  }
+
+  h2 {
+    display: inline-block;
+    font-size: 1.08em;
+    margin: 0 0 .75em;
+    padding: .38em .75em .28em;
+    text-transform: uppercase;
+  }
+
+  .h3 {
+    font-size: 2.307em;
+    font-weight: $fontWeight-bold;
+    margin: 0 0 .5em;
+
+    @include desktop-up {
+      font-size: 2.307em;
+    }
+  }
+
+  @include desktop-up {
+    .hero__content-wrapper {
+      @include grid-row;
+      padding:0;
+    }
+
+    .hero__content {
+      @include grid-column(6);
+    }
+  }
+
+  .hero__content {
+    &-inner {
+      padding: 70px 75px 70px 0;
+
+      a.btn-new {
+        background-color: #0277BD;
+        font-size: 19px;
+        font-weight: bold;
+        min-width: 265px;
+        line-height: 54px;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        border: 2px solid #0277BD;
+
+        @media screen and (max-width: 800px) {
+          font-size: 14px;
+        }
+
+
+      }
+
+      p {
+        font-size: 15px;
+        line-height: 24px;
+      }
+
+      @include desktop-down {
+        padding: 50px 24px;
+        max-width: 100%;
+
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+
+    &--main {
+      @include desktop-down {
+        margin: 0 auto;
+      }
+
+      p {
+        @include desktop-up {
+          font-size: 1.154em;
+          line-height: 1.54;
+        }
+      }
+    }
+
+    &--promo {
+      @include desktop-down {
+        .h3 {
+          font-size: 1.5em;
+        }
+      }
+
+      @include tablet-down {
+        background: #666e6e;
+      }
+
+      @include tablet {
+        padding: 0 24px;
+      }
+
+      .hero__content-inner {
+
+        @include desktop-down {
+          padding: 20px;
+          position: relative;
+        }
+      }
+    }
+
+    &-inner {
+      @include desktop-up {
+      }
+      
+    }
+  }
+}
+
+.hero--spring-project-sale {
+  .container {
+    max-width: 100%;
+  }
+  .hero__promo-image {
+
+    &--mobile {
+      background-position: right bottom;
+
+      @media screen and (min-width: 400px) and (max-width: ($media-width-tablet - 1)) {
+        height: 220px;
+        max-width: 100%;
+        xwidth: 650px;
+      }
+
+      @media screen and (min-width: $media-width-tablet) {
+        height: 300px;
+      }
+    }
+  }
+
+  .hero__content-wrapper {
+    @include desktop-up {
+      display: flex;
+    }
+  }
+  
+  .hero__content {
+    float: none;
+
+    &--promo {
+      min-height: 220px;
+
+      @include tablet-down {
+        background: #fff;
+      }
+
+      @include and-up(400px) {
+        align-items: center;
+        display: flex;
+      }
+
+      @include tablet {
+        min-height: 300px;
+      }
+
+      @include desktop-up {
+        align-items: flex-end;
+      }
+
+      h2 {
+        font-weight: $fontWeight-bold;
+        text-align: center;
+        margin: 0;
+
+        @include tablet-up {
+          font-size: 1.5em;
+        }
+      }
+
+      h3 {
+        color: #000;
+        margin: 0 0 .25em;
+
+        @include tablet-up {
+          font-size: 3.2em;
+        }
+      }
+
+      h4 {
+        color: #a82a2b;
+        font-weight: $fontWeight-bold;
+      }
+
+      p {
+        color: #000;
+        margin: 0 0 .25em;
+      }
+
+      .btn-new {
+        border-color: #a82a2b;
+        color: #a82a2b;
+      }
+
+      .hero__content-inner {
+        padding: 20px 60px 20px 20px;
+
+        @include and-up(400px) {
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.hero--labor-day {
+  .hero__promo-image {
+    background: url('/content/labor-day-hero.jpg') no-repeat center center;
+
+    &--mobile {
+      background-position: left top;
+
+      @media screen and (min-width: 400px) and (max-width: ($media-width-tablet - 1)) {
+        height: 220px;
+        max-width: 100%;
+        position: absolute;
+        width: 650px;
+      }
+
+      @media screen and (min-width: $media-width-tablet) {
+        height: 300px;
+      }
+      @media screen and (max-width: $media-width-tablet) {
+        background-position: left -155px;
+      }
+
+    }
+  }
+
+  .hero__content-wrapper {
+    @include desktop-up {
+      display: flex;
+    }
+  }
+  
+  .hero__content {
+    float: none;
+
+    &--promo {
+      min-height: 220px;
+
+      @include tablet-down {
+        background: #fff;
+      }
+
+      @include and-up(400px) {
+        align-items: center;
+        display: flex;
+      }
+
+      @include tablet {
+        min-height: 300px;
+      }
+
+      @include desktop-up {
+        align-items: flex-end;
+      }
+
+      h2 {
+        font-weight: $fontWeight-bold;
+        margin: 0; 
+
+        @include tablet-up {
+          font-size: 1.5em;
+        }
+      }
+
+      h3 {
+        color: #000;
+        margin: 0 0 .25em;
+
+        @include tablet-up {
+          font-size: 3.2em;
+        }
+      }
+
+      h4 {
+        color: #a82a2b;
+        font-weight: $fontWeight-bold;
+      }
+
+      p {
+        color: #000;
+        margin: 0 0 .25em;
+      }
+
+      .btn-new {
+        border-color: #a82a2b;
+        color: #a82a2b;
+      }
+
+      .hero__content-inner {
+        padding: 20px 60px 20px 20px;
+
+
+      }
+    }
+  }
+
+  .hero__content-inner {
+    left: 30px;
+  }
+
+  .sales-banner_image {
+    width: 30%;
+    position: absolute;
+    bottom: 55px;
+    right: -75px;
+
+    @media screen and (max-width: $media-width-desktop) {
+      width: 100%;
+      bottom: 15px;
+      left: 335px;
+    }
+
+    @media screen and (max-width: $media-width-tablet) {
+      width: 100%;
+      bottom: 15px;
+      left: 210px;
+    }
+
+  }
+}
+
+.hero--spring-project-sale {
+  .hero__promo-image {
+    background: url('https://www.secondskinaudio.com/content/spring-project-sale/springProjectSaleBg.jpg') no-repeat center center;
+
+    &--mobile {
+      background-position: -125px -100px;
+      min-height: 220px;
+
+      @media screen and (min-width: 400px) and (max-width: ($media-width-tablet - 1)) {
+        height: 220px;
+        max-width: 100%;
+      }
+
+      @media screen and (min-width: $media-width-tablet) {
+        height: 300px;
+      }
+    }
+  }
+
+  .hero__content-wrapper {
+    @include desktop-up {
+      display: flex;
+    }
+  }
+  
+  .hero__content {
+    float: none;
+
+    a {
+      text-decoration: none;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .btn--recommendation {
+      max-width: 300px;
+      text-align: center;
+    }
+
+    @include desktop-up {
+      .btn--recommendation {
+        margin: 0;
+      }
+    }
+
+    &--top {
+      @include tablet-down {
+        min-height: 220px;
+        background: url('https://www.secondskinaudio.com/content/recommendations.jpg') no-repeat center center;
+        background-size: cover; 
+        display: none;
+
+        .btn--recommendation {
+          margin: 0 auto;
+        }
+  
+        div {
+          display: none;
+        }
+      }
+
+      @include tablet {
+        min-height: 220px;
+        background: url('https://www.secondskinaudio.com/content/recommendations.jpg') no-repeat center center;
+        background-size: cover; 
+        display: none;
+        
+        div {
+          display: none;
+        }       
+      }
+
+    }
+
+    &--promo {
+      min-height: 220px;
+      background: url('https://www.secondskinaudio.com/content/spring-project-sale/springProjectSaleBg.jpg') no-repeat center center;
+      background-size: cover;
+      
+      @include tablet-down {
+        background: #fff;
+        background: url('https://www.secondskinaudio.com/content/spring-project-sale/springProjectSaleBg.jpg') no-repeat center center;
+        background-size: cover;
+      }
+
+      @include and-up(400px) {
+        align-items: center;
+        display: flex;
+      }
+
+      @include tablet {
+        min-height: 300px;
+        background: url('https://www.secondskinaudio.com/content/spring-project-sale/springProjectSaleBg.jpg') no-repeat center center;
+        background-size: cover;
+      }
+
+      @include desktop-up {
+        align-items: flex-end;
+      }
+
+      h2 {
+        font-weight: $fontWeight-bold;
+        margin: 0;
+        color: black;
+        font-size: 32px;
+        line-height: 58px;
+
+        @include tablet-up {
+          font-size: 55px;
+        }
+      }
+
+      h3 {
+        color: #000;
+        margin: 0 0 .25em;
+
+        @include tablet-up {
+          font-size: 3.2em;
+        }
+      }
+
+      h4 {
+        color: #a82a2b;
+        font-weight: $fontWeight-bold;
+      }
+
+      p {
+        color: #000;
+        margin: 0 0 .25em;
+      }
+
+      .btn-new {
+        border-color: #a82a2b;
+        color: #a82a2b;
+      }
+      .bg--white {
+        background: #fff;
+        font-weight: bold;
+        text-align: center;
+        padding: 20px;
+        margin: 0 20px 20px;
+
+        h3 {
+          font-size: 73px;
+          font-weight: bold;
+          line-height: 73px;
+          color: #68A11E;
+          margin-bottom: 0;
+        }
+
+        p {
+          font-size: 20px;
+        }
+      }
+      .hero__content-inner {
+        padding: 20px 60px 20px 20px;
+
+        @include and-up(400px) {
+          padding: 0;
+          margin: 20px auto;
+        }
+      }
+    }
+  }
+}
+
+.promolink {
+  display: block;
+  height: 100%;
+  margin: 0;
+}

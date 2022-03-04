@@ -1,0 +1,92 @@
+{{#if settings.add_this.buttons}}
+    <div>
+        <ul class="socialLinks">
+            {{#each settings.add_this.buttons}}
+                {{#if service '===' 'google_plusone'}}
+                    <li class="socialLinks-item socialLinks-item--{{service}}">
+                        <a target="_blank" href="https://plus.google.com/share?url={{../../url}}"
+                        class="google-plus icon">
+                            <svg class="icon-social">
+                                <use xlink:href="#icon-google-plus"></use>
+                            </svg>
+                        </a>
+                    </li>
+                {{/if}}
+                
+                {{#if service '===' 'facebook'}}
+                    <li class="socialLinks-item socialLinks-item--{{service}}">
+                        <a target="_blank" href="http://www.facebook.com/sharer.php?u={{../../url}}"
+                        class="facebook icon">
+                            <svg class="icon-social">
+                                <use xlink:href="#icon-facebook"></use>
+                            </svg>
+                        </a>
+                    </li>
+                {{/if}}
+                
+                {{#if service '===' 'email'}}
+                    <li class="socialLinks-item socialLinks-item--{{service}}">
+                        <a href="mailto:?subject={{../../title}}&amp;body={{../../url}}"
+                        class="email icon">
+                            <svg class="icon-social">
+                                <use xlink:href="#icon-envelope"></use>
+                            </svg>
+                        </a>
+                    </li>
+                {{/if}}
+                
+                {{#if service '===' 'print'}}
+                    <li class="socialLinks-item socialLinks-item--{{service}}">
+                        <a class="print icon" href="javascript:;" onclick="window.print()">
+                            <svg class="icon-social">
+                                <use xlink:href="#icon-print"></use>
+                        </svg>
+                        </a>
+                    </li>
+                {{/if}}
+                
+                {{#if service '===' 'twitter'}}
+                    <li class="socialLinks-item socialLinks-item--{{service}}">
+                        <a target="_blank" href="https://twitter.com/share?url={{../../url}}&amp;text={{../../title}}" class="twitter icon">
+                            <svg class="icon-social">
+                                <use xlink:href="#icon-twitter"></use>
+                            </svg>
+                        </a>
+                    </li>
+                {{/if}}
+                
+                {{#if service '===' 'linkedin'}}
+                    <li class="socialLinks-item socialLinks-item--{{service}}">
+                        <a target="_blank" href="http://www.linkedin.com/shareArticle?url={{../../url}}&amp;title={{../../title}}"
+                        class="linkedin icon">
+                            <svg class="icon-social">
+                                <use xlink:href="#icon-linkedin"></use>
+                            </svg>
+                        </a>
+                    </li>
+                {{/if}}
+                
+                {{#if service '===' 'pinterest'}}
+                    <li class="socialLinks-item socialLinks-item--{{service}}">
+                        <a target="_blank" href="//pinterest.com/pin/create/button/?url={{../../url}}&amp;media={{../../image}}&amp;description={{../../title}}" class="share-pinterest icon">
+                            <svg class="icon-social">
+                                <use xlink:href="#icon-pinterest"></use>
+                            </svg>
+                        </a>
+                    </li>
+                {{/if}}
+                
+                {{#if service '===' 'facebook_like'}}
+                    <li class="socialLinks-item socialLinks-item--{{service}}">
+                        <div class="fb-like"
+                            data-href="{{../../url}}"
+                            data-layout="button_count"
+                            data-action="like"
+                            data-show-faces="false">
+                        </div>
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    </div>
+{{/if}}

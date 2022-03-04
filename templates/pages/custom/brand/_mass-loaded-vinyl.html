@@ -1,0 +1,64 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#if brand.image}}
+    <div class="brand-image-container">
+        <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage brand.image 'thumb_size'}}">
+    </div>
+{{/if}}
+{{{snippet 'brand'}}}
+<div class="page">
+    <aside class="page-sidebar" id="faceted-search-container">
+        {{> components/brand/sidebar}}
+    </aside>
+
+    <main class="page-content" id="product-listing-container">
+        <h1 class="page-heading">{{brand.name}}</h1>
+        <p>
+        <a href="/sound-blocking/">Mass loaded vinyl</a> (or MLV) is an acoustical barrier that blocks sound wave transmission to provide excellent
+        noise reduction. Safer than lead and denser than drywall, mass loaded vinyl is a high density, limp material
+        that’s engineered to be an effective sound barrier. Manufactured from PVC vinyl that has been compounded with
+        inert materials to increase density, MLV is well suited for automotive, industrial, and building applications.
+        </p>
+        <p>
+            Mass loaded vinyl is typically colored black with a density between 1 lb and 2 lbs per square foot. It’s
+            most often bought in large rolls, but Second Skin also sells sheets because they’re much easier to ship
+            and some projects need less square footage. MLV is odorless, heat resistant, waterproof, tear resistant,
+            and has a high STC rating for effective noise blocking. One of the most common uses for MLV is 
+            <a href="/sound-blocking/soundproofing-walls/">soundproofing walls</a>.
+        </p>
+        <p>
+            Because mass loaded vinyl is flexible, it’s the ideal noise blocking material to fit around the contours
+            of a vehicle. It’s extremely effective for home or commercial use as well, and often used to reduce noise
+            transmission in in <a href="/soundproofing/soundproof-ceiling/">soundproofing ceilings</a>, walls, 
+            machinery enclosures, ductwork, a 
+            <a href="/sound-deadening/soundproof-generator-box/">generator sound box</a>, to
+            <a href="/sound-blocking/soundproof-door/">soundproof a door</a>, and even to build a
+            <a href="/sound-blocking/soundproof-fence/">DIY sound barrier fence</a>. 
+            Because it’s so heavy, MLV should be adhered with an extremely strong adhesive (like acrylic tape or
+            vinyl cement) or fastened with screws, staples, nails, or reinforced grommets.
+        </p>
+        {{#if brand.products}}
+            {{> components/brand/product-listing}}
+        {{else}}
+            <p>{{lang 'brands.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+{{/partial}}
+{{> layout/base}}

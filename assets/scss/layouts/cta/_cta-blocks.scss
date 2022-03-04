@@ -1,0 +1,148 @@
+.cta-blocks {
+  font-size: 15px;
+  
+  h3 {
+    font-family: $fontFamily-montserrat;
+    font-size: 2em;
+    font-weight: $fontWeight-bold;
+    line-height: 1.233;
+    margin-top: 0;
+    text-transform: none;
+  }
+
+  p {
+    font-family: $fontFamily-noto;
+    line-height: 1.6;
+  }
+
+  &__block-wrapper {
+    &:nth-child(3n),
+    &:nth-child(3n+2) {
+      h3, p {
+        color: $color-white;
+      }
+    }
+
+    &:nth-child(3n+2) {
+      @include desktop-down {
+        background-color: $color-brand;
+      }
+
+      .btn-new {        
+        background-color: $color-blueGrayDark;
+
+        &:hover {
+          background-color: lighten($color-blueGrayDark, 10%);
+        }
+      }
+    }
+
+    &:nth-child(3n) {
+      @include desktop-down {
+        background-color: $color-blueGray;
+      }
+    }
+    
+    .container {
+      display: flex;
+      padding: 0;
+
+      @include desktop-up {
+        align-items: stretch;
+        flex: 1 1 auto;
+        max-width: 988px;
+        padding: 0 24px;
+      }
+    }
+
+    @include desktop-down {
+      .container {
+        flex-direction: column-reverse;
+      }
+    }
+    
+    @include desktop-up {
+      &:nth-child(2n) {
+        .container {
+          flex-direction: row-reverse;
+        }
+  
+        .cta-blocks__block {
+          padding-left: 72px;
+          padding-right: 0;
+
+          &:before {
+            left: 0;
+            right: auto;
+          }
+        }
+      }
+
+      &:nth-child(3n+2) .cta-blocks__block {
+        &:before {
+          background-color: $color-brand;
+        }
+      }
+
+      &:nth-child(3n) .cta-blocks__block {
+        h3, p {
+          color: $color-white;
+        }
+
+        &:before {
+          background-color: $color-blueGray;
+        }
+      }
+    }
+  }
+
+  &__block,
+  &__block-image {
+    @include desktop-up {
+      width: 50%;
+    }
+  }
+
+  &__block-content {
+    @include desktop-down {
+      padding: 0 24px;
+    }
+  }
+
+  &__block-image {
+    @include desktop-down {
+      background-size: cover;
+      background-position: center center;
+      height: 200px;
+    }
+  }
+
+  &__block {
+    padding: 40px 0;
+
+    @include desktop-up {
+      padding: 100px 68px 98px 0;
+      position: relative;
+
+      &-content {
+        position: relative;
+      }
+
+      &:before {
+        background: $color-white;
+        bottom: 0;
+        content: '';
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 50vw;
+      }
+    }
+  }
+
+  &__block-image {
+    background-color: #d8d8d8;
+    margin: 0;
+  }
+}

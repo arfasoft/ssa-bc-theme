@@ -1,0 +1,57 @@
+<nav class="navUser">
+    <li class="navUser-item--mobile">
+        <a class="navUser-action" href="tel:+18006798511">
+            <span class="navUser-action--icon">
+                <img class="lazyload" data-sizes="auto" src="{{cdn 'img/phone.svg'}}" data-src="{{cdn ../../theme_settings.phone}}" alt="Call" title="Call Icon">
+            </span>
+            Call
+        </a>
+    </li>
+    {{#if customer.id}}
+    <li class="navUser-item--mobile">
+        <a class="navUser-action" href="/account.php">
+            <span class="navUser-action--icon">
+                <img class="lazyload" data-sizes="auto" src="{{cdn 'img/login.svg'}}" data-src="{{cdn ../../theme_settings.login}}" alt="Login" title="Login Icon">
+            </span>
+            My&nbsp;Account
+        </a>
+    </li>
+    {{else}}
+    <li class="navUser-item--mobile">
+        <a class="navUser-action" href="/login.php">
+            <span class="navUser-action--icon">
+                <img class="lazyload" data-sizes="auto" src="{{cdn 'img/login.svg'}}" data-src="{{cdn ../../theme_settings.login}}" alt="Login" title="Login Icon">
+            </span>
+            Sign&nbsp;In
+        </a>
+    </li>
+    {{/if}}
+    <li class="navUser-item--mobile">
+        <a href="/cart.php" class="navUser-action">
+            <span class="navUser-action--icon">
+                <img class="lazyload" data-sizes="auto" src="{{cdn 'img/cart.svg'}}" data-src="{{cdn ../../theme_settings.cart}}" alt="Cart" title="Cart Icon">
+            </span>
+            <div class="navUser-action--badge" data-badge-cart-quantity="{{cart.quantity}}">
+                {{lang cart.quantity}}
+            </div>
+            Cart
+        </a>
+    </li>
+</ul>
+{{> components/common/currency-selector}}
+
+<ul class="navUser-section navUser-section--alt">
+    {{#if customer.store_credit.value '>' 0}}
+        <li class="navUser-item">
+            <a class="navUser-action navUser-action--storeCredit"
+                data-dropdown="storeCredit-dropdown"
+                data-options="align:bottom"
+                href="{{urls.cart}}">
+                    <span class="navUser-action-divider">{{lang 'common.store_credit_overview' credit=customer.store_credit.formatted}}</span>
+            </a>
+            <div class="dropdown-menu" id="storeCredit-dropdown" data-dropdown-content aria-hidden="true">
+                {{{lang 'common.store_credit' store_credit=customer.store_credit.formatted}}}
+            </div>
+        </li>
+    {{/if}}
+</nav>

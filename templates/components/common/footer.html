@@ -1,0 +1,117 @@
+{{#if template_file '!==' 'pages/home'}}
+    {{#if banners.bottom}}
+    <div class="banners" data-banner-location="bottom">
+        <div class="banner">
+            {{{limit banners.bottom 1}}}
+        </div>
+    </div>
+    {{/if}}
+{{/if}}
+<footer class="footer" role="contentinfo">
+    <div class="container">
+        <section class="footer-info">
+            <div>
+                <article class="footer-info-col footer-info-col--small" data-section-type="footer-webPages">
+    
+                    {{#if theme_settings.social_icons_footer}}
+                        <h5 class="footer-info-heading">{{lang 'social.connect'}}</h5>
+                        {{> components/common/social-links}}
+                    {{/if}}
+    
+                    <h5 class="footer-info-heading">{{lang 'footer.navigate'}}</h5>
+                    <ul class="footer-info-list">
+                        <li>
+                            <a href="/why-choose-second-skin/">Why Choose Second Skin</a>
+                        </li>
+                        <li>
+                            <a href="/customer-projects/">Second Skin Customer Garage</a>
+                        </li>
+                        <li>
+                            <a href="/contact-us/">Contact Us</a>
+                        </li>
+                        <li>
+                            <a href="/videos/">Second Skin Video Library</a>
+                        </li>
+                        <li>
+                            <a href="/dealers/">Apply to Dealer Program</a>
+                        </li>
+                        <li>
+                            <a href="/affiliates/">Become an Affiliate</a>
+                        </li>
+                        <li>
+                            <a href="/privacy-policy/">Privacy Policy</a>
+                        </li>
+                        <li>
+                            <a href="/shipping-return-policy/">Shipping &amp; Return Policy</a>
+                        </li>
+                        <li>
+                            <a href="/terms-conditions/">Terms &amp; Conditions</a>
+                        </li>
+                        <li>
+                            <a href="{{urls.sitemap}}">{{lang 'sitemap.page_title'}}</a>
+                        </li>
+                    </ul>
+                </article>
+    
+                <article class="footer-info-col footer-info-col--small" data-section-type="footer-categories">
+                    <h5 class="footer-info-heading">{{lang 'footer.categories'}}</h5>
+                    <ul class="footer-info-list">
+                        {{#each categories}}
+                            <li>
+                                <a href="{{url}}">{{name}}</a>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </article>
+            </div>
+            <div>
+                {{#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
+                <article class="footer-info-col footer-info-col--small" data-section-type="footer-brands">
+                    <h5 class="footer-info-heading">{{lang 'footer.brands'}}</h5>
+                    <ul class="footer-info-list">
+                        {{#each shop_by_brand}}
+                            <li>
+                                <a href="{{url}}">{{name}}</a>
+                            </li>
+                        {{/each}}
+                        <li><a href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
+                    </ul>
+                </article>
+                {{/and}}
+
+                {{#or settings.address settings.show_newsletter_box}}
+                <article class="footer-info-col footer-info-col--small" data-section-type="storeInfo">
+                    <h5 class="footer-info-heading">{{lang 'footer.info'}}</h5>
+                    {{#if settings.address}}
+                        <strong>{{settings.store_name}}</strong>
+                        <address>{{nl2br settings.address}}</address>
+                        {{#if settings.phone_number}}
+                            <strong>{{lang 'footer.call_us' phone_number=settings.phone_number}}</strong>
+                        {{/if}}
+                    {{/if}}
+    
+                    {{#if settings.show_newsletter_box}}
+                        {{> components/common/subscription-form}}
+                    {{/if}}
+                    {{> components/common/payment-icons}}
+                </article>
+                {{/or}}
+            </div>
+        </section>
+        {{#if theme_settings.geotrust_ssl_common_name}}
+            <div class="footer-geotrust-ssl-seal">
+                {{> components/common/geotrust-ssl-seal}}
+            </div>
+        {{/if}}
+        {{#if theme_settings.show_powered_by}}
+            <div class="footer-copyright">
+                <p class="powered-by">Powered by <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a></p>
+            </div>
+        {{/if}}
+        {{#if theme_settings.show_copyright_footer}}
+            <div class="footer-copyright">
+                <p class="powered-by">&copy; {{moment format="YYYY"}} {{settings.store_name}} </p>
+            </div>
+        {{/if}}
+    </div>
+</footer>

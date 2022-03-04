@@ -1,0 +1,170 @@
+.acoustic-pro-panel-description {
+    .acoustic-desc {
+        &__title {
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 18px;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #979797;
+            width: 100%;
+            margin-top: 60px;
+
+            @media only screen and (min-width: 800px) {
+                font-size: 24px;
+                // max-width: 80%;
+            }
+        }
+    
+        &__button {
+            text-decoration: none;
+            background-color: #37474F;
+            color: #fff;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            padding: 15px 40px;
+            margin: 20px auto 0px;
+            font-weight: 800;
+            display: flex;
+            max-width: 286px;
+            justify-content: center;
+
+            @media only screen and (min-width: 800px) {
+                display: block;
+                margin: 25px 0;
+                text-align: center;
+                min-width: 290px;
+            }
+
+        }
+
+        &__features-wrap {
+            @media only screen and (min-width: 800px) {
+                display: flex;
+                justify-content: space-between;
+                
+            }
+        }
+
+        &__list-1 {
+            @media only screen and (min-width: 800px) {
+                width: 45%;
+            }
+        }
+
+        &__list-2 {
+            @media only screen and (min-width: 800px) {
+                width: 45%;
+            }
+        }
+    
+        &__list {
+            list-style: none;
+    
+            &--desktop {
+                display: none;
+    
+                @media only screen and (min-width: 800px) {
+                    display: block;
+                }
+            }
+        }
+
+        &__img {
+            &--mobile {
+                display: block;
+                @media only screen and (min-width: 800px) {
+                    display: none;
+                }
+            }
+            &--color {
+                margin: 25px auto;
+            }
+            &--desktop {
+                display: none;
+
+                @media only screen and (min-width: 800px) {
+                    display: block;
+                    margin-top: 25px;
+                }
+            }
+            &--shape {
+                margin: 30px auto;
+            }
+
+            &--rotofast {
+                min-height: 130px;
+                width: auto;
+            }
+            &--clip {
+                min-height: 130px;
+                width: auto;
+            }
+        }
+
+        &__img--wrapper {
+            display: flex;
+
+            @media only screen and (min-width:500px) {
+                justify-content: center;
+            }
+
+            @media only screen and (min-width:800px) {
+                justify-content: flex-start;
+            }
+        }
+
+        &__figcaption {
+            font-size: 12px;
+            letter-spacing: 0.61px;
+            text-align: center;
+            font-weight: 800;
+            color: #37474F;
+            
+            span {
+                display: block;
+                font-style: italic;
+                font-weight: 500;
+            }
+        }
+
+        &__d-flex {
+            display: flex;
+
+        }
+
+        &__table {
+            min-width: 270px;
+            text-align: center;
+            margin: 25px auto;
+
+            @media only screen and (min-width: 800px) {
+                font-size: 14px;
+                margin: 25px 0;
+            }
+
+            th {
+                background-color: #f1f1f1;
+                padding: 5px;
+            }
+
+            td {
+                padding: 2px;
+            }
+
+            td + td {
+                border-left: 1px solid #f1f1f1;
+            }
+
+            .bold {
+                font-weight: 800;
+            }
+        }
+
+        &__figure {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+}
+

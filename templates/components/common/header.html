@@ -1,0 +1,35 @@
+<header class="header" role="banner">
+    {{> components/common/ie-warning}}
+    <div class="header-row">
+        <div class="mobileMenu-toggle-wrap">
+            <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+                <span class="hamburger-icon"></span>
+            </a>
+           {{> components/common/navigation-mobile}}
+        </div>
+        <div class="navPages-container-upper" id="menu" data-menu>
+            {{> components/common/navigation-menu}}
+        </div>
+        <h1 class="logo-wrapper">
+            <a href="/">
+                {{> components/brand/logo}}
+            </a>
+        </h1>       
+        <div class="navUser-wrap">
+            {{> components/common/navigation}}
+        </div>
+    </div>
+    <div class="search--desktop">
+        <form action="/search.php" method="GET" id="search-form--desktop">
+            <img src="{{cdn 'webdav:icons/search-icon-large.png'}}" alt="search bar icon" class="search-icon-large search-icon--desktop" />
+            <div class="search-input">
+                <input type="hidden" name="section" value="product" />
+                <label for="search_query_adv">Search: </label>
+                <input type="text" name="search_query_adv" id="search_query_adv" class="desktop-search-input" placeholder="SEARCH ..." />
+            </div>
+            <img src="{{cdn 'webdav:icons/search-cancel-icon.png'}}" alt="cancel"  class="search-cancel toggleSearch" />
+            <input class="search--desktop-submit" type="submit" alt="Submit" value="submit" />
+        </form>
+    </div>
+    {{{region name="header_bottom"}}}
+</header>

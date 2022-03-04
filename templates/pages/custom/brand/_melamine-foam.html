@@ -1,0 +1,59 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#if brand.image}}
+    <div class="brand-image-container">
+        <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage brand.image 'thumb_size'}}">
+    </div>
+{{/if}}
+{{{snippet 'brand'}}}
+<div class="page">
+    <aside class="page-sidebar" id="faceted-search-container">
+        {{> components/brand/sidebar}}
+    </aside>
+
+    <main class="page-content" id="product-listing-container">
+        <h1 class="page-heading">{{brand.name}}</h1>
+        <p>
+            Melamine foam is a highly absorptive open cell foam used in cars to improve acoustics and add 
+            thermal insulation. Best known as the super-absorptive magic eraser, high quality versions of
+            melamine foam are aerospace grade materials. Instead of hand-held sponges, these enhanced versions 
+            can be bought as melamine foam sheets and have exceptional physical properties.
+            </p>
+            <p>
+                Melamine foam is a highly absorptive open cell foam used in cars to improve acoustics and add
+                <a href="/heat-insulation/">thermal insulation</a>. Best known as the super-absorptive magic eraser, high quality versions of
+                melamine foam are aerospace grade materials. Instead of hand-held sponges, these enhanced versions 
+                can be bought as melamine foam sheets and have exceptional physical properties. Because the sheets are hydrophobic, they are
+                safe to use in vehicles, allowing car owners to choose between
+                <a href="/heat-insulation/open-cell-foam-vs-closed-cell-foam/">open cell vs closed cell foam</a>.
+            </p>
+            <p>
+                Second Skin’s Mega Zorbe hydrophobic melamine foam sheets come with a peel and stick adhesive
+                or with no adhesive included. These sheets will add insulation to a car’s roof above the headliner
+                or improve speaker acoustics and reduce echoes when installed in door cavities. 
+            </p>
+        {{#if brand.products}}
+            {{> components/brand/product-listing}}
+        {{else}}
+            <p>{{lang 'brands.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+{{/partial}}
+{{> layout/base}}

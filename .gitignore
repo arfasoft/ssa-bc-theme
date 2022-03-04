@@ -1,0 +1,10 @@
+.idea
+node_modules
+yarn.lock
+package-lock.json
+meta/
+parsed/
+manifest.json
+assets/dist
+.DS_Store
+secrets.stencil.json

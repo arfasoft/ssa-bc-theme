@@ -1,0 +1,58 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#if brand.image}}
+    <div class="brand-image-container">
+        <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage brand.image 'thumb_size'}}">
+    </div>
+{{/if}}
+{{{snippet 'brand'}}}
+<div class="page">
+    <aside class="page-sidebar" id="faceted-search-container">
+        {{> components/brand/sidebar}}
+    </aside>
+
+    <main class="page-content" id="product-listing-container">
+        <h1 class="page-heading">{{brand.name}}</h1>
+        <p>
+            Automotive jute insulation is OEM style insulation made from durable natural fibers. Car manufacturers use 
+            natural jute fibers because it’s durable, environmentally friendly, and lightweight. Some estimates indicate the
+            increased use of jute has decreased vehicle weight as much as 30%.
+            </p>
+            <p>
+                Jute insulation is an above average sound absorber and resists heat transfer. Each recycled cotton fiber 
+                is treated for mold, mildew, and pest resistance to improve resilience. Jute can be used throughout the 
+                car to add <a href="/heat-insulation/">heat insulation</a>, often being the material of choice for projects with large surface areas like 
+                the rear storage of a sprinter van or camper van.
+            </p>
+            <p>
+                Second Skin’s Heat Wave Pro jute insulation is a lightweight and long-lasting foil faced insulation blanket.
+                It’s Class A fire rated, and contains no harmful materials like fiberglass, so it will not cause skin 
+                irritation. Heat Wave Pro is an excellent decoupler that you can use behind the car’s plastic paneling or
+                under a noise barrier like mass loaded vinyl. Because of Heat Wave Pro’s double-sided foil layer, it also can
+                be used as a <a href="/heat-shield/">car heat shield</a> and will protect from air currents and excess moisture.
+            </p>
+        {{#if brand.products}}
+            {{> components/brand/product-listing}}
+        {{else}}
+            <p>{{lang 'brands.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+{{/partial}}
+{{> layout/base}}

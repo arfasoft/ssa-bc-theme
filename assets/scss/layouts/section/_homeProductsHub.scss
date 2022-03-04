@@ -1,0 +1,962 @@
+.featured-home-products {
+  padding-top: 20px; 
+
+  .featured-products__product-list {
+    margin-top: 20px;
+  }
+}
+
+.home-products-pages {
+  section:not(.contact-form) {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 30px 0;
+
+    .capitalize, h1.capitalize {
+      text-transform: capitalize;
+    }
+
+    h2 {
+      font-family: $fontFamily-montserrat;
+      font-weight: 700;
+      font-size: 30px;
+      color: #28343A;
+      letter-spacing: 0;
+      line-height: 42px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #6A6E6C;
+      margin-bottom: 40px;
+      margin-right: 44px;
+      text-transform: capitalize;
+    }
+    &.dark {
+      background-color: #37474F;
+      color: white;
+      padding: 60px 24px;
+
+      h2 {
+        color: white;
+      }
+    }
+
+    &.fullwidth {
+      max-width: none;
+      padding: 0;
+
+      > div, h2 {
+        max-width: 940px;
+        margin: 0 auto;
+        border-bottom: none;
+      }
+    }
+
+
+
+    &.not-soundproofing {
+      padding: 140px 0 90px;
+ 
+      .title {
+        margin-bottom: 15px;
+
+        @media only screen and (min-width: 900px) {
+          margin-bottom: 30px;
+        }
+      }
+      .text-initial {
+        text-transform: initial;
+      }
+
+      .photos {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: nowrap; 
+        max-width: 100%; 
+        margin-top: 80px;  
+        img {
+          width: 30.3425%;
+        }
+        img:nth-child(2) {
+          margin: 0 10px;
+          width: 39.3148%;
+        }
+      }
+      .photos-mobile {
+        display: none;
+      }
+    }
+
+    > div.flex-items {
+      display: flex;
+      align-items: center;
+
+      img {
+        max-width: none;
+      }
+
+      > div {
+        background: #F5F5F5;
+        padding: 40px;
+
+        &.dark {
+          background: #37474F;
+          color: #D8D8D8;
+        }
+      }
+    }
+    &.reverse {
+      h2 {
+        margin-left: 44px;
+        margin-right: 0;
+      }
+      > div {
+        flex-direction: row-reverse;
+      }
+    }
+
+    &.productivity {
+      margin-bottom: 100px;
+    }
+
+    &.more-section {
+      max-width: none;
+      margin: 0 auto;
+      padding: 80px 40px;
+      background-color: #F5F5F5;
+
+      
+      h2 {
+        text-align: center;
+        border-bottom: none;
+        margin-right: 0;
+      }
+      > div {
+        max-width: 960px;
+        margin: 0 auto;
+        overflow: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+
+        section {
+          border-left: 1px solid #979797;
+          padding: 24px;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          h3 {
+            font-family: $fontFamily-montserrat;              
+            font-weight: 700;
+            font-size: 18px;
+            color: #58A5F0;
+            letter-spacing: 0;
+            line-height: 24px;
+
+            a {
+              text-decoration: none;
+              color: #58A5F0;
+
+            }
+          }
+          p {
+            flex: 1;
+          }
+
+          a.btn-new--primary {
+            display: inline-block;
+            width: 168px;
+            font-size: 13px;
+            text-align: center;
+            line-height: 37px;
+            color: white;
+          }
+        }
+      }
+    }
+
+    &.sound-solution {
+      padding-top: 80px;
+      padding-bottom: 120px;
+
+      h2 {
+        text-align: center;
+        border-bottom: none;
+        margin-right: 0;
+      }
+      > div {
+        justify-content: space-between;
+        a {
+          display: block;
+          line-height: 286px;
+          flex-basis: 49%;
+          font-family: $fontFamily-montserrat;
+          font-weight: 700;
+          font-size: 24px;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          text-align: center;
+          text-decoration: none;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position-x: center center;
+          &.soundproofing {
+            background-image: url('https://www.secondskinaudio.com/content/acoustic-panels/shop-soundproofing.png');
+          }
+          &.acoustics {
+            background-image: url('https://www.secondskinaudio.com/content/acoustic-panels/shop-acoustics.png');
+          }
+        }
+      }
+    }
+    .hub-form {
+      margin: 20px auto;
+      max-width: 600px;
+      color: white;
+
+      .form-label, .form-label small {
+        color: white;
+      }
+
+      .form-actions {
+        text-align: left;
+      }
+
+      .button--primary {
+        color: white;
+        border: 1px solid white;
+        background-color: #004C8C;
+        font-family: $fontFamily-montserrat;
+        font-weight: bold;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .margin-left-60 {
+    margin-left: 60px;
+  }
+}
+
+/* ========== MOBILE ================ */
+@media screen and (max-width: 980px) {
+
+  .featured-home-products {
+    .featured-products__product-list {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .featured-products__product-item {
+      flex-basis: 40%;
+      margin-top: 0;
+      margin-bottom: 20px;
+      
+      .featured-product {
+        flex-direction: column;
+        width: 270px;
+
+        .featured-product__info {
+          max-width: none;
+          width: auto;
+
+          .btn-new {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+
+  .home-products-pages {
+    section {
+      padding: 30px 0;
+
+      &.dark {
+        padding: 140px 0;
+
+        p {
+          max-width: 940px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+
+      h2 {
+        font-family: $fontFamily-montserrat;
+        font-weight: bold;
+        font-size: 18px;
+        color: #28343A;
+        letter-spacing: 0;
+        line-height: 34px;
+        margin-left: 24px;
+        margin-right: 24px;
+      }
+
+      > div {
+        flex-direction: column;
+
+        picture {
+          width: 100%;
+          img {
+            width: 100%;
+          }
+
+          &.chart {
+            width: calc(100% - 52px);
+            margin: 0 auto 10px;
+            img {
+              width: calc(100% - 52px);
+              margin: 0 auto 10px;          }
+          }
+        }
+        .btn-new {
+          display: block;
+          margin-right: 26px;
+          margin-top: 40px;
+          text-align: center;
+          line-height: 49px;
+          font-weight: 700;
+        }
+        .margin-left-60 {
+          margin-left: 0;
+        }
+      }
+
+      &.reverse {
+        h2 {
+          margin-left: 24px;
+          margin-right: 24px;
+        }
+
+        > div {
+          flex-direction: column;
+        }
+      }
+      &.productivity {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      &.more-section {
+        padding-top: 45px;
+        h2 {
+          font-family: $fontFamily-montserrat;
+          font-weight: bold;
+          font-size: 24px;
+          color: #28343A;
+          letter-spacing: 0;
+          line-height: 34px;
+          text-align: left;
+          margin-bottom: 10px;
+        }
+        div {
+          flex-direction: column;
+
+          section {
+            border-left: none;
+            margin-left: 5px;
+            padding: 0;
+            
+            h3, p {
+              border-left: 1px solid #979797;
+              padding-left: 10px;
+              margin-bottom: 0;
+            }
+
+            h3 {
+              padding-bottom: 1em;
+            }
+            
+            .btn-new {
+              line-height: 37px;
+              width: 168px;
+              margin-top: 20px;
+              margin-left: auto;
+              margin-right: auto;
+              margin-bottom: 65px;
+            }
+          }
+        }
+      }
+
+      
+      &.sound-solution {
+        padding-top: 40px;
+        padding-bottom: 80px;
+
+
+        h2.sound-solution-h2 {
+          margin-left: 0;
+          font-size: 24px;
+          font-weight: 700;
+          margin-bottom: 5px;
+        }
+
+        > div {
+          display: block;
+          
+          a {
+            margin: 0 26px 12px;
+            line-height: 24px;
+            padding: 60px 39px;
+          }
+        }
+      }
+      &.not-soundproofing {
+        padding: 60px 0px;
+
+        h2, p {
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+        h2 {
+          font-family: $fontFamily-montserrat;
+          font-size: 18px;
+          font-weight: 700;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          line-height: 26px;
+          padding-bottom: 20px;
+        }
+        p {
+          font-size: 15px;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          line-height: 24px;
+        }
+        .photos {
+          display: none;
+        }
+        .photos-mobile {
+          display: block;
+          img {
+            display: block;
+            margin: 12px 24px;
+            width: calc(100% - 48px);
+          }
+        }
+      }
+    }
+  }
+
+
+}
+
+@media screen and (max-width: 600px) {
+  .featured-home-products {
+    .featured-products__product-list {
+      align-items: center;
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+  }
+}
+
+.mighty-form {
+  margin: 0 auto;
+}
+
+.acoustics-standard {
+
+  .lowercase {
+    text-transform: initial;
+  }
+  &--wrapper {
+    padding: 11px 24px 24px;
+    font-size: 15px;
+    color: #28343A;
+    letter-spacing: 0;
+    line-height: 24px;
+
+    @media screen and (min-width: 980px) {
+      padding: 60px 0px;
+    }
+  }
+
+  &--headline {
+    display: block;
+    margin-bottom: 25px;
+
+    @media screen and (min-width: 980px) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &--heading {
+    color: #3aa3f4;
+    font-weight: 900;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 17px;
+    text-transform: uppercase;
+
+    @media screen and (min-width: 980px) {
+      margin-bottom: 30px;
+      font-size: 22px;
+    }
+
+    &.bigger {
+      font-size: 21px;
+
+      @media screen and (min-width: 980px) {
+        margin-bottom: 30px;
+        font-size: 25px;
+      }
+    }
+  }
+
+  &--content-wrapper {
+    margin-bottom: 38px;
+  }
+
+  &--text {
+    margin-bottom: 17px;
+  }
+
+  &--img-wrap {
+    text-align: center;
+    @media screen and (min-width: 980px) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &--img {
+    margin-bottom: 18px;
+    @media screen and (min-width: 980px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &.content-types {
+    .acoustics-standard--content-wrapper {
+      @media screen and (min-width: 980px) {
+        display: flex;
+      }
+      &--first {
+        @media screen and (min-width: 980px) {
+          margin-right: 65px;
+        }
+      }
+    }
+  } // .content-types
+
+  &.soundproofing {
+    background-color: #f5f5f5;
+
+    .acoustics-standard--wrapper {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .acoustics-standard--img-wrap {
+      margin-top: 100px;
+      margin-bottom: 80px;
+      position: relative;
+
+      .hide-desktop {
+        @media only screen and (min-width: 480px) {
+          max-height: 800px;
+        }
+        @media only screen and (min-width: 800px) {
+          display: none;
+        }
+      }
+
+      .hide-mobile {
+        @media only screen and (max-width: 799px) {
+          display: none;
+        }
+      }
+
+      &:before {
+        position: absolute;
+        content: '';
+        height: 2px;
+        width: 69px;
+        background-color: #6A6E6C;
+        left: 35%;
+        bottom: -50px;
+
+        @media only screen and (min-width: 375px) {
+          left: 47%;
+        }
+
+        @media only screen and (min-width: 700px) {
+          left: 45%;
+        }
+      }
+    }
+
+    .acoustics-standard--content-wrapper {
+      @media screen and (min-width: 980px) {
+        display: flex;
+      }
+      &--first {
+        @media screen and (min-width: 980px) {
+          width: 250%;
+          margin-right: 90px;
+        }
+      }
+    }
+
+    p {
+      margin-bottom: 30px;
+    }
+  } // .soundproofing 
+
+  &.improve {
+    padding-bottom: 60px;
+
+    @media screen and (min-width: 980px) {
+      padding-bottom: 90px;
+      padding-top: 60px;
+    }
+
+    p {
+      margin-bottom: 30px;
+      font-size: 15px;
+    }
+    .acoustics-standard--wrapper {
+      padding: 30px 24px 0;
+    }
+    
+    .improve__headline {
+      font-size: 23px;
+      font-weight: 900;
+      display: block;
+      border-bottom: none;
+      margin: 0 0 30px 0;
+
+      @media screen and (min-width: 980px) {
+        font-size: 30px;
+        text-align: center;
+      }
+    }
+
+    .improve__img-wrapper {
+      display: inline-block;
+      margin-bottom: 33px;
+      display: flex;
+    }
+
+    .improve__img {
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .improve__cta-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .improve__cta {
+      background-color: #0277BD;
+      color: white;
+      padding: 15px 20px;
+      font-size: 16px;
+      text-decoration: none;
+      letter-spacing: 0.74px;
+      font-weight:  500;
+
+      @media screen and (min-width: 980px) {
+        padding: 10px 30px;
+        font-size: 18px;
+        letter-spacing: 0.6px;
+      }
+    }
+
+    .improve__content-wrap {
+      @media screen and (min-width: 980px) {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .improve__content-text-wrap {
+      @media screen and (min-width: 980px) {
+        margin-left: 60px;
+        width: 50%;
+      }
+    }
+  } // .improve
+
+  &.myths {
+    
+    .myths__headline {
+      font-size: 23px;
+      font-weight: 900;
+      margin-bottom: 30px;
+      display: block;
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-top: 0;
+      text-transform: initial;
+
+      @media screen and (min-width: 980px) {
+        font-size: 30px;
+        text-align: center;
+      }
+    }
+
+    .myths__byline {
+      font-size: 15px;
+      @media screen and (min-width: 980px) {
+        text-align: center;
+        display: block;
+      }
+    }
+
+    .acoustics-standard--text {
+      @media screen and (min-width: 980px) {
+        margin-bottom: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .acoustics-standard--content-wrapper {
+      margin-bottom: 0;
+
+      @media screen and (min-width: 980px) {
+        margin-bottom: 50px;
+      }
+    }
+
+    .acoustics-standard--content-item {
+      flex-grow: 1;
+      flex-basis: 0;
+      margin-right: 40px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  } // .myths
+
+  &.materials {
+    .materials__headline {
+      font-size: 23px;
+      font-weight: 900;
+      display: block;
+      border-bottom: none;
+      margin: 0 0 30px 0;
+      padding-bottom: 0;
+
+      @media screen and (min-width: 980px) {
+        font-size: 30px;
+        text-align: center;
+      }
+    }
+
+    .materials__byline {
+      font-size: 15px;
+      display: inline-block;
+
+      @media screen and (min-width: 980px) {
+        text-align: center;
+        display: block;
+      }
+    }
+
+    .materials__byline-wrap {
+      margin-bottom: 30px;
+
+      @media screen and (min-width: 980px) {
+        margin-bottom: 60px;
+      }
+    }
+
+    .materials__title {
+      font-size: 18px;
+      color: #37474F;
+      letter-spacing: 0;
+      line-height: 24px;
+      text-transform: initial;
+      font-weight: 900;
+
+      @media screen and (min-width: 980px) {
+        margin-top: 0;
+      }
+    }
+
+    .materials__cta {
+      color: #37474F;
+      font-weight: 900;
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 15px;
+      color: #37474F;
+      letter-spacing: 0;
+      line-height: 24px;
+      margin-bottom: 0;
+    }
+
+    .materials__block {
+      margin-bottom: 35px;
+
+      @media screen and (min-width: 980px) {
+        display: flex;
+        align-items: center;
+      }
+    }
+    
+    .materials__block-wrap {
+      @media screen and (min-width: 980px) {
+        margin-bottom: 50px;
+      }
+    }
+
+    .materials__img {
+      @media screen and (min-width: 980px) {
+        margin-right: 60px;
+      }
+    }
+  } // .materials
+} // .acoustics-standard
+
+.heat-shields-standard {
+  margin-top: -40px; // doing this here instead of on the icon-descriptors which has margin bottom 40px
+  padding: 0;
+
+  &__types > div {
+    margin-bottom: 72px;
+  }
+
+  &__video-wrap {
+    display: flex;
+    
+    @media screen and (min-width: 980px) {
+      padding: 110px 0;
+    }
+  }
+  &__video {
+      min-height: 240px;
+      min-width: 100%;
+
+    @media screen and (min-width: 600px) {
+      height: 430px;
+      width: 100%;
+    }
+    @media screen and (min-width: 980px) {
+      height: 470px;
+      width: 659px;
+      margin: 0 auto;
+      min-width: auto;
+    }
+  }
+
+  &__description {
+    padding: 60px 25px;
+    background-color: #f5f5f5;
+    font-size: 15px;
+
+    @media screen and (min-width: 980px) {
+      padding: 110px 0;
+    }
+
+    p {
+      max-width: 525px;
+      margin-right: auto;
+      margin-left: auto;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__types {
+    @media screen and (max-width: 769px) {
+      padding: 0px !important;
+    }
+
+    @media screen and (min-width: 769px) {
+      padding: 80px 0 130px !important;
+    }
+  }
+
+  &__type-wrap {
+    @media screen and (min-width: 769px) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__types-img-m {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    @media screen and (min-width: 450px) {
+      display: none;
+    }
+  }
+
+  &__types-img-d {
+    display: none;
+    @media screen and (min-width: 450px) {
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media screen and (min-width: 769px) {
+      display: block;
+      max-height: 428px;
+      max-width: 520px;
+    }
+  }
+
+  &__bg-grey {
+    background: #f5f5f5;
+    margin-bottom: 0;
+  }
+
+  &__bg-green {
+    background: #37474F;
+    color: white;
+    padding: 30px 25px 40px;
+
+    @media screen and (min-width: 980px) {
+      height: fit-content;
+      padding: 50px 45px;
+    }
+  }
+
+  &__cta-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  &__cta {
+    background-color: #0277BD;
+    color: white;
+    padding: 15px 70px;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+
+    @media only screen and (min-width: 900px) {
+      padding: 10px 25px;
+    }
+  }
+
+  &__types-text {
+    padding: 30px 25px 40px;
+
+    @media screen and (min-width: 980px) {
+      height: fit-content;
+      padding: 50px 45px;
+    }
+  }
+} // .heat-shields-standard

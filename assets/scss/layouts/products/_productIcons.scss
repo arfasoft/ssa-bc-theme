@@ -1,0 +1,765 @@
+// based on cdn: product-icons-rev2.svg
+
+$column1: 1117px;
+$column2: 880px;
+$column3: 636px;
+$column4: 396px;
+
+$row1: -68px;
+$row2: -296px;
+$row3: -502px;
+$row4: -694px;
+$row5: -905px;
+$row6: -1090px;
+
+$imageBasePosition: 46;
+
+@function mobiley($imagePosition,$verticalAdjustment:0) {
+    @return( $verticalAdjustment + $imageBasePosition - ($imagePosition * 92) ) + px;
+}
+
+@mixin vibrationDamper {
+    background-position: $column1 $row1;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(1);
+    }
+}
+
+@mixin carAudio {
+    background-position: $column1 $row2;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(5);
+    }
+}
+
+@mixin reduceRoadNoise {
+    background-position: $column1 $row3;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(9);
+    }
+}
+
+@mixin radiantBarrier {
+    background-position: $column1 $row4;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(13, -4);
+    }
+}
+
+@mixin usefulTools {
+    background-position: $column1 $row5;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(17, -21);
+    }
+}
+
+@mixin thermalInsulation {
+    background-position: $column2 $row1;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(2);
+    }
+}
+
+@mixin soundAbsorbing {
+    background-position: $column2 $row2;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(3);
+    }
+}
+
+@mixin buildingGrade {
+    background-position: $column2 $row3;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(10, -2);
+    }
+}
+
+@mixin onePound {
+    background-position: $column2 $row4;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(14, -8);
+    }
+}
+
+@mixin speakerEnhancement {
+    background-position: $column2 $row5;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(18, -26);
+    }
+}
+
+@mixin soundBlocking {
+    background-position: $column3 $row1;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(3);
+    }
+}
+
+@mixin aerospaceApproved {
+    background-position: $column3 $row2;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(7);
+    }
+}
+
+@mixin decoupler {
+    background-position: $column3 $row3;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(11);
+    }
+}
+
+@mixin lightweight {
+    background-position: $column3 $row4;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(15, -13);
+    }
+}
+
+@mixin healthAndSafety {
+    background-position: $column4 $row1;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(4);
+    }
+}
+
+@mixin bundleDiscount {
+    background-position: $column4 $row2;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(12);
+    }
+}
+
+@mixin oemApproved {
+    background-position: $column4 $row3;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(12);
+    }
+}
+
+@mixin reduceEngineNoise {
+    background-position: $column4 $row4;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(16, -17);
+    }
+}
+
+@mixin speakerEnhancement {
+    background-position: $column2 $row5;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(1);
+    }
+}
+
+@mixin designerQuality {
+    background-position: $column3 $row5;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(20);
+    }
+}
+
+@mixin freeShipping {
+    background-position: $column4 $row5;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(21, 16);
+    }
+}
+
+@mixin madeInUSA {
+    background-position: $column1 $row6;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(19, -19);
+    }
+}
+
+@mixin guaranteedResults {
+    background-position: $column2 $row6;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(21, -56);
+    }
+}
+
+@mixin allVehicleTypes {
+    background-position: $column3 $row6;
+    @media screen and (max-width: 960px) {
+        background-position-y: mobiley(22, -30);
+    }
+}
+
+.icon-descriptors {
+    background-color: #014c8d;
+    margin: 40px 0;
+    padding: 20px 10%;
+    display: none;
+
+    .product-icons-desktop {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .product-icons-desktop span {
+        display: block;
+        height: 200px;
+        width: 210px;
+        background-size: auto;
+    }
+
+    .product-icons-mobile {
+        display: none;
+    }
+
+    @media screen and (max-width: 960px) {
+
+        .product-icons-desktop {
+            display: none;
+        }
+        .product-icons-mobile {
+            display: block;
+        }        
+        
+        .product-icons-mobile span {
+            height: 92px;
+            margin: 0 auto;
+            display: block;
+            background-position-x: 0;
+        }
+    }
+}
+
+// Jeep Build Packages
+.productid-77 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper();
+    }
+    .icon2 {
+        @include reduceRoadNoise();
+    }    
+    .icon3 {
+        @include thermalInsulation();
+    }    
+    .icon4 {
+        @include bundleDiscount();
+    }
+}
+
+// Luxury Liner Roll
+.productid-94 {
+    display: block;
+
+    .icon1 {
+        @include soundBlocking();
+    }
+    .icon2 {
+        @include buildingGrade();
+    }    
+    .icon3 {
+        @include onePound();
+    }    
+    .icon4 {
+        @include bundleDiscount();
+    }
+}
+
+// Damplifier Pro Half Sheets
+.productid-104 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper;
+    }
+    .icon2 {
+        @include thermalInsulation();
+    }    
+    .icon3 {
+        @include reduceRoadNoise();
+    }    
+    .icon4 {
+        @include oemApproved();
+    }
+}
+
+// Vehicle Build Packages
+.productid-107 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper;
+    }
+    .icon2 {
+        @include reduceRoadNoise();
+    }    
+    .icon3 {
+        @include thermalInsulation();
+    }    
+    .icon4 {
+        @include bundleDiscount();
+    }
+}
+
+// Heat Wave Pro
+.productid-114 {
+    display: block;
+
+    .icon1 {
+        @include thermalInsulation();
+    }
+    .icon2 {
+        @include soundAbsorbing();
+    }    
+    .icon3 {
+        @include radiantBarrier();
+    }    
+    .icon4 {
+        @include decoupler();
+    }
+}
+
+// Damplifier & Damplifier Pro
+.productid-116, .productid-122 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper();
+    }
+    .icon2 {
+        @include thermalInsulation();
+    }    
+    .icon3 {
+        @include reduceRoadNoise();
+    }    
+    .icon4 {
+        @include oemApproved();
+    }
+}
+
+// OverKill & OverKill Pro
+.productid-127, .productid-130 {
+    display: block;
+
+    .icon1 {
+        @include decoupler();
+    }
+    .icon2 {
+        @include thermalInsulation();
+    }    
+    .icon3 {
+        @include reduceRoadNoise();
+    }    
+    .icon4 {
+        @include oemApproved();
+    }
+}
+
+// Luxury Liner
+.productid-133 {
+    display: block;
+
+    .icon1 {
+        @include soundBlocking();
+    }
+    .icon2 {
+        @include reduceRoadNoise();
+    }    
+    .icon3 {
+        @include onePound();
+    }    
+    .icon4 {
+        @include healthAndSafety();
+    }
+}
+
+// Luxury Liner Pro
+.productid-136 {
+    display: block;
+
+    .icon1 {
+        @include soundBlocking();
+    }
+    .icon2 {
+        @include thermalInsulation();
+    }    
+    .icon3 {
+        @include reduceRoadNoise();
+    }    
+    .icon4 {
+        @include healthAndSafety();
+    }
+}
+
+// Spectrum & Spectrum Sludge
+.productid-139, .productid-141 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper;
+    }
+    .icon2 {
+        @include thermalInsulation();
+    }    
+    .icon3 {
+        @include reduceRoadNoise();
+    }    
+    .icon4 {
+        @include healthAndSafety();
+    }
+}
+
+// Thermal Block
+.productid-143 {
+    display: block;
+
+    .icon1 {
+        @include radiantBarrier();
+    }
+    .icon2 {
+        @include lightweight();
+    }    
+    .icon3 {
+        @include oemApproved();
+    }    
+    span.icon4 {
+        display: none;
+    }
+}
+
+// Speaker Tweakers
+.productid-149 {
+    display: block;
+    
+    /* only 2 icons */
+    > div {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .icon1 {
+        @include speakerEnhancement();
+    }
+    .icon2 {
+        @include carAudio();
+    }    
+    span.icon3 {
+        display: none;
+    }    
+    span.icon4 {
+        display: none;
+    }
+}
+
+// Corvette Build Package
+.productid-156 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper;
+    }
+    .icon2 {
+        @include reduceRoadNoise();
+    }    
+    .icon3 {
+        @include thermalInsulation();
+    }    
+    .icon4 {
+        @include bundleDiscount();
+    }
+}
+
+// Hood Kit
+.productid-157 {
+    display: block;
+
+    .icon1 {
+        @include radiantBarrier();
+    }
+    .icon2 {
+        @include reduceEngineNoise();
+    }    
+    .icon3 {
+        @include thermalInsulation();
+    }    
+    .icon4 {
+        @include bundleDiscount();
+    }
+}
+
+// Audio Door Kit
+.productid-160 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper;
+    }
+    .icon2 {
+        @include reduceRoadNoise();
+    }    
+    .icon3 {
+        @include carAudio();
+    }    
+    .icon4 {
+        @include bundleDiscount();
+    }
+}
+
+// Motorcycle Audio Kit
+.productid-164 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper;
+    }
+    .icon2 {
+        @include decoupler();
+    }    
+    .icon3 {
+        @include carAudio();
+    }    
+    .icon4 {
+        @include bundleDiscount();
+    }
+}
+
+// Spectrum Spray Kit
+.productid-170 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper;
+    }
+    .icon2 {
+        @include thermalInsulation();
+    }    
+    .icon3 {
+        @include reduceRoadNoise();
+    }    
+    .icon4 {
+        @include bundleDiscount();
+    }
+}
+
+// Damplifier Pro Mod Sheets
+.productid-182 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper;
+    }
+    .icon2 {
+        @include thermalInsulation();
+    }    
+    .icon3 {
+        @include reduceRoadNoise();
+    }    
+    .icon4 {
+        @include oemApproved();
+    }
+}
+
+// Trunk Kit
+.productid-184 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper;
+    }
+    .icon2 {
+        @include reduceRoadNoise();
+    }    
+    .icon3 {
+        @include thermalInsulation();
+    }    
+    .icon4 {
+        @include bundleDiscount();
+    }
+}
+
+// Mega Block
+.productid-186 {
+    display: block;
+
+    .icon1 {
+        @include radiantBarrier();
+    }
+    .icon2 {
+        @include thermalInsulation();
+    }    
+    .icon3 {
+        @include lightweight();
+    }    
+    .icon4 {
+        @include aerospaceApproved();
+    }
+}
+
+// Sprinter Van Build Package && West Coast Customs Package
+.productid-197, .productid-198 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper;
+    }
+    .icon2 {
+        @include reduceRoadNoise();
+    }    
+    .icon3 {
+        @include thermalInsulation();
+    }    
+    .icon4 {
+        @include bundleDiscount();
+    }
+}
+
+// Roof Kit
+.productid-201 {
+    display: block;
+
+    .icon1 {
+        @include thermalInsulation();
+    }
+    .icon2 {
+        @include vibrationDamper();
+    }    
+    .icon3 {
+        @include reduceRoadNoise();
+    }    
+    .icon4 {
+        @include bundleDiscount();
+    }
+}
+
+// Mega Zorbe
+.productid-203 {
+    display: block;
+
+    .icon1 {
+        @include soundAbsorbing();  
+    }
+    .icon2 {
+        @include thermalInsulation();
+    }    
+    .icon3 {
+        @include aerospaceApproved();
+    }    
+    .icon4 {
+        @include oemApproved();
+    }
+}
+
+// Factory Five Build Package
+.productid-209 {
+    display: block;
+
+    .icon1 {
+        @include vibrationDamper;
+    }
+    .icon2 {
+        @include reduceRoadNoise();
+    }    
+    .icon3 {
+        @include thermalInsulation();
+    }    
+    .icon4 {
+        @include bundleDiscount();
+    }
+}
+
+// Spectrum Spray Tool Kit && Deadening Mat Tool Kit && Full Car Soundproofing Tool Kit
+.productid-210, .productid-211, .productid-212 {
+    display: block;
+    
+    /* only 3 icons */
+    > div {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .icon1 {
+        @include usefulTools();
+    }
+    .icon2 {
+        @include bundleDiscount();
+    }    
+    span.icon3 {
+        display: none;
+    }    
+    span.icon4 {
+        display: none;
+    }
+}
+
+// Acoustics category
+.category-92 {
+    display: block;
+    
+    /* only 3 icons */
+    > div {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .icon1 {
+        @include vibrationDamper();
+    }
+    .icon2 {
+        @include reduceRoadNoise();
+    }    
+    .icon3 {
+        @include thermalInsulation();
+    }    
+    span.icon4 {
+        display: none;
+    }
+}
+
+// Acoustics Panel category
+.category-93 {
+    display: block;
+    
+    /* only 3 icons */
+    > div {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .icon1 {
+        @include designerQuality();
+    }
+    .icon2 {
+        @include freeShipping();
+    }    
+    .icon3 {
+        @include madeInUSA();
+    }    
+    span.icon4 {
+        display: none;
+    }
+}
+
+.category-94 {
+    display: block;
+
+    > div {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .icon1 {
+        @include guaranteedResults();
+    }
+
+    .icon2 {
+        @include freeShipping();
+    }
+
+    .icon3 {
+        @include allVehicleTypes();
+    }
+
+    .icon4 {
+        @include madeInUSA();
+    }
+
+    
+}

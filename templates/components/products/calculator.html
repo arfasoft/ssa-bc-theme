@@ -1,0 +1,56 @@
+<div class="calculator">
+  <h1>Square Footage Estimator</h1>
+  <form class="coverage-calculator">
+    <fieldset class="step-one">
+      <h2>Step 1</h2>
+      <p>Room Dimensions<br />(in feet)</p>
+      <label for="room-type">Type of Room</label>
+      <select name="room-type" id="room-type" class="styledInput" required>
+        <option value="" disabled selected>Type of Room &#9660;</option>
+        <option value="home">Home</option>
+        <option value="office">Office</option>
+        <option value="conference">Conference Room</option>
+        <option value="restaurant">Restaurant</option>
+        <option value="worship">House of Worship</option>
+        <option value="theater">Home Theater</option>
+        <option value="studio">Recording Studio</option>
+        <option value="classroom">Classroom</option>
+        <option value="auditorium">Auditorium</option>
+        <option value="gym">Gym</option>
+        <option value="other">Other</option>
+      </select>
+
+      <label for="room-length">Length</label>
+      <input type="number" min="0" inputmode="numeric" pattern="[0-9]*" step="1" name="length" id="room-length" value="" placeholder="Length" required />
+
+      <label for="room-width">Width</label>
+      <input type="number" min="0" inputmode="numeric" pattern="[0-9]*" step="1" name="width" id="room-width" value="" placeholder="Width" required />
+      
+      <label for="room-height">Height</label>
+      <input type="number" min="0" inputmode="numeric" pattern="[0-9]*" step="1" name="height" id="room-height" value="" placeholder="Height" required />
+      
+    </fieldset>
+    <fieldset class="step-two">
+      <h2>Step 2</h2>
+      <p>Select Coverage</p>
+      <label for="cover25"><input type="radio" name="coverage" value="25" id="cover25" /><span class="label-text">25% of Sq Ft (minimum) </span></label>
+      <label for="cover40"><input type="radio" name="coverage" value="40" id="cover40" checked /><span class="label-text">40% of Sq Ft </span> <span class="recommended">(recommended)</span></label>
+    </fieldset>
+    <fieldset class="step-three">
+      <h2>Step 3</h2>
+      <p>Select Panel Shape</p>
+      <label for="shape-square"><input type="radio" name="shape" value="square" id="shape-square" checked />Square</label>
+      <label for="shape-rectangle"><input type="radio" name="shape" value="rectangle" id="shape-rectangle" />Rectangle</label>
+      <label for="shape-circle"><input type="radio" name="shape" value="circle" id="shape-circle" />Circle</label>
+      <label for="shape-hexagon"><input type="radio" name="shape" value="hexagon" id="shape-hexagon" />Hexagon</label>
+      <label for="shape-triangle"><input type="radio" name="shape" value="triangle" id="shape-triangle" />Triangle</label>
+      <label for="shape-plank"><input type="radio" name="shape" value="plank" id="shape-plank" />Plank</label>    
+    </fieldset>
+    <fieldset class="step-four">
+      <h2>Step 4</h2>
+      <p>Results</p>
+      <input type="submit" name="calculate" value="Calculate" />
+      <p class="calculated-results"></p>
+    </fieldset> 
+  </form>     
+</div>

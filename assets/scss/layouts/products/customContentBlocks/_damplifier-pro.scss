@@ -1,0 +1,401 @@
+.product-id-122 + .container {
+  .videoGallery {
+    margin-bottom: 80px;
+
+    @media only screen and (min-width: 801px) {
+      margin-bottom: 100px;
+    }
+  }
+}
+
+.damplifier-pro-description {
+  &-wrap {
+    display: none;
+
+    &.product-id-122,
+    &.product-id-116,
+    &.product-id-104 {
+      display: block;
+
+      &.hide {
+        display: none;
+      }
+    }
+  }
+
+  &__title {
+    font-family: $fontFamily-montserrat;
+    font-weight: 700;
+    font-size: 24px;
+    color:37474F;
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: none;
+    margin-bottom: 20px;
+
+    @media only screen and (min-width: 801px) {
+      font-size: 42px;
+    }
+  }
+
+  &__title-blue {
+    color: #0277BD;
+  }
+
+  &__subtitle {
+    font-family: $fontFamily-helvetica;
+    color: #364750;
+    letter-spacing: 0.75px;
+    text-align: center;
+    font-size: 14px;
+    display: block;
+    font-weight: 500;
+
+    @media only screen and (min-width: 801px) {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__bg-section {
+    background-color: #f9f8f9;
+  }
+
+  &__section-wrap {
+    padding: 35px 20px 60px;
+
+    @media only screen and (min-width: 801px) {
+      padding: 60px 0px 90px;
+    }
+
+    &-logos {
+      padding: 30px 0px 60px;
+    }
+  }
+
+  &__image-block-wrap {
+    @media only screen and (min-width: 801px) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__image-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .img-block {
+      height: 190px;
+
+      .thermal-img {
+        padding-top: 40px;
+      }
+
+      .adhesion-img {
+        padding-top: 25px;
+      }
+    }
+ 
+    @media only screen and (min-width: 801px) {
+      flex: 1 1 0px;
+    }
+    @media only screen and (max-width: 801px) {
+      margin-bottom: 40px;
+    }
+
+  }
+
+  &__image-block-image {
+    margin-bottom: 20px;
+  }
+
+  &__image-block-subtitle {
+    font-family: $fontFamily-montserrat;
+    font-weight: 700;
+    font-size: 18px;
+    color: #505050;
+    letter-spacing: 0;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 15px;
+    
+    span {
+      display: block;
+    }
+
+    @media only screen and (min-width: 801px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__image-block-tag {
+    font-family: $fontFamily-helvetica;
+    font-size: 14px;
+    color: #364750;
+    letter-spacing: 0;
+    line-height: 21px;
+    // padding: 10px 38px 0;
+
+    @media only screen and (min-width: 801px) {
+      font-size: 15px;
+    }
+
+    span {
+      display: block;
+    }
+  }
+
+  &__blue-block {
+    background-image: linear-gradient(270deg, #004C8C 0%, #0277BD 100%);
+    border-radius: 3px;
+    font-family: $fontFamily-montserrat;
+    font-weight: 700;
+    font-size: 10px;
+    color: #FFFFFF;
+    letter-spacing: 0.77px;
+    display: inline-block;
+    padding: 7px 25px;
+    min-width: 173px;
+
+    @media only screen and (min-width: 801px) {
+      font-size: 13px;
+      letter-spacing: 1px;
+      padding: 10px 20px;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__logo-wrap {
+    @media only screen and (min-width: 600px) {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 160px;
+
+    @media only screen and (min-width: 600px) {
+      max-width: none;
+      max-width: 260px;
+    }
+  }
+
+  // BANNER
+
+  &__banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(140deg, #004C8C 0%, #0277BD 89%);
+    padding: 110px 25px;
+    color: white;
+    font-family: $fontFamily-montserrat;
+    font-size: 16px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    line-height: 27px;
+    text-align: center;
+
+    @media only screen and (min-width: 600px) {
+      background-image: linear-gradient(270deg, #0083C0 0%, #004C8C 76%);
+      flex-direction: row;
+      text-align: left;
+      justify-content: center;
+      padding: 40px 0px;
+    }
+
+    img {
+      margin-bottom: 30px;
+
+      @media only screen and (min-width: 600px) {
+        margin-right: 30px;
+        margin-bottom: 0;
+      }
+    }
+    span {
+      display: block;
+      font-weight: 700;
+    }
+
+    &-truck {
+      height: 67px;
+      width: 67px;
+
+      @media only screen and (min-width: 801px) {
+        height: 77px;
+        width: 77px;
+      }
+    }
+  }
+  // END FLAG BANNER
+
+  // SCIENCE SECTION
+
+  &__img {
+    margin: 30px auto 50px;
+    max-width: 75%;
+    display: block;
+
+    @media only screen and (min-width: 801px) {
+      margin: 50px auto 60px;
+    }
+  }
+  &__science-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media only screen and (min-width: 801px) {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: end;
+    }
+  }
+
+  &__h3 {
+    font-family: $fontFamily-montserrat;
+    font-weight: 700;
+    font-size: 18px;
+    color: #0277BD;
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: none;
+
+    @media only screen and (min-width: 801px) {
+      font-size: 18px;
+    }
+  }
+
+  &__science-copy {
+    display: block;
+    font-family: $fontFamily-helvetica;
+    font-size: 14px;
+    color: #364750;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 21px;
+    padding: 0 15px;
+
+    @media only screen and (min-width: 801px) {
+      font-size: 15px;
+    }
+  }
+
+  // Calculate how much you need section
+
+  // end calculate how much you need
+
+  // INSTALL
+
+  &__section-install-wrap {
+    margin-top: 65px;
+    margin-bottom: 65px;
+
+    @media only screen and (min-width: 801px) {
+      margin-bottom: 100px;
+    }
+    .damplifier-pro-description__img-m {
+      display: flex;
+      margin: 0 auto 15px;
+
+      @media only screen and (min-width: 801px) {
+        display: none;
+      }
+    }
+
+    .damplifier-pro-description__img-d {
+      display: none;
+      @media only screen and (min-width: 801px) {
+        height: 340px;
+        display: block;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+      font-family: $fontFamily-helvetica;
+      font-size: 14px;
+      color: #364750;
+      letter-spacing: 0;
+      text-align: center;
+      line-height: 21px;
+
+      @media only screen and (min-width: 801px) {
+        text-align: left;
+        margin-bottom: 20px;
+        font-size: 15px;
+      }
+    }
+    .damplifier-pro-description {
+
+      
+      &__h3 {
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+
+      &__blue-block {
+        width: 173px;
+
+        @media only screen and (min-width: 801px) {
+          margin: 0 0 10px;
+        }
+      }
+
+      &__install-content-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+        @media only screen and (min-width: 801px) {
+          text-align: left;
+          margin-left: 60px;
+        }
+      }
+
+      &__install-flex {
+        @media only screen and (min-width: 801px) {
+          display: flex;
+        }
+      }
+
+      &__installation-guide {
+        background-color: #37474F;
+        padding: 15px 20px;
+        font-family: $fontFamily-montserrat;
+        font-size: 13px;
+        color: #FFFFFF;
+        letter-spacing: 0.46px;
+        text-align: center;
+        border-radius: 4px;
+        display: inline-block;
+        max-width: 279px;
+        margin-top: 20px;
+        text-decoration: none;
+        font-weight: bold;
+
+        @media only screen and (min-width: 801px) {
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        padding: 20px 25px;
+        max-width: none;
+        }
+      }
+
+      &__btn-wrap {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,129 @@
+.hero--hub-page {
+  background: #000;
+  background-position: bottom left;
+  background-size: cover;
+  font-size: 12px;
+  padding: 80px 0;
+  text-align: center;
+
+  h1 {
+    color: $color-white;
+    font-size: 26px;
+    font-weight: $fontWeight-bold;
+    line-height: 1.27;
+    margin: 0 0 .75em;
+    text-transform: none;
+
+    span {
+      display: inline-block;
+    }
+  }
+
+  .container.home-products-hub .breadcrumbs {
+    margin-bottom: 20px;
+    @media only screen and (max-width: 900px) {
+      font-family: karla;
+      font-size: 12px;
+    }
+  }
+}
+
+.hero--acoustics {
+  padding: 60px 24px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  h1 {
+    font-size: 24px;
+  }
+
+  @media only screen and (min-width: 900px) {
+    background-image: url('/content/acoustics-hexagon-wall-panels.jpg');
+    padding: 120px 40px;
+
+    h1 {
+      font-size: 36px;
+    }
+  }
+}
+
+.lowercase {
+  text-transform: initial;
+}
+
+.h2--underline {
+  font-family: $fontFamily-montserrat;
+  font-weight: 700;
+  font-size: 18px;
+  color: #28343A;
+  letter-spacing: 0;
+  line-height: 26px;
+  border-bottom: 1px solid #6A6E6C;
+  margin-bottom: 24px;
+
+  &.lowercase {
+    margin-top: 40px;
+  }
+}
+
+.content {
+  padding-left: 24px;
+  padding-right: 24px;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    font-family: $fontFamily-montserrat;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 26px
+  }
+
+  .narrow {
+    max-width: 535px;
+    margin-left: auto;
+    margin-right: auto;
+
+    &.lowercase {
+      text-transform: initial;
+    }
+  }
+}
+
+@media screen and (min-width: 960px) {
+
+  .hero--hub-page {
+    h1 {
+      font-size: 42px;
+    }
+  }
+
+  .h2--underline {
+    font-family: $fontFamily-montserrat;
+    font-size: 30px;
+    line-height: 42px;
+    margin-bottom: 30px;
+
+    &.lowercase {
+      text-transform: initial;
+      margin-top: 74px;
+    }
+  }
+
+  .content {
+    padding-left: 24px;
+    padding-right: 24px;
+  
+    h2 {
+      margin-top: 0;
+      margin-bottom: 1em;
+      font-size: 30px;
+      line-height: 42px
+    }
+
+    > div {
+      max-width: 940px;
+    }
+  }
+}

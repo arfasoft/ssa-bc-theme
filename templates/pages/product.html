@@ -1,0 +1,146 @@
+---
+product:
+    videos:
+        limit: {{theme_settings.productpage_videos_count}}
+    reviews:
+        limit: {{theme_settings.productpage_reviews_count}}
+    related_products:
+        limit: {{theme_settings.productpage_related_products_count}}
+    similar_by_views:
+        limit: {{theme_settings.productpage_similar_by_views_count}}
+---
+{{#partial "page"}}
+    <!-- <div class="sales-banner">
+        <img class="sales-banner_image" src="{{cdn 'webdav:open-and-shipping.png'}}"  alt="We're open and shipping!" width="487" />
+    </div> -->
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+    {{#each product.shipping_messages}}
+        {{> components/common/alert-info message}}
+    {{/each}}
+
+    <div>
+        {{> components/products/product-view schema=true}}
+    </div>
+    {{#if product.id '===' '225'}}
+    <div class="acoustic-pro-panel-description-wrap product-id-{{product.id}}">
+        {{> components/products/customProductContentBlocks/acoustic-pro-description }}
+    </div>
+    {{/if}}
+
+    <!-- closes container div. no carousel bottom -->
+</div>
+    {{!-- Damplifier Pro --}}
+    {{#if product.id '===' '122'}}
+        <div class="damplifier-pro-description-wrap product-id-{{product.id}}">
+            {{> components/products/customProductContentBlocks/damplifier-pro-description }}
+        </div>
+    {{/if}}
+    {{!-- END: Damplifier Pro --}}
+    {{!-- Damplifier --}}
+    {{#if product.id '===' '116'}}
+        {{> components/products/square-feet-calc-wrap title="How Much Damplifier Do I Need?" }}
+    {{/if}}
+    {{!-- END: Damplifier --}}
+    {{!-- Damplifier Pro Half Sheets --}}
+    {{#if product.id '===' '104'}}
+        {{> components/products/square-feet-calc-wrap title="How Much Damplifier Pro Do I Need?" }}
+    {{/if}}
+    {{!-- END: Damplifier Pro Half Sheets --}}
+    {{!-- Spectrum Spray --}}
+    {{#if product.id '===' '139'}}
+        {{> components/products/square-feet-calc title="How Much Spectrum Do I Need?" }}
+    {{/if}}
+    {{!-- END: Spectrum Spray --}}
+    {{!-- Spectrum Sludge --}}
+    {{#if product.id '===' '141'}}
+        {{> components/products/square-feet-calc title="How Much Spectrum Do I Need?" }}
+    {{/if}}
+    {{!-- END: Spectrum Sludge --}}
+    {{!-- Luxury Liner --}}
+    {{#if product.id '===' '133'}}
+        {{> components/products/square-feet-calc title="How Much Luxury Liner Do I Need?" }}
+    {{/if}}
+    {{!-- END: Luxury Liner --}}
+    {{!-- Luxury Liner Pro --}}
+    {{#if product.id '===' '136'}}
+        {{> components/products/square-feet-calc title="How Much Luxury Liner Pro Do I Need?" }}
+    {{/if}}
+    {{!-- END: Luxury Liner Pro --}}
+    {{!-- Mega Zorbe Foam --}}
+    {{#if product.id '===' '203'}}
+        {{> components/products/square-feet-calc title="How Much Mega Zorbe Do I Need?" }}
+    {{/if}}
+    {{!-- END: Mega Zorbe Foam --}}
+    {{!-- Overkill --}}
+    {{#if product.id '===' '127'}}
+        {{> components/products/square-feet-calc title="How Much OverKill Do I Need?" }}
+    {{/if}}
+    {{!-- END: Overkill --}}
+    {{!-- Overkill Pro --}}
+    {{#if product.id '===' '130'}}
+        {{> components/products/square-feet-calc title="How Much OverKill Pro Do I Need?" }}
+    {{/if}}
+    {{!-- END: Overkill Pro --}}
+    {{!-- Heat Wave Pro --}}
+    {{#if product.id '===' '114'}}
+        {{> components/products/square-feet-calc title="How Much Heat Wave Pro Do I Need?" }}
+    {{/if}}
+    {{!-- END: Heat Wave Pro --}}
+    {{!-- Mega Block --}}
+    {{#if product.id '===' '186'}}
+        {{> components/products/square-feet-calc title="How Much Mega Block Do I Need?" }}
+    {{/if}}
+    {{!-- END: Mega Block --}}
+    {{!-- Thermal Block --}}
+    {{#if product.id '===' '143'}}
+        {{> components/products/square-feet-calc title="How Much Thermal Block Do I Need?" }}
+    {{/if}}
+    {{!-- END: Thermal Block --}}
+    {{!-- Firewall Coating --}}
+    {{#if product.id '===' '159'}}
+        {{> components/products/square-feet-calc title="How Much FireWall Do I Need?" }}
+    {{/if}}
+    {{!-- END: Firewall Coating --}}
+
+    <div class="container">
+        {{#each product.custom_fields as |custom|}}
+            {{#if custom.name '===' 'embedCode'}}
+                {{> components/products/videos-products embedCode=custom.value  }}
+            {{/if}}
+        {{/each}}
+    </div>
+
+    <!-- need coverage calculator to run side to side -->
+    {{#each product.custom_fields as |custom|}}
+        {{#if custom.name '===' 'showCalculator'}}
+            {{> components/products/calculator}}
+        {{/if}}
+    {{/each}}
+
+    {{#if product.id '!==' '122'}}
+    <!-- need product icons to run side to side -->
+    <div class="icon-descriptors productid-{{product.id}}">
+        {{> components/products/icon-descriptors}}
+    </div>
+    {{/if}}
+        
+<!-- reopen container div -->
+<div class="container">
+    <div>
+        <div class="productDetails productid-{{product.id}}">
+            {{> components/products/tabs}}
+        </div>
+
+        {{#if product.related_products}}
+            {{#unless theme_settings.related_products_tab}}
+                <div id="tab-related">
+                    <h3>{{lang 'products.related_products'}}</h3>
+                    {{> components/products/related products=product.related_products columns=6}}
+                </div>
+            {{/unless}}
+        {{/if}}
+    </div>
+    <div class="trustspot trustspot-main-widget" data-product-sku="{{ product.id }}" data-name="{{ product.title }}"></div>
+{{/partial}}
+{{> layout/base}}

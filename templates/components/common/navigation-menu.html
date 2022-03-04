@@ -1,0 +1,271 @@
+<nav class="navPages-upper">
+    <ul class="navPages-upper-list{{#if theme_settings.navigation_design '!==' 'simple'}} navPages-mega{{/if}}">
+        <li class="navPages-upper-item mobile-search">
+            <form action="/search.php" method="GET" id="search-form--mobile">
+                <img src="{{cdn 'webdav:icons/search-icon-large.png'}}" alt="search bar icon"
+                    class="search-icon-large search-icon--mobile" />
+                <div class="search-input">
+                    <input type="hidden" name="section" value="product" />
+                    <label for="search_query_adv">Search: </label>
+                    <input type="text" name="search_query_adv" id="search_query_adv--mobile"
+                        class="search-input mobile-search-input" placeholder="SEARCH ..." />
+                    <input class="search--mobile-submit" type="submit" alt="Submit" value="submit" />
+                </div>
+            </form>
+        </li>
+        <li class="navPages-upper-item">
+            <div class="navPages-upper-item-inner-container">
+                <a href="/shop/" class="navPages-upper-action navPages-upper-action--link">Shop</a>
+                <input id="menu-shop" type="checkbox" class="navPages-upper-collapse-state">
+                <label for="menu-shop" class="navPages-upper-action navPages-upper-action--toggle">
+                    Shop
+                    <span class="chevron chevron-right"></span>
+                </label>
+                <div class="navPages-upper-submenu-container">
+                    <div class="navPages-upper-submenu-inner-container">
+                        <ul class="navPages-upper-submenu-list">
+                            <li class="navPages-upper-submenu-item navPages-upper-submenu-item--toggle">
+                                <label for="menu-shop" class="navPages-upper-submenu-action">
+                                    <span class="chevron chevron-left"></span>
+                                    Back
+                                </label>
+                            </li>
+                            <li class="navPages-upper-submenu-item">
+                                <a class="navPages-upper-submenu-header navPages-upper-submenu-action list-toggle nolink"
+                                    href="#">Automotive <span class="list-toggle closed-list"></span></a>
+                                <ul class="navPages-lower-submenu-list">
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/sound-deadening/" class="navPages-upper-submenu-action">Sound
+                                            Deadening</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/sound-blocking/" class="navPages-upper-submenu-action">Sound
+                                            Blocking</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/sound-absorbing/" class="navPages-upper-submenu-action">Sound
+                                            Absorbing</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/heat-insulation/" class="navPages-upper-submenu-action">Heat
+                                            Insulation</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/heat-shield/" class="navPages-upper-submenu-action">Heat Shield</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/car-soundproofing-packages/"
+                                            class="navPages-upper-submenu-action">Vehicle Packages</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="navPages-upper-submenu-item">
+                                <a class="navPages-upper-submenu-header navPages-upper-submenu-action list-toggle nolink"
+                                    href="#">Home &amp; Commercial <span class="list-toggle closed-list"></span></a>
+                                <ul class="navPages-lower-submenu-list">
+                                    <!-- <li class="navPages-lower-submenu-item">
+                                        <a href="/soundproofing/" class="navPages-upper-submenu-action">Soundproofing</a>
+                                    </li> -->
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/acoustics/acoustic-panels/"
+                                            class="navPages-upper-submenu-action">Acoustic Panels</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/acoustics/" class="navPages-upper-submenu-action">Acoustics</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/soundproofing/" class="navPages-upper-submenu-action">Soundproofing</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="navPages-upper-submenu-item">
+                                <a class="navPages-upper-submenu-header navPages-upper-submenu-other nolink"
+                                    href="#">Other</a>
+                                <ul class="navPages-lower-submenu-list secondary">
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/shop/" class="navPages-upper-submenu-action upper-list-style">Shop
+                                            All</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/accessories/"
+                                            class="navPages-upper-submenu-action upper-list-style">Accessories</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/specials/"
+                                            class="navPages-upper-submenu-action upper-list-style">Specials</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="navPages-upper-submenu-item cta">
+                                <div class="cta_container">
+                                    <p class="cta_header">Not sure what you need?</p>
+                                    <p class="cta_text">Try our easy<br />recommendation quiz and<br />we’ll tell you.
+                                    </p>
+                                    <a href="/recommendation/" class="cta_navbutton">Get Your Recommendation</a>
+                                </div>
+                                <span class="mobile-spacing"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="navPages-upper-item">
+            <div class="navPages-upper-item-inner-container">
+                <span class="navPages-upper-action navPages-upper-action--link">Support</span>
+                <input id="menu-support" type="checkbox" class="navPages-upper-collapse-state">
+                <label for="menu-support" class="navPages-upper-action navPages-upper-action--toggle">
+                    Support
+                    <span class="chevron chevron-right"></span>
+                </label>
+                <div class="navPages-upper-submenu-container">
+                    <div class="navPages-upper-submenu-inner-container">
+                        <ul class="navPages-upper-submenu-list">
+                            <li class="navPages-upper-submenu-item navPages-upper-submenu-item--toggle">
+                                <label for="menu-support" class="navPages-upper-submenu-action">
+                                    <span class="chevron chevron-left"></span>
+                                    Back
+                                </label>
+                            </li>
+                            <li class="navPages-upper-submenu-item">
+                                <ul class="navPages-lower-submenu-list secondary">
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/the-owners-manual/"
+                                            class="navPages-upper-submenu-action upper-list-style">Sound & Heat
+                                            Guides</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/recommendation/"
+                                            class="navPages-upper-submenu-action upper-list-style">What Materials
+                                            Needed?</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/square-footage-help/"
+                                            class="navPages-upper-submenu-action upper-list-style">Sq Ft Guide</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/install-steps/"
+                                            class="navPages-upper-submenu-action upper-list-style">Install Steps</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/contact-us/"
+                                            class="navPages-upper-submenu-action upper-list-style">Contact Us</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="navPages-upper-submenu-item cta">
+                                <div class="cta_container">
+                                    <p class="cta_header">Want to discuss your project?</p>
+                                    <p class="cta_text">Call to speak to an expert.</p>
+                                    <a href="tel:+1-800-679-8511" class="cta_call">1.800.679.8511</a>
+                                </div>
+                                <span class="mobile-spacing"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="navPages-upper-item">
+            <div class="navPages-upper-item-inner-container">
+                <span class="navPages-upper-action navPages-upper-action--link">About Second Skin</span>
+                <input id="menu-team" type="checkbox" class="navPages-upper-collapse-state">
+                <label for="menu-team" class="navPages-upper-action navPages-upper-action--toggle">
+                    Team Second Skin
+                    <span class="chevron chevron-right"></span>
+                </label>
+                <div class="navPages-upper-submenu-container">
+                    <div class="navPages-upper-submenu-inner-container">
+                        <ul class="navPages-upper-submenu-list">
+                            <li class="navPages-upper-submenu-item navPages-upper-submenu-item--toggle">
+                                <label for="menu-team" class="navPages-upper-submenu-action">
+                                    <span class="chevron chevron-left"></span>
+                                    Back
+                                </label>
+                            </li>
+                            <li class="navPages-upper-submenu-item">
+                                <ul class="navPages-lower-submenu-list secondary">
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/why-choose-second-skin/"
+                                            class="navPages-upper-submenu-action upper-list-style">Why Choose Second
+                                            Skin</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/customer-projects/"
+                                            class="navPages-upper-submenu-action upper-list-style">Customer Projects</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/submissions/"
+                                            class="navPages-upper-submenu-action upper-list-style">Submit Build Videos & Photos</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/videos/" class="navPages-upper-submenu-action upper-list-style">Video
+                                            Library</a>
+                                    </li>
+                                    <li class="navPages-lower-submenu-item">
+                                        <a href="/dealers/"
+                                            class="navPages-upper-submenu-action upper-list-style">Become an
+                                            Installer</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="navPages-upper-submenu-item cta">
+                                <div class="cta_container">
+                                    <p class="cta_header">Can’t find what you’re<br />looking for?</p>
+                                    <p class="cta_text">Call now for support.</p>
+                                    <a href="tel:+1-800-679-8511" class="cta_call">1.800.679.8511</a>
+                                </div>
+                                <span class="mobile-spacing"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {{#if theme_settings.show_content_navigation}}
+            {{#each pages}}
+                <li class="navPages-item">
+                    {{#if ../theme_settings.navigation_design '===' 'simple'}}
+                        {{> components/common/navigation-list-alternate}}
+                    {{/if}}
+                    {{#if ../theme_settings.navigation_design '===' 'mega'}}
+                        {{> components/common/navigation-list}}
+                    {{/if}}
+                </li>
+            {{/each}}
+        {{/if}}
+
+        <li class="navPages-upper-item navUser-item--mobile">
+            {{#if customer.id}}
+                <a href="/account.php" class="navPages-upper-action">
+                    <img src="{{cdn 'webdav:icons/account-icon-dark.png'}}" width="21" alt="Account" />
+                    Account
+                </a>
+            {{else}}
+                <a href="/login.php" class="navPages-upper-action">
+                    <img src="{{cdn 'webdav:icons/account-icon-dark.png'}}" width="21" alt="Account" />
+                    Account
+                </a>
+            {{/if}}
+        </li>
+        <li id="quoteMobileListItem"
+            class="navPages-upper-item navUser-item--mobile navUser-item--mobile-quote inactive">
+            <a href="/?show_quote_window=quote-view" class="navPages-upper-action">
+                <img src="{{cdn 'webdav:icons/quote.svg'}}" width="24" alt="Cart" />
+                <span>Quote</span>
+                <span class="cartNumber" id="quoteCartNumberMobile"></span>
+            </a>
+        </li>
+        <li class="navPages-upper-item navUser-item--mobile navUser-item__cartNumber inactive">
+            <a href="/cart.php" class="navPages-upper-action">
+                <img src="{{cdn 'webdav:icons/cart-icon-dark.png'}}" width="24" alt="Cart" />
+                <span>
+                    <span>Cart</span>
+                    <span class="cartNumber" id="cartNumberMobile"></span>
+                </span>
+            </a>
+        </li>
+    </ul>
+</nav>

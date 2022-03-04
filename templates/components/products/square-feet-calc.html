@@ -1,0 +1,71 @@
+{{#if title}}
+<h2 class="damplifier-pro-description__title damplifier-pro-description__title-blue">
+    {{title}}
+</h2>
+{{/if}}
+
+{{#if wrap '!==' 0}}
+<div class="container" style="margin-bottom: 40px;">
+{{/if}}
+
+<div class="sq-ft-calc sq-ft-calc--{{#if product}}product-{{product.id}}{{else}}page-{{page.id}}{{/if}}">
+    <div class="sq-ft-calc__select-vehicle-wrapper">
+        <h3>Vehicle Class</h3>
+        <label for="vehicle-class" class="sq-ft-calc__label">Select Type of Vehicle</label>
+        <select onchange="getSelectedItem()" name="vehicle-class" id="vehicle-class" class="sq-ft-calc__select-vehicle" required>
+            <option value="">Select Type of Vehicle</option>
+            <option value="2dcar">2 Door Car</option>
+            <option value="4dcar">4 Door Compact Car</option>
+            <option value="midcar">Mid Size Car</option>
+            <option value="fullcar">Full Size Car</option>
+            <option value="2dtruck">2 Door Truck</option>
+            <option value="4dtruck">4 Door Truck</option>
+            <option value="jeep">Jeep</option>
+            <option value="compactSUV">Compact SUV</option>
+            <option value="fullSUV">Full Size SUV</option>
+            <option value="minivan">Minivan</option>
+            <option value="cargovan">Cargo Van</option>
+            <option value="sprinter-van">Sprinter Van</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+
+    <div class="sq-ft-calc__alt-content">
+        <span>Call us to discuss your project. <a href="tel:1-800-679-8511"> 1-800-679-8511</a></span>
+    </div>
+
+    <div class="sq-ft-calc__calc-content">
+        <h3>Vehicle Coverage</h3>
+        <div class="sq-ft-calc__btn-group">
+            <button id="sq-ft-floors-btn" class="sq-ft-calc__btn" data-area="floor">Floor</button>
+            <button id="sq-ft-doors-btn" class="sq-ft-calc__btn" data-area="doors">Doors</button>
+            <button id="sq-ft-truck-btn" class="sq-ft-calc__btn" data-area="trunk">Trunk</button>
+            <button id="sq-ft-roof-btn" class="sq-ft-calc__btn" data-area="roof">Roof</button>
+            <button id="sq-ft-firewall-btn" class="sq-ft-calc__btn" data-area="firewall">Firewall</button>
+            <button id="sq-ft-hood-btn" class="sq-ft-calc__btn" data-area="hood">Hood</button>
+            <button id="sq-ft-wheel-wells-btn" class="sq-ft-calc__btn" data-area="wheel-wells">4 Wheel Wells</button>
+            <button id="sq-ft-undercarriage-btn" class="sq-ft-calc__btn" data-area="undercarriage">Undercarriage</button>
+        </div>
+
+        <h3>Estimated Square Footage</h3>
+        <div class="sq-ft-calc__amount">
+            <span id="sq-ft-calc__value" class="sq-ft-calc__value">0</span><span class="sq-ft-calc__value sq-ft-calc__value--value2">Sq Ft</span>
+        </div>
+        <div class="sq-ft-calc__tooltip-wrap">
+            <span id="sq-ft-tooltip-show" class="sq-ft-calc__tooltip">How do I get exact square footage?</span>
+            <div id="sq-ft-tooltip-box" class="sq-ft-calc__tooltip-box">
+                <span id="sq-ft-close-x" class="sq-ft-calc__close">X</span>
+                <ol>
+                    <li>Get a tape measurer</li>
+                    <li>Measure the length and width of each surface</li>
+                    <li>Length x Width = Square Footage</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#if wrap '!==' 0}}
+</div>
+<!-- .container -->
+{{/if}}

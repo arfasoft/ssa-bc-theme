@@ -1,0 +1,98 @@
+.installer {
+  font-family: $fontFamily-montserrat;
+  font-size: 15px;
+  padding: 0;
+  text-align: center;
+
+  @include desktop-up {
+    padding: 0;
+  }
+
+  .container {
+    padding: 72px 24px 72px;
+    background: url('https://www.secondskinaudio.com/content/Car-Broken-into-Parts-600.jpg') no-repeat center right;
+    background-size: contain;
+    background-size: 48%;
+
+    .installer--graphic {
+      display: none;
+    }
+
+    .installer__content-wrapper {
+      width: 50%;
+      padding: 0 20px;
+    }
+
+    @media screen and (max-width: 700px) {
+      background: none;
+
+      .installer--graphic {
+        display: block;
+      }
+  
+      .installer__content-wrapper {
+        width: 100%;
+        padding: 20px;
+
+        .h3 {
+          font-size: 24px;
+          line-height: 27px;
+        }
+      }
+
+    }
+
+    @include desktop-down {
+      padding: 0;
+    }
+  }
+
+  
+  .h3 {
+    font-weight: $fontWeight-bold;
+    font-size: 48px;
+    text-transform: none;
+    margin: auto;
+    margin-bottom: 1.5rem;
+    line-height: 57px;
+  }
+
+  .btn-new--primary {
+    background-color: #0277BD;
+    width: 280px;
+    padding: .4em 1.615em .5em;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+}
+
+.installer--home {
+  .container {
+    background: url('https://www.secondskinaudio.com/content/installerfind-600.jpg') no-repeat center right;
+    background-size: 50%;
+
+    .btn-new--primary.btn-large {
+      width: 325px;
+      line-height: 49px;
+    }
+
+    @include mobile {
+      padding-top: 40px;
+    }
+
+    @media screen and (max-width: 700px) {
+      background: none;
+
+      .btn-new--primary.btn-large {
+        max-width: 100%;
+        line-height: 24px;
+      }
+
+      .installer--graphic {
+        display: block;
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+.why-ssa {
+  font-family: $fontFamily-noto;
+  font-size: 15px;
+  overflow: hidden;
+  padding: 36px 24px 0;
+
+  @include desktop-up {
+    padding: 36px 0 72px;
+    min-height: 647px;
+  }
+  
+  .container {
+    padding: 0 24px;
+
+    @include desktop-down {
+      padding: 0;
+    }
+  }
+
+  h3,
+  h4 {
+    font-weight: $fontWeight-bold;
+  }
+  
+  h3 {
+    font-size: 2em;
+    text-transform: none;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  h4 {
+    color: $color-brand;
+    font-size: 1.2em;
+    text-transform: uppercase;
+  }
+
+  &__figure-wrapper {
+    display: none;
+
+    @include desktop-up {
+      display: block;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+      width: $content-maxWidth;
+    }
+  }
+
+  @include desktop-up {
+    &__figure {
+      background-position: bottom right;
+      background-repeat: no-repeat;
+      height: 687px;
+      left: 0;
+      position: absolute;
+      width: 1131px;
+    }
+
+    &__cta {
+      max-width: 399px;
+    }
+  }
+}

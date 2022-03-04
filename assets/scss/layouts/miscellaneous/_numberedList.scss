@@ -1,0 +1,39 @@
+.numbered-list {
+  &__counter-context {
+    counter-reset: section;
+  }
+
+  &__item {
+    &:before, h3 {
+      font-size: 18px;
+    }
+
+    @include desktop-up {
+      padding-left: 40px;
+      position: relative;
+
+      &:before {
+        color: #818f9b;
+        content: counter(section, decimal-leading-zero);
+        counter-increment: section;
+        display: block;
+        font-family: $headings-font;
+        font-weight: bold;
+        left: 0;
+        position: absolute;
+        top: 0;
+      }
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      text-align: initial;
+      text-transform: uppercase;
+
+      a {
+        color: #58a5f0;
+        text-decoration: none;
+      }
+    }
+  }
+}

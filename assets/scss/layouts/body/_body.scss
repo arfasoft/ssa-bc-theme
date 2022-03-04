@@ -1,0 +1,424 @@
+// =============================================================================
+// BODY (CSS)
+//
+// 1. Header is fixed on small screens, use the content body to create the whitespace
+//    between it and the header on all situations. If you change the spacing here,
+//    please update .heroCarousel too.
+//
+// =============================================================================
+
+
+.body {
+    overflow: hidden;
+
+    @media screen and (min-width: 1250px) {
+        padding-top: 75px;
+    }
+}
+
+
+.page {
+    @include grid-row(
+        $behavior: nest
+    );
+}
+
+.page-content,
+.page-content--full {
+    @include grid-column(12);
+}
+
+.page-content--centered {
+
+    @include breakpoint("medium") {
+        @include grid-column(
+            $columns: 8,
+            $center: true
+        );
+    }
+}
+
+.page-content--textCenter {
+    text-align: center;
+}
+
+.page-sidebar {
+    @include grid-column(12);
+    position: relative;
+
+    @include breakpoint("medium") {
+        @include grid-column(3);
+
+        + .page-content {
+            @include grid-column(9);
+        }
+    }
+}
+
+.content {
+    background: #f5f5f5;
+    background-position: top right;
+    background-repeat: no-repeat;
+    color: $color-blueGray;
+    font-family: $fontFamily-noto;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 80px 0;
+
+    ol {
+        list-style: none;
+        margin: 1em 0;
+        padding-left: 3%;
+        position: relative;
+
+        li {
+            counter-increment: (inst);
+
+            &:before {
+                content: counter(inst) ')';
+                left: 0;
+                position: absolute;
+            }
+        }
+    }
+
+    h3 {
+        font-size: 2em;
+        font-weight: $fontWeight-bold;
+        line-height: 1.4em;
+        margin: 0 0 1em;
+        text-transform: none;
+
+        span {
+            display: inline-block;
+        }
+    }
+
+    h4, .h4 {
+        font-family: $fontFamily-montserrat;
+        font-size: 1.2em;
+        font-weight: $fontWeight-bold;
+        text-transform: uppercase;
+    }
+
+    .h4--blue {
+        color: #58a5f0;
+    }
+
+    .container {
+        padding: 0 24px;
+    }
+
+    &--narrow .container {
+        max-width: 573px;
+    }
+
+    &--light {
+        background-color: transparent;
+    }
+
+    &--blue,
+    &--gray,
+    &--brand {
+        color: $color-white;
+
+        h1, .h1, h2, .h2, h3, .h3, h5, .h5, h6, .h6 {
+            color: $color-white;
+        }
+    }
+
+    &--blue,
+    &--brand {
+        background-color: #004c8c;
+        padding-left: 24px;
+        padding-right: 24px;
+
+        @include desktop-down {
+            .content__col + .content__col {
+                margin-top: 3em;
+            }
+        }
+    }
+
+    &--brand {
+        background-color: #0277bd;
+    }
+
+    &--centered {
+        text-align: center;
+    }
+
+    &--gray {
+        background-color: $color-blueGray;
+        color: $color-white;
+
+        h3 {
+            font-size: 2em;
+            font-weight: $fontWeight-bold;
+            line-height: 1.4;
+            margin: 0 0 1.25em;
+            text-align: center;
+            text-transform: none;
+
+            span {
+                display: inline-block;
+            }
+        }
+
+        h4,
+        .h4 {
+            color: #58a5f0;
+            margin: 0 0 1.5em;
+        }
+    }
+
+    &--lightGray {
+        color: $color-blueGray;
+
+        .container p {
+            font-weight: $fontWeight-bold;
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+
+        h3 {
+            font-size: 2em;
+            font-weight: $fontWeight-bold;
+            line-height: 1.4;
+            margin: 0 0 1.25em;
+            text-align: center;
+            text-transform: none;
+
+            span {
+                display: inline-block;
+            }
+        }
+
+        h4,
+        .h4 {
+            color: #58a5f0;
+            margin: 0 0 1.5em;
+        }
+    }
+
+    &--two-col {
+        padding-left: 24px;
+        padding-right: 24px;
+
+        .content__inner-wrapper,
+        .content__comparison {
+            @include desktop-up {
+                @include grid-row;
+            }
+        }
+
+        .container,
+        .content__inner-wrapper {
+            max-width: 810px;
+        }
+
+        .container {
+            padding: 0;
+        }
+
+        .container + .content__inner-wrapper,
+        .content__inner-wrapper + .container {
+            margin-top: 2em;
+        }
+
+        .content__col {
+            @include desktop-up {
+                @include grid-column(6);
+            }
+        }
+    }
+
+    &--two-col-wide {
+        padding-left: 24px;
+        padding-right: 24px;
+
+        .content__inner-wrapper,
+        .content__comparison {
+            @include desktop-up {
+                @include grid-row;
+            }
+        }
+
+        .container,
+        .content__inner-wrapper {
+            max-width: 940px;
+        }
+
+        .container {
+            padding: 0;
+        }
+
+        .container + .content__inner-wrapper,
+        .content__inner-wrapper + .container {
+            margin-top: 2em;
+        }
+
+        .content__col {
+            @include desktop-up {
+                @include grid-column(6);
+            }
+        }
+    }
+
+    &--two-col-vcenter {
+        padding-left: 24px;
+        padding-right: 24px;
+
+        .content__col {
+            h3 {
+                text-align: left;
+            }
+        }
+
+        @include desktop-up {
+            .content__inner-wrapper {
+                display: table;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 986px;
+            }
+
+            .content__col {
+                display: table-cell;
+                padding-right: 40px;
+                vertical-align: middle;
+                width: 50%;
+
+                &:nth-child(2n) {
+                    padding-left: 40px;
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+
+    &--three-col {
+        padding-left: 24px;
+        padding-right: 24px;
+
+        .content__inner-wrapper,
+        .content__comparison {
+            @include desktop-up {
+                @include grid-row;
+            }
+        }
+
+        .container,
+        .content__inner-wrapper {
+            max-width: 940px;
+        }
+
+        .container {
+            padding: 0;
+        }
+
+        .container + .content__inner-wrapper,
+        .content__inner-wrapper + .container {
+            margin-top: 2em;
+        }
+
+        .content__col {
+            @include desktop-up {
+                @include grid-column(4);
+            }
+        }
+    }
+
+    &__comparison {
+        padding: 20px 0;
+
+        @include desktop-up {
+            margin-bottom: 3em !important;
+            margin-top: 3em !important;
+            position: relative;
+        }
+
+        .content__col {
+            @include desktop-up {
+                text-align: center;
+            }
+
+            img[src$=".svg"] {
+                width: 100%;
+            }
+
+            &:not(:first-child) {
+                position: relative;
+
+                @include desktop-down {
+                    margin-top: 40px;
+                    padding-top: 40px !important;
+                }
+
+                @include desktop-up {
+                    position: static;
+                }
+
+                &:before,
+                &:after {
+                    display: block;
+                    left: 50%;
+                    position: absolute;
+                    top: 0;
+                }
+
+                &:before {
+                    background: #37474f;
+                    content: '';
+                    display: block;
+                    height: 2px;
+                    left: 0;
+                    right: 0;
+                    transform: translateY(-50%);
+                    
+                    @include desktop-up {
+                        bottom: 0;
+                        height: auto;
+                        left: 50%;
+                        right: auto;
+                        top: 0;
+                        transform: translateX(-50%);
+                        width: 2px;
+                    }
+                }
+                
+                &:after {
+                    background: #fff;
+                    content: 'vs';
+                    font-weight: 700;
+                    padding: 0 .5em;
+                    text-transform: uppercase;
+                    transform: translate(-50%, -50%);
+
+                    @include desktop-up {
+                        padding: 0;
+                        top: 50%;
+                    }
+
+                    .content--lightGray & {
+                        background: #f5f5f5;
+                    }
+                }
+            }
+        }
+    }
+} // content
+
+.tablet-down {
+    @include desktop-up {
+        display: none;
+    }
+}
+
+.desktop-only {
+    display: none;
+
+    @include desktop-up {
+        display: initial;
+    }
+}

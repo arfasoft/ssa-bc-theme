@@ -1,0 +1,39 @@
+.video-link {
+  position: relative;
+
+  &__link {
+    display: block;
+    margin: 20px auto;
+    max-width: 400px;
+  }
+
+  &--coming-soon {
+    background-color: #000;
+
+    &:after {
+      color: $color-white;
+      content: 'Coming Soon';
+      display: block;
+      left: 0;
+      padding-top: 25px;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      text-align: center;
+      white-space: nowrap;
+    }
+  }
+
+  &__icon {
+    height: 48px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+
+    * {
+      fill: $color-brand;
+    }
+  }
+}

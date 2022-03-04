@@ -1,0 +1,307 @@
+// =============================================================================
+// PRODUCT VIEW (CSS)
+// =============================================================================
+
+
+// Product view layout
+// -----------------------------------------------------------------------------
+
+.productView {
+    @include grid-row($behavior: "nest");
+    margin-left: -(spacing("base"));
+    margin-right: -(spacing("base"));
+
+    .modal & {
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+
+    .shipping-message {
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+
+    .imageNav {
+        display: none;
+    }
+
+    @media screen and (max-width: 1000px) {
+        .productView-img-container {
+            position: relative;
+        }
+
+
+
+        .productView-thumbnails {
+            display: flex;
+            -ms-flex-align: center;
+            max-width: 300px;
+            margin: 10px auto;
+
+            a.productView-thumbnail-link {
+                width: 15px;
+                height: 15px;
+                margin: 0 auto;
+                border-radius: 50%;
+                border: 1px solid $color-greyMedium;
+                background-color: $color-greyLighter;
+
+                &.is-active {
+                    background-color: $color-brand;
+                }
+
+                img {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.productView--quickView {
+    .socialLinks-item--print {
+        display: none;
+    }
+}
+
+.productView-images {
+    @include grid-column(12);
+    padding-left: spacing("base");
+    padding-right: spacing("base");
+
+    @include breakpoint("medium") {
+        width: grid-calc(6, $total-columns);
+    }
+}
+
+.productView-details {
+    @include grid-column(12);
+    padding-left: spacing("base");
+    padding-right: spacing("base");
+
+    @include breakpoint("medium") {
+        clear: right;
+        float: right;
+        width: grid-calc(6, $total-columns);
+    }
+}
+
+.productView-description {
+    @include grid-column(12);
+    padding-left: spacing("base");
+    padding-right: spacing("base");
+
+    @include breakpoint("large") {
+        clear: right;
+        float: right;
+        width: grid-calc(6, $total-columns);
+    }
+
+    .productView-title {
+        border-bottom: container("border");
+        margin-bottom: spacing("base");
+        padding-left: spacing("base");
+        padding-right: spacing("base");
+    }
+
+    .productView-description {
+        @include breakpoint("medium") {
+            clear: both;
+            float: none;
+            width: 100%;
+        }
+    }
+}
+
+.productDetails p {
+    margin-bottom: 0;
+}
+
+.shipping-message {
+    clear: both;
+    margin-top: 20px;
+}
+
+dl {
+    overflow: auto;
+}
+
+.productView-free-shipping-container {
+    margin-top: 15px;
+}
+
+.productView-free-shipping-message {
+    line-height: 19px;
+    background-repeat: no-repeat;
+    background-position-x: left;
+    padding-left: 35px;
+    color: $color-brand;
+    font-size: 16px;
+    font-weight: bold;
+
+    a {
+        color: $color-brand;
+        font-weight: normal;
+    }
+}
+
+.productView-free-shipping-details {
+    display: none;
+    position: relative;
+
+    .closeBtn {
+        display: block;
+        width: 28px;
+        height: 28px;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        border: 1px solid #C2C2C2;
+        background-color: white;
+        color: #C2C2C2;
+        border-radius: 50%;
+        line-height: 28px;
+        text-align: center;
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+
+
+        @media screen and (max-width: 800px) {
+            right: 5px;
+            top: 5px;
+        }
+    }
+}
+
+.productView-free-shipping-details.show {
+    display: block;
+    background-color: white;
+    border: 1px solid #C2C2C2;
+    box-shadow: 0px 2px 12px rgba(0,0,0,.58);
+    padding: 20px;
+    text-align: center;
+    font-family: $fontFamily-montserrat;
+    font-size: 16px;
+    font-weight: $fontWeight-medium;
+    color: #292929;
+    position: relative;
+    left: -50px;
+
+
+    &:before {
+        content: '';
+        height: 20px;
+        width: 20px;
+        display: block;
+        position: absolute;
+        background-color: white;
+        left: calc(50% + 20px);
+        top: -11px;
+        z-index: 50;
+        transform: rotate(45deg);
+        box-shadow: -5px -5px 4px rgba(0,0,0,.1);
+        border-top: 1px solid #C2C2C2;
+        border-left: 1px solid #C2C2C2;
+    }
+
+    h1 {
+        font-weight: bold;
+        font-size: 18px;
+        color: $color-brand;
+    }
+
+ 
+
+
+    @media screen and (max-width: 800px) {
+        left: 0px;
+
+        &:before {
+            left: calc(40%);
+        }
+    }
+}
+
+.shipping-message-productid-104, 
+.shipping-message-productid-182, 
+.shipping-message-productid-149, 
+.shipping-message-productid-147, 
+.shipping-message-productid-158, 
+.shipping-message-productid-150 {
+    display: none;
+}
+
+.buy-buttons .btn-new--big {
+    width: auto;
+    @media screen and (max-width: 910px) {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+}
+.buy-buttons #form-action-addToCart {
+    background-color: #37474F;
+}
+
+.productView-product h1 {
+    margin-top: 0;
+    font-family: $fontFamily-montserrat;
+    font-size: 24px;
+    font-weight: $fontWeight-medium;
+    color: $color-textHeading;
+    text-transform: capitalize;
+}
+
+.productView-price {
+    font-family: $fontFamily-karla;
+    color: $color-textBase;
+    font-size: 23px;
+}
+
+.productView-options {
+
+    margin-top: 11px; 
+
+    .form-label {
+        line-height: $lineHeight-smallest;
+    }
+
+    .form-label--alternate {
+        font-family: $fontFamily-montserrat;
+        font-size: 11px;
+        font-weight: 500;
+        color: #121B23;
+    }
+
+    .form-field {
+        margin-bottom: 1.5rem;
+    }
+
+}
+
+.data-product-price-without-discount {
+    display: none;
+}
+
+.price-section {
+    &.showComparison {
+        .data-product-price-without-discount {
+            display: inline;
+            text-decoration: line-through;
+            padding-right: 15px;
+        }
+        .price {
+            color: $color-brand;
+            font-weight: bold;
+        }
+    }
+}
+
+
+.savings-message {
+    font-family: $fontFamily-karla;
+    font-size: 14px;
+    font-weight: bold;
+    color: $color-brand;
+}

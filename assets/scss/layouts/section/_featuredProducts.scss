@@ -1,0 +1,184 @@
+@mixin stacked {
+  @media screen and (min-width: 400px) and (max-width: 980px) {
+    @content;
+  }
+}
+
+.featured-products {
+  $product-gutter: 11px;
+
+  font-family: $fontFamily-montserrat;
+  font-size: 13px;
+  padding: 40px 0;
+
+  @include desktop-up {
+    padding: 110px 0 75px;
+  }
+
+  .container {
+    max-width: 970px;
+
+    @include desktop-down {
+      padding: 0 24px;
+    }
+  }
+
+  h3 {
+    border: solid #6a6e6c;
+    border-width: 0 0 1px;
+    color: $color-blueGrayDark;
+    font-size: 1.38em;
+    font-weight: $fontWeight-medium;
+    line-height: 1.4;
+    margin: 0 0 1em;
+    padding: 0 0 .5em;
+    text-transform: none;
+    
+    @include desktop-up {
+      font-size: 2.3em;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  &__product-list {
+    list-style: none;
+    margin: 0;
+
+    @include desktop-up {
+      align-items: stretch;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -$product-gutter;
+    }
+  }
+
+  &__product-item {
+    @include desktop-up {
+      flex: 0 0 33.33%;
+      margin-bottom: $product-gutter;
+      padding: 0 $product-gutter;
+    }
+
+    > a {
+      display: block;
+    }
+  }
+
+  &__product-item + &__product-item {
+    @include desktop-down {
+      margin-top: 20px;
+    }
+  }
+}
+
+.featured-product {
+  border: 1px solid #dbdbdb;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  @include stacked {
+    flex-direction: row;
+    height: auto;
+  }
+
+  &__image-link {
+    align-items: center;
+    background: $color-white;
+    display: flex;
+    height: 160px;
+    justify-content: center;
+    overflow: hidden;
+
+    @include stacked {
+      height: auto;
+      max-height: 220px;
+    }
+
+    img {
+      transform: scale(1, 1);
+      transition: transform .2s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05, 1.05);
+    }
+  }
+
+  &__price {
+    font-size: 1.69em;
+    font-weight: $fontWeight-bold;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    padding: 22px 24px;
+
+    @include stacked {
+      max-width: 60%;
+      width: 400px;
+    }
+
+    &-row {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      margin: 1em 0;
+      max-width: 280px;
+    }
+
+    h4 {
+      font-size: 1.384em;
+      margin: 0;
+
+      a {
+        color: $color-blueGrayDark;
+      }
+    }
+
+    .btn-new {
+      display: block;
+      font-size: 1.38em;
+      text-align: center;
+
+      @include stacked {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__rating {
+    font-size: 0;
+
+    .icon {
+      display: inline-block;
+      height: 12px;
+      width: 12px;
+
+      &.icon--ratingFull svg * {
+        fill: #ebbd1a;
+      }
+      
+      &.icon--ratingEmpty svg * {
+        fill: none;
+        stroke: #313131;
+        stroke-width: 1px;
+      }
+
+      + .icon {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &__footer {
+    position: relative;
+    bottom: 0;
+  }
+}

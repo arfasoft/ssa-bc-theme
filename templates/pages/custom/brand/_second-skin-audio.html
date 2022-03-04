@@ -1,0 +1,41 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#if brand.image}}
+    <div class="brand-image-container">
+        <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage brand.image 'thumb_size'}}">
+    </div>
+{{/if}}
+{{{snippet 'brand'}}}
+<div class="page">
+    <aside class="page-sidebar" id="faceted-search-container">
+        {{> components/brand/sidebar}}
+    </aside>
+
+    <main class="page-content" id="product-listing-container">
+        <h1 class="page-heading">{{brand.name}}</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nec porttitor tellus. Suspendisse urna augue, imperdiet vel molestie in, viverra vel risus. Nunc sapien enim, pulvinar nec porta ullamcorper, ultrices vel tortor. Morbi at diam porta, sodales purus ut, posuere justo. Maecenas nec interdum dui, vitae consequat erat. Sed placerat malesuada enim sed imperdiet. Vivamus sollicitudin posuere nulla vel aliquam. Curabitur bibendum, ligula eu dictum egestas, tortor purus lobortis lectus, a imperdiet nulla libero ornare erat. Donec feugiat ante nibh, vel vulputate nibh vehicula at. Morbi sed purus sagittis, tristique nunc eget, sollicitudin lacus. Etiam vel metus et libero efficitur tincidunt. In fringilla sapien massa, eget volutpat odio pulvinar ut. Praesent laoreet molestie dui, ac elementum diam vestibulum sit amet. Aenean venenatis turpis non sodales finibus. Phasellus volutpat ut nibh non molestie. Integer eget libero consectetur, lacinia metus id, lacinia sapien.</p>
+        {{#if brand.products}}
+            {{> components/brand/product-listing}}
+        {{else}}
+            <p>{{lang 'brands.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+{{/partial}}
+{{> layout/base}}

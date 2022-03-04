@@ -1,0 +1,128 @@
+{{#if category.name '===' 'Acoustic Panels'}}
+    <section class="hero hero--hub-page" style="background-image:url('{{cdn 'webdav:acoustics-bg.jpg'}}');">
+        <div class="container">
+            <h1 style="max-width:780px;margin:0 auto 20px;">Sound Absorbing Acoustic Wall & Ceiling Panels</h1>
+        </div>
+    </section>
+{{else if category.name '===' 'Acoustics'}}
+    <section class="hero hero--hub-page hero--acoustics"
+        style="background-image:url('{{cdn 'webdav:hub-acoustics.jpg'}}');">
+        <h1 style="max-width:780px;margin:0 auto 20px;">A Complete Guide to Room Acoustics and Acoustic Materials</h1>
+        <a href="/shop/" class="btn-new btn-new--primary">Shop Products</a>
+    </section>
+    <section class="content content-light">
+        <h2 class="narrow lowercase">Everything you need to know about acoustic materials</h2>
+        <div class="narrow">
+            <p>We’ve all heard someone say “The acoustics in here are fantastic!” or “I can’t understand a thing, the
+                acoustics in here are [censored].” What exactly does good acoustics sound like? Is it simply an
+                observation of sound quality, volume, or pitch? Is there really a difference between good acoustics and
+                top-notch soundproofing? What materials are best suited for acoustic improvement? Don’t worry. We’ll get
+                there.</p>
+            <p>We’ll dig into those questions and more as we run through the basics of acoustics — and the benefits of
+                improving them in your home, on the road, and at the workplace. As anyone who’s spent a little time in a
+                gym with thunderous echoes will tell you, the sounds you hear impact your quality of life.</p>
+        </div>
+    </section>
+{{else if category.name '===' 'Heat Shields'}}
+    <section class="hero hero--hub-page hero--acoustics"
+        style="background-image:url('{{cdn 'webdav:hub-hero-heat-shields-bg.jpg'}}');">
+        <h1 style="max-width:780px;margin:0 auto 20px;">Stay Cool with a Car Heat Shield for Your Exhaust or Engine</h1>
+    </section>
+{{else if category.name '===' 'Soundproofing'}}
+    <section class="hero hero--hub-page hero--acoustics"
+        style="background-image:url('{{cdn 'webdav:hub-hero-heat-shields-bg.jpg'}}');">
+        <h1 style="max-width:780px;margin:0 auto 20px;">Stay Cool with a Car Heat Shield for Your Exhaust or Engine</h1>
+    </section>
+{{else}}
+    <section class="hero hero--hub-page" style="background-image:url('{{cdn 'webdav:hub-hero-bg.jpg'}}');">
+        <div class="container">
+            <h1>{{ category.name }}</h1>
+        </div>
+    </section>
+{{/if}}
+
+<section class="featured-products featured-home-products">
+
+    {{#if template_file '!==' 'pages/home'}}
+        {{#if banners.top}}
+            <div class="banners" data-banner-location="top">
+                <div class="banner">
+                    {{{limit banners.top 1}}}
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+
+    <div class="container home-products-hub">
+        {{#if category.name '===' 'Acoustic Panels'}}
+            <div style="padding-top:1em;">
+                {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+            </div>
+        {{/if}}
+
+        {{#if category.name '===' 'Acoustics'}}
+
+            <div class="acoustics-standard">
+                <h2 class="h2--underline lowercase">
+                    Popular Acoustic Materials
+                </h2>
+            </div>
+
+        {{/if}}
+
+        {{#if category.products}}
+            <ul class="featured-products__product-list">
+                {{#each category.products}}
+                    <li class="featured-products__product-item">
+                        <div class="featured-products__product featured-product">
+                            <a class="featured-product__image-link" href="{{url}}">
+                                <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}"
+                                    data-src="{{getImage image 'gallery_size' (cdn theme_settings.default_image_product)}}"
+                                    alt="{{image.alt}}" title="{{image.alt}}">
+                            </a>
+                            <div class="featured-product__info">
+                                <h4><a href="{{url}}">{{name}}</a></h4>
+                                <footer class="featured-product__footer">
+                                    <div class="featured-product__info-row">
+                                        <span class="featured-product__price">
+                                            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                                                {{> components/products/price price=price}}
+                {{else}}
+                    {{> components/common/login-for-pricing}}
+                                            {{/or}}
+                                        </span>
+                                        <div class="trustspot-inline-category" data-product-sku="{{id}}"></div>
+
+                                    </div>
+                                    <a href="{{url}}" class="btn-new btn-new--primary">Shop Now</a>
+                                </footer>
+                            </div>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+        {{/if}}
+    </div>
+</section>
+
+<!-- closes container div. -->
+</div>
+{{#if category.name '!==' 'Acoustics'}}
+
+
+    <!-- need this to run side to side -->
+    <div class="icon-descriptors category-{{category.id}}">
+        {{> components/products/icon-descriptors}}
+    </div>
+
+{{/if}}
+
+<div class="home-products-pages">
+    {{#if category.name '===' 'Acoustics'}}
+        {{> components/redesign/pages/acoustics category=category}}
+    {{else if category.name '===' 'Heat Shields'}}
+        {{> components/redesign/pages/heat-shield-info category=category}}
+    {{else if category.name '===' 'Acoustic Panels'}}
+        {{> components/redesign/pages/acoustic-panels category=category}}
+    {{/if}}
+</div>

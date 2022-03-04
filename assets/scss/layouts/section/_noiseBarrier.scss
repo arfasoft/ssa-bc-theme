@@ -1,0 +1,75 @@
+.noise-barrier {
+  background: #004c8c;
+  background-position: top right;
+  background-repeat: no-repeat;
+  color: $color-white;
+  font-family: $fontFamily-noto;
+  font-size: 15px;
+  padding: 60px 0;
+
+  @include desktop-up {
+    padding: 100px 0;
+  }
+
+  h1, h2, h3, h4, h5 {
+    color: $color-white;
+    font-family: $fontFamily-montserrat;
+    font-weight: $fontWeight-bold;
+  }
+
+  h3 {
+    font-size: 1.5em;
+    margin: 0 0 1em;
+    text-align: center;
+    text-transform: none;
+
+    @include desktop-up {
+      font-size: 2em;
+    }
+
+    span {
+      display: block;
+    }
+  }
+
+  h4 {
+    color: #58a5f0;
+    font-size: 1.2em;
+    line-height: 1.333;
+    text-transform: uppercase;
+  }
+
+  p {
+    line-height: 1.6;
+  }
+
+  .container {
+    padding: 0 24px;
+    max-width: 988px;
+  }
+
+  &__col-container {
+    margin: 0 0 4em;
+    
+    @include desktop-up {
+      @include clearfix;
+      margin-bottom: 1.5em;
+    }
+  }
+
+  &__col {
+    @include desktop-up {
+      @include grid-column(6);
+    }
+  }
+
+  &__col + &__col {
+    @include desktop-down {
+      margin-top: 2em;
+    }
+  }
+}
+
+.image-box {
+  text-align: center;
+}

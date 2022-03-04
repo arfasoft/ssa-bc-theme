@@ -1,0 +1,192 @@
+.calculator {
+  background-color: #014c8d;
+  margin: 40px 0;
+  padding: 20px 10%;
+  color: white;
+
+  .message {
+    text-align: center;
+  }
+  
+  .icon-phone {
+    display: block;
+    margin: 0 auto;
+    height: 18px;
+    width: 18px;
+    background: url('https://www.secondskinaudio.com/content/SVGs/phone-white.svg') left center no-repeat;
+    background-size: 18px 18px;
+    margin-bottom: 5px;
+}
+  .icon-email {
+    display: block;
+    margin: 0 auto;
+    height: 18px;
+    width: 18px;
+    background: url('https://www.secondskinaudio.com/content/SVGs/mail-white.svg') center center no-repeat;
+    background-size: 18px 18px;
+    margin-bottom: 5px;
+  }
+
+  .calculated-results {
+    display: none;
+
+    a {
+      color: white;
+    }
+  }
+  
+  h1 {
+    font-family: $fontFamily-montserrat;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 37px;
+    color: #FFFFFF;
+    letter-spacing: 0;
+    line-height: 34px;
+    max-width: 1000px;
+    margin: 0 auto 30px;
+    text-transform: capitalize;
+  }
+
+  form {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    fieldset {
+      border: none;
+      padding: 0; 
+
+      h2 {
+        color: white;
+        font-weight: bold;
+        font-size: 17px;
+        line-height: 20px;
+      }
+
+      p {
+        font-family: "Open Sans";
+        font-size: 17px;
+        color: #FFFFFF;
+        letter-spacing: 1.7px;
+        line-height: 20px;
+      }
+
+      .styledInput, input[type="text"], input[type="number"], input::placeholder, select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        font-family: "Open Sans";
+        font-size: 17px;
+        color: #37474F;
+        letter-spacing: 1.7px;
+        line-height: 49px;
+        min-height: 49px;
+        display: block;  
+        width: 100%; 
+        padding-left: 20px;
+        background-color: white;
+      }
+
+      input::placeholder {
+        padding-left: 0;
+      }
+
+      input[type="radio"] {
+        display: inline-block;
+        height: 22px;
+        width: 22px;
+        margin-right: 9px;
+      }
+
+      &.step-one {
+        label {
+          position: absolute;
+          left: -9999px;
+        }
+
+        input, select {
+          margin-bottom: 11px;
+        }
+      }
+
+      &.step-two, &.step-three {
+        label {
+          font-family: $fontFamily-montserrat;
+          font-size: 17px;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          line-height: 42px;
+          display: block;
+          position: relative;
+          padding-left: 31px;
+
+          input {
+            position: absolute;
+            left: 0;
+            top: 11px;
+          }
+
+          span {
+            display: block;
+            line-height: 20px;
+            &.label-text {
+              line-height: 28px;
+              padding-top: 10px;
+              padding-bottom:10px
+            }
+          }
+        } 
+      }
+
+      &.step-four {
+        input[type="submit"] {
+          display: inline-block;
+          line-height: 64px;
+          background-color: #0176BD;
+          width: 215px;
+          max-width: 100%;
+          text-align: center;
+          font-family: $fontFamily-montserrat;
+          font-weight: 700;
+          font-size: 20px;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          margin-top: 14px;
+          margin-bottom: 24px;
+          text-transform: uppercase;
+        }
+
+        .calculated-results {
+          font-size: 19px;
+          font-family: OpenSans-Light;
+          color: #FFFFFF;
+          letter-spacing: 0;
+          line-height: 26px;
+        }
+      }
+    }
+  }
+}
+
+/* ============ DESKTOP ==================== */
+@media only screen and (min-width: 970px) {
+  .calculator {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    h1 {
+      text-align: center;
+    }
+    form {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      fieldset {
+        width: 225px;
+      }
+    }
+
+    
+  }
+}

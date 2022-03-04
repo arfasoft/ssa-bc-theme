@@ -1,0 +1,983 @@
+<script>
+    /*
+    Notes:
+    1. After you make changes ALWAYS copy the code starting after the = sign on the first line and go to https://jsonlint.com/ to validate it.
+       IF THE CODE DOESN'T VALIDATE IT WILL BREAK ALL OF THE THINGS. But no pressure.
+    2. If you use quotes in a product title, be sure to add a backslash before the double quote. e.g. = instead of 3" x 5", it should be 3\" x 5\"
+    3. If your product has multiple variations, 3 additional properties need to be added. See product 216 for an example.
+           Additional properties with sample data from product 216:         
+           "variationGroupID": 268, <- the variationGroupID can be found by inspecting the name attribute in the variation selections input. 
+           "currentVariationID": 311, <- the currentVariationID can be found by inspecting the value attribute in the first variation selections input. 
+           "variations": [311, 312], <- the variations can be found by inspecting the value attributes in all of the variation selections input. 
+    4. Sample with notes:
+    "182": {                        <- For each product, the product ID is the first number in quotes.
+        "productTitle": "Damplifier Pro™ - Small Mod Sheets",  <- this is the title of the product
+        "optionGroupID": 223,   <- the optionGroupID can be found by inspecting the name attribute in the price selections input.
+        "baseUnitPrice": 0,   <- leave as zero. autocalculated.
+        "options": [
+        {
+            "optionID": 258,   <- the optionID can be found by inspecting the value attribute in the price selections input.
+            "optionLabel": "1 Sheet (3\" x 5\")",   <- make sure to escape double quotes since the value is delineated by double quotes.
+            "quantity": 1,   <- specify the quantity of pieces so we can calculate a unit price.
+            "optionPrice": 0,   <- leave as zero. autocalculated.
+            "unitPrice": 0,   <- leave as zero. autocalculated.
+            "comparisonPrice": 0   <- leave as zero. autocalculated.
+            },
+        {                                  <- add a new object for each option
+            "optionID": 259,
+            "optionLabel": "5 Sheets (3\" x 5\" each)",
+            "quantity": 5,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }                                  <- make sure the last option doesn't have a comma after it.
+        ]
+    }
+*/
+
+
+var productOptions = {
+   
+    "104": {
+        "productTitle": "Damplifier Pro™ Half Sheets (USPS Free Shipping)",
+        "optionGroupID": 202,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 254,
+            "optionLabel": "10 Sq Ft (12 Sheets)",
+            "quantity": 12,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 255,
+            "optionLabel": "20 Sq Ft (24 Sheets)",
+            "quantity": 24,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 256,
+            "optionLabel": "25 Sq Ft (30 Sheets)",
+            "quantity": 30,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 257,
+            "optionLabel": "30 Sq Ft (36 Sheets)",
+            "quantity": 36,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "114": {
+        "productTitle": "Heat Wave Pro™ - Jute Thermal Insulation",
+        "optionGroupID": 183,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 173,
+            "optionLabel": "24 Sq ft (1 Sheet)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 109,
+            "optionLabel": "72 Sq Ft (3 Sheets)",
+            "quantity": 3,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 110,
+            "optionLabel": "120 Sq Ft (5 Sheets)",
+            "quantity": 5,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "116": {
+        "productTitle": "Damplifier™ Deadening Mats",
+        "optionGroupID": 185,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 155,
+            "optionLabel": "10 Sq Ft (5 sheets)",
+            "quantity": 5,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 112,
+            "optionLabel": "20 Sq Ft (10 Sheets)",
+            "quantity": 10,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 113,
+            "optionLabel": "40 Sq Ft (20 Sheets)",
+            "quantity": 20,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 114,
+            "optionLabel": "80 Sq Ft (40 Sheets)",
+            "quantity": 40,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 115,
+            "optionLabel": "120 Sq Ft (60 Sheets)",
+            "quantity": 60,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "122": {
+        "productTitle": "Damplifier Pro™ Deadening Mats",
+        "optionGroupID": 187,
+        "baseUnitPrice": 0,
+        "options": [
+            {
+            "optionID": 121,
+            "optionLabel": "6.67 Sq Ft - (4 Sheets)",
+            "quantity": 4,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+            {
+            "optionID": 161,
+            "optionLabel": "13.33 Sq Ft - Door Pack (8 sheets)",
+            "quantity": 8,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+            {
+            "optionID": 117,
+            "optionLabel": "20 Sq Ft - Trunk Pack (12 Sheets)",
+            "quantity": 12,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+            {
+            "optionID": 118,
+            "optionLabel": "36.67 Sq Ft - Bulk Pack (22 Sheets)",
+            "quantity": 22,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+            {
+            "optionID": 119,
+            "optionLabel": "80 Sq Ft - Vehicle Pack (48 Sheets)",
+            "quantity": 48,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+            {
+            "optionID": 120,
+            "optionLabel": "120 Sq Ft - XL Vehicle Pack (72 Sheets)",
+            "quantity": 72,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "127": {
+        "productTitle": "OverKill™ - Closed Cell Foam",
+        "optionGroupID": 199,
+        "baseUnitPrice": 0,
+        "variationGroupID": 284,
+        "currentVariationID": 260,
+        "variations": [260, 285],
+        "options": [
+        {
+            "optionID": 168,
+            "optionLabel": "9 Sq Ft (1 Sheet)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 169,
+            "optionLabel": "36 Sq Ft (4 Sheets)",
+            "quantity": 4,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 170,
+            "optionLabel": "54 Sq Ft (6 Sheets)",
+            "quantity": 6,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 171,
+            "optionLabel": "72 Sq Ft (8 Sheets)",
+            "quantity": 8,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 172,
+            "optionLabel": "90 Sq Ft (10 Sheets)",
+            "quantity": 10,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "130": {
+        "productTitle": "OverKill Pro™ - Closed Cell Foam",
+        "optionGroupID": 197,
+        "baseUnitPrice": 0,
+        "variationGroupID": 283,
+        "currentVariationID": 260,
+        "variations": [260, 285],
+        "options": [
+        {
+            "optionID": 168,
+            "optionLabel": "9 Sq Ft (1 Sheet)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 169,
+            "optionLabel": "36 Sq Ft (4 Sheets)",
+            "quantity": 4,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 170,
+            "optionLabel": "54 Sq Ft (6 Sheets)",
+            "quantity": 6,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 171,
+            "optionLabel": "72 Sq Ft (8 Sheets)",
+            "quantity": 8,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 172,
+            "optionLabel": "90 Sq Ft (10 Sheets)",
+            "quantity": 10,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "136": {
+        "productTitle": "Luxury Liner Pro™ Sheet - MLV + Foam",
+        "optionGroupID": 193,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 168,
+            "optionLabel": "9 Sq Ft (1 Sheet)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 169,
+            "optionLabel": "36 Sq Ft (4 Sheets)",
+            "quantity": 4,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 170,
+            "optionLabel": "54 Sq Ft (6 Sheets)",
+            "quantity": 6,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 171,
+            "optionLabel": "72 Sq Ft (8 Sheets)",
+            "quantity": 8,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 172,
+            "optionLabel": "90 Sq Ft (10 Sheets)",
+            "quantity": 10,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "139": {
+        "productTitle": "Spectrum™ Spray On Deadener",
+        "optionGroupID": 161,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 156,
+            "optionLabel": "20 Sq Ft (1 Gallon)",
+            "quantity": 20,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 157,
+            "optionLabel": "100 Sq Ft (5 Gallons)",
+            "quantity": 100,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+        "159": {
+        "productTitle": "Firewall™ Ceramic Thermal Insulation",
+        "optionGroupID": 288,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 156,
+            "optionLabel": "20 Sq Ft (1 Gallon)",
+            "quantity": 20,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 157,
+            "optionLabel": "100 Sq Ft (5 Gallons)",
+            "quantity": 100,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "165": {
+        "productTitle": "Damplifier™ Butyl Sealant Tape",
+        "optionGroupID": 203,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 160,
+            "optionLabel": "20 ft (1 Roll)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 129,
+            "optionLabel": "60 ft (3 Rolls)",
+            "quantity": 3,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+        "223": {
+        "productTitle": "Green Glue™ Noiseproofing Compound",
+        "optionGroupID": 298,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 339,
+            "optionLabel": "1 Tube (28 oz)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 340,
+            "optionLabel": "1 Case of 12 Tubes (336 oz)",
+            "quantity": 12,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "141": {
+        "productTitle": "Spectrum™ Sludge Deadener",
+        "optionGroupID": 162,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 158,
+            "optionLabel": "2o Sq Ft (1 Gallon)",
+            "quantity": 20,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 159,
+            "optionLabel": "100 Sq Ft (5 Gallons)",
+            "quantity": 100,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "143": {
+        "productTitle": "Thermal Block™ - Radiant Heat Shield",
+        "optionGroupID": 305,
+        "baseUnitPrice": 0,
+        "variationGroupID": 430,
+        "currentVariationID": 466,
+        "variations": [466, 467],
+
+        "options": [
+        {
+            "optionID": 181,
+            "optionLabel": "2 Sq Ft (1 Sheet)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 182,
+            "optionLabel": "2 Sq Ft (1 Sheet)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 183,
+            "optionLabel": "8 Sq Ft (4 Sheets)",
+            "quantity": 4,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 184,
+            "optionLabel": "20 Sq Ft (10 Sheets)",
+            "quantity": 10,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "145": {
+        "productTitle": "Contact Spray Adhesive - High Temp",
+        "optionGroupID": 227,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 188,
+            "optionLabel": "1 Can (16 oz)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 189,
+            "optionLabel": "3 Cans (48 oz)",
+            "quantity": 3,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 130,
+            "optionLabel": "5 Cans (80 oz)",
+            "quantity": 5,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "170": {
+        "productTitle": "Spectrum Spray Kits",
+        "optionGroupID": 219,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 223,
+            "optionLabel": "40 Sq Ft (2 Gallons + Spray Gun)",
+            "quantity": 2,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 224,
+            "optionLabel": "60 Sq Ft (3 Gallons + Spray Gun)",
+            "quantity": 3,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 225,
+            "optionLabel": "80 Sq Ft (4 Gallons + Spray Gun)",
+            "quantity": 4,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 226,
+            "optionLabel": "100 Sq Ft (5 Gallons + Spray Gun)",
+            "quantity": 5,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 227,
+            "optionLabel": "200 Sq Ft (10 Gallons + Spray Gun)",
+            "quantity": 10,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "181": {
+        "productTitle": "HH-66 Vinyl Contact Cement",
+        "optionGroupID": 226,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 187,
+            "optionLabel": "Standard Container (8 oz)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 136,
+            "optionLabel": "Large Container (32 oz)",
+            "quantity": 4,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "182": {
+        "productTitle": "Damplifier Pro™ - Small Mod Sheets",
+        "optionGroupID": 223,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 258,
+            "optionLabel": "1 Sheet (3\" x 5\")",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 259,
+            "optionLabel": "5 Sheets (3\" x 5\" each)",
+            "quantity": 5,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "186": {
+        "productTitle": "Mega Block™ - Foam + Reinforced Heat Shield",
+        "optionGroupID": 271,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 306,
+            "optionLabel": "8 Sq Ft (2 Sheets)",
+            "quantity": 2,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 307,
+            "optionLabel": "24 Sq Ft (6 Sheets)",
+            "quantity": 6,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 308,
+            "optionLabel": "40 Sq Ft (10 Sheets)",
+            "quantity": 10,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 309,
+            "optionLabel": "60 Sq Ft (15 Sheets)",
+            "quantity": 15,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 310,
+            "optionLabel": "80 Sq Ft (20 Sheets)",
+            "quantity": 20,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "203": {
+        "productTitle": "Mega Zorbe™ - Hydrophobic Melamine Foam",
+        "optionGroupID": 267,
+        "baseUnitPrice": 0,
+        "variationGroupID": 289,
+        "currentVariationID": 260,
+        "variations": [260, 285],
+        "options": [
+        {
+            "optionID": 306,
+            "optionLabel": "8 Sq Ft (2 Squares)",
+            "quantity": 2,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 307,
+            "optionLabel": "24 Sq Ft (6 Squares)",
+            "quantity": 6,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 308,
+            "optionLabel": "40 Sq Ft (10 Squares)",
+            "quantity": 10,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 309,
+            "optionLabel": "60 Sq Ft (15 Squares)",
+            "quantity": 15,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 310,
+            "optionLabel": "80 Sq Ft (20 Squares)",
+            "quantity": 20,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "237": {
+        "productTitle": "Mega Zorbe Pro™ - Hydrophobic Melamine Foam Panels",
+        "optionGroupID": 332,
+        "baseUnitPrice": 0,
+        "variationGroupID": 331,
+        "currentVariationID": 347,
+        "variations": [347, 348],
+        "options": [
+        {
+            "optionID": 382,
+            "optionLabel": "8 Sq Ft (1 Sheet)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 383,
+            "optionLabel": "16 Sq Ft (2 Sheets)",
+            "quantity": 2,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 384,
+            "optionLabel": "32 Sq Ft (4 Sheets)",
+            "quantity": 4,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 385,
+            "optionLabel": "64 Sq Ft (8 Sheets)",
+            "quantity": 8,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+     "133": {
+        "productTitle": "Luxury Liner™ Sheet - Mass Loaded Vinyl (1lb / 2lb)",
+        "optionGroupID": 195,
+        "baseUnitPrice": 0,
+        "variationGroupID": 269,
+        "currentVariationID": 313,
+        "variations": [313, 314],
+        "options": [
+        {
+            "optionID": 168,
+            "optionLabel": "9 Sq Ft (1 Sheet)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 169,
+            "optionLabel": "36 Sq Ft (4 Sheets)",
+            "quantity": 4,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 170,
+            "optionLabel": "54 Sq Ft (6 Sheets)",
+            "quantity": 6,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 171,
+            "optionLabel": "72 Sq Ft (8 Sheets)",
+            "quantity": 8,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 172,
+            "optionLabel": "90 Sq Ft (10 Sheets)",
+            "quantity": 10,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+     "249": {
+        "productTitle": "HusHVAC™ Natural Fiber Liner",
+        "optionGroupID": 372,
+        "baseUnitPrice": 0,
+        "variationGroupID": 373,
+        "currentVariationID": 420,
+        "variations": [420, 421, 422],
+        "options": [
+        {
+            "optionID": 423,
+            "optionLabel": "4x5 (20 Sq Ft)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 424,
+            "optionLabel": "4x25 (100 Sq Ft))",
+            "quantity": 5,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 425,
+            "optionLabel": "4x50 (200 Sq Ft)",
+            "quantity": 10,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 426,
+            "optionLabel": "4x100 (400 Sq Ft)",
+            "quantity": 20,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 427,
+            "optionLabel": "4x150 (600 Sq Ft)",
+            "quantity": 30,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+    "251": {
+        "productTitle": "NaturaZorbe™ Cellulose Acoustic Panel",
+        "optionGroupID": 376,
+        "baseUnitPrice": 0,
+        "variationGroupID": 377,
+        "currentVariationID": 347,
+        "variations": [347, 348],
+        "options": [
+        {
+            "optionID": 402,
+            "optionLabel": "8 Sq Ft (1 Panel)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 403,
+            "optionLabel": "56 Sq Ft (7 Panels)",
+            "quantity": 7,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 404,
+            "optionLabel": "112 Sq Ft (14 Panels)",
+            "quantity": 14,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+     "216": {
+        "productTitle": "Dual Lock Reclosable Fastener",
+        "optionGroupID": 261,
+        "baseUnitPrice": 0,
+        "variationGroupID": 268,
+        "currentVariationID": 311,
+        "variations": [311, 312],
+        "options": [
+        {
+            "optionID": 300,
+            "optionLabel": "2 Strips (2 ft)",
+            "quantity": 2,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 301,
+            "optionLabel": "6 Strips (6 ft)",
+            "quantity": 6,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 302,
+            "optionLabel": "10 Strips (10 ft)",
+            "quantity": 10,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    },
+            
+    "220": {
+        "productTitle": "Radiant Shield - Reinforced Foil Heat Shield",
+        "optionGroupID": 287,
+        "baseUnitPrice": 0,
+        "options": [
+        {
+            "optionID": 331,
+            "optionLabel": "1 Sheet (2 sq ft)",
+            "quantity": 1,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 332,
+            "optionLabel": "4 Sheets (8 sq ft)",
+            "quantity": 4,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            },
+        {
+            "optionID": 333,
+            "optionLabel": "10 Sheets (20 sq ft)",
+            "quantity": 10,
+            "optionPrice": 0,
+            "unitPrice": 0,
+            "comparisonPrice": 0
+            }
+        ]
+    }
+}
+
+</script>

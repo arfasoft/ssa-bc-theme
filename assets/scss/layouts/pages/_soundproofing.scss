@@ -1,0 +1,124 @@
+.soundproofing-page {
+
+  .hero {
+    h1 {
+      font-size: 26px;
+
+      @media screen and (min-width: 960px) {
+        font-size: 42px;
+      }
+    }
+  }
+
+  .h4--blue span {
+    display: block;
+    text-transform: none;
+    color: #37474f;
+  }
+
+  span.h4__white-text {
+    color: #fff;
+    display: block;
+    text-transform: none;
+  }
+
+  .content {
+    @include desktop-down {
+      font-size: 14px;
+      padding-bottom: 30px;
+      padding-top: 30px;
+    }
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .container,
+  .content__inner-wrapper {
+    max-width: 988px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  
+  .content--two-col-wide .content__inner-wrapper {
+    max-width: 1068px;
+  }
+  
+  .content--two-col-wide .content__col {
+    @include desktop-up {
+      padding: 0 40px;
+    }
+  }
+
+  .content {
+    h2:not(.h2--underline), .container > h3 {
+      text-transform: none;
+      
+      @include desktop-up {
+        text-align: center;
+      }
+    }
+
+    .container > h3 {
+      font-size: 18px;
+      line-height: 1.6;
+
+      @include desktop-up {
+        font-size: 30px;
+        line-height: 1.4;
+      }
+    }
+
+    &--lightGray {
+      h3 {
+        text-align: initial;
+      }
+
+      .container {
+        p {
+          font-weight: initial;
+          padding: 0;
+        }
+  
+        > h2 + p {
+          @include desktop-up {
+            max-width: 928px;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    &--gray {
+      .container {
+        > h3,
+        > p {
+          text-align: center;
+        }
+      }
+    }
+
+    h2:not(.h2--underline) {
+      font-size: 21px;
+      line-height: 1.38;
+
+      @include desktop-up {
+        font-size: 42px;
+        line-height: 1;
+      }
+    }
+
+    h5 {
+      font-size: 18px;
+      font-weight: $fontWeight-semibold;
+      line-height: 1.55;
+      text-transform: none;
+    }
+  }
+
+  hr {
+    border-color: #6a6e6c;
+    margin: 40px auto;
+    max-width: 70px;
+  }
+}

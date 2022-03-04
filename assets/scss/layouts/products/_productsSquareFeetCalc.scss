@@ -1,0 +1,294 @@
+.sq-ft-calc {
+    text-align: center;
+    h3 {
+        font-family: $fontFamily-montserrat;
+        font-size: 12px;
+        color: #505050;
+        letter-spacing: 0.75px;
+        font-weight: 600;
+    }
+    
+    &__label {
+        position: absolute;
+        left: -9999px;
+    }
+
+    &__select-vehicle-wrapper {
+        position: relative;
+        max-width: 440px;
+        margin: 0 auto 50px;
+
+
+        &:after {
+            content: url('https://www.secondskinaudio.com/content/damplifier-pro/down-arrow.png');
+            color: #333;
+            right: 20px;
+            top: 39px;
+            position: absolute;
+            pointer-events: none;
+
+            @media only screen and (min-width: 801px) {
+                right: 20px;
+                top: 45px;
+            }
+        }
+    }
+
+    &__select-vehicle {
+        min-height: 40px;
+        display: block;
+        width: 100%;
+        padding: 0 20px;
+        background: #ffffff;
+        font-family: $fontFamily-helvetica;
+        font-size: 12px;
+        color: #364750;
+        letter-spacing: 0;
+        line-height: 21px;
+        max-width: 440px;
+        margin: 0 auto 50px;
+        appearance: none;
+
+        @media only screen and (min-width: 801px) {
+            height: 50px;
+            font-size: 14px;
+        }
+        &.error {
+            border-color: $color-error;
+            border-width: 2px;
+        }
+
+        &:before {
+            content: '>';
+            position: absolute;
+            height: 30px;
+            width: 30px;
+            background-color: blue;
+            top: 0;
+            right: 0;
+        }
+    }
+
+    &__btn {
+        font-family: $fontFamily-helvetica;
+        font-size: 14px;
+        background: #FFFFFF;
+        letter-spacing: 0;
+        line-height: 21px;
+        width: 122px;
+        height: 35px;
+        border-radius: 17.5px;
+        background: #FFFFFF;
+        border: 1px solid #BDBDBD;
+        margin: 0 10px 15px;
+        color: #6B6B6B;
+
+        &.active  {
+            border: 1px solid #0277BD;
+            background-color: #0277BD;
+            color: #FFFFFF;
+        }
+    }
+
+    &__amount {
+        background: #E0EBF3;
+        border-radius: 3px;
+        margin-bottom: 15px;
+        font-family: $fontFamily-montserrat;
+        height: 55px;
+        max-width: 262px;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__value {
+        font-family: $fontFamily-montserrat;
+        font-size: 30px;
+        color: #0277BD;
+        letter-spacing: 1.88px;
+        text-align: center;
+        font-weight: 700;
+        
+        &--value2 {
+            margin-left: 20px;
+        }
+    }
+
+    &__tooltip {
+        font-family: $fontFamily-montserrat;
+        font-size: 12px;
+        color: #0277BD;
+        letter-spacing: 0;
+        text-decoration: underline;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    ol {
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    &__tooltip-wrap {
+        position: relative;
+        width: 250px;
+        margin: 0 auto;
+
+        @media only screen and (min-width: 380px) {
+            width: 380px;
+        }
+    }
+
+    &__tooltip-box {
+        display: none;
+        position: absolute;
+        top: 33px;
+        background-color: #0277BD;
+        padding: 10px 15px 25px 25px;
+        color: #ffffff;
+        font-weight: 700;
+        z-index: 4;
+
+        &.active {
+            display: block;
+        }
+
+        @media only screen and (min-width: 1250px) {
+            top: -57px;
+            right: -292px;        
+        }
+
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            width: 22px;
+            height: 15px;
+            background-color: #0277BD;
+            clip-path: polygon(50% 0,0 100%,100% 100%);
+
+            @media only screen and (min-width: 1250px) {
+                top: 55px;
+                left: -18px;
+                width: 19px;
+                height: 23px;
+                clip-path: polygon(100% 0,0 50%,100% 100%);
+            }
+        }
+    }
+
+    &__close {
+        display: block;
+        text-align: right;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    &__calc-content {
+
+        &.not-active {
+            display: none;
+        }
+    }
+
+    &__alt-content {
+        display: none;
+
+        &.active {
+            display: block;
+            height: 286px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: $fontFamily-montserrat;
+            font-weight: 700;
+            font-size: 18px;
+            color: #0277BD;
+            letter-spacing: 0;
+            text-align: center;
+            text-transform: none;
+        
+
+            @media only screen and (min-width: 1250px) {
+                height: 236px
+            }
+        }
+    }
+
+    [data-area="wheel-wells"],
+    [data-area="undercarriage"] {
+        display: none;
+    }
+
+    // Sq Ft Help: 9
+    // Spectrum Spray: 139
+    // Spectrum Sludge: 141
+    &.sq-ft-calc--page-9,
+    &.sq-ft-calc--product-139,
+    &.sq-ft-calc--product-141 {
+        [data-area="wheel-wells"],
+        [data-area="undercarriage"] {
+            display: inline;
+        }
+    }
+
+    // Luxury Liner: 133
+    // Luxury Liner Pro: 136
+    // OverKill: 127
+    // OverKill Pro: 130
+    &.sq-ft-calc--product-133,
+    &.sq-ft-calc--product-136,
+    &.sq-ft-calc--product-127,
+    &.sq-ft-calc--product-130 {
+        [data-area="firewall"]:before {
+            content: "Cabin ";
+        }
+    }
+
+    // Mega Block: 186
+    // Thermal Block: 143
+    // FireWall: 159
+    &.sq-ft-calc--product-186,
+    &.sq-ft-calc--product-143,
+    &.sq-ft-calc--product-159 {
+        [data-area="floor"],
+        [data-area="trunk"],
+        [data-area="roof"],
+        [data-area="doors"] {
+            display: none;
+        }
+
+        [data-area="firewall"]:before {
+            content: "Engine ";
+        }
+    }
+
+    &.sq-ft-calc--product-159 {
+        [data-area="undercarriage"] {
+            display: inline;
+        }
+    }
+
+    // Luxury Liner: 133
+    // Luxury Liner Pro: 136
+    &.sq-ft-calc--product-133,
+    &.sq-ft-calc--product-136 {
+        [data-area="hood"],
+        [data-area="roof"] {
+            display: none;
+        }
+    }
+
+    // Mega Zorbe Foam: 203
+    &.sq-ft-calc--product-203 {
+        [data-area="hood"],
+        [data-area="firewall"],
+        [data-area="floor"],
+        [data-area="trunk"] {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,77 @@
+@mixin and-up($width) {
+  @media screen and (min-width: $width) {
+      @content;
+  }
+}
+
+@mixin below($width) {
+  @media screen and (max-width: ($width - 1)) {
+      @content;
+  }
+}
+
+@mixin between($minWidthInclusive, $maxWidth) {
+  @media screen and (min-width: $minWidthInclusive) and (max-width: ($maxWidth - 1)) {
+    @content;
+  }
+}
+
+// ============
+
+// Tablet Responsive Mixins
+@mixin tablet-down {
+  @include below($media-width-tablet) {
+    @content;
+  }
+}
+@mixin tablet-up {
+  @include and-up($media-width-tablet) {
+    @content;
+  }
+}
+@mixin tablet {
+  @include between($media-width-tablet, $media-width-desktop) {
+    @content;
+  }
+}
+
+// Mobile Responsive Mixin (alias for tablet-down)
+@mixin mobile {
+  @include tablet-down {
+    @content;
+  }
+}
+
+// Desktop Responsive Mixins
+@mixin desktop-down {
+  @include below($media-width-desktop) {
+    @content;
+  }
+}
+@mixin desktop-up {
+  @include and-up($media-width-desktop) {
+    @content;
+  }
+}
+@mixin desktop {
+  @include between($media-width-desktop, $media-width-widescreen) {
+    @content;
+  }
+}
+
+// Widescreen Responsive Mixins
+@mixin widescreen-down {
+  @include below($media-width-widescreen) {
+    @content;
+  }
+}
+@mixin widescreen-up {
+  @include and-up($media-width-widescreen) {
+    @content;
+  };
+}
+@mixin widescreen {
+  @include widescreen-up {
+    @content;
+  }
+}

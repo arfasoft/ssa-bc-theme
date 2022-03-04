@@ -1,0 +1,44 @@
+<nav class="navUser">
+    <ul class="navUser-sub-components">
+        <li class="phone-cta">
+            <h3>Call Today</h3>
+            <h4>
+                <a href="tel:+18006798511">1.800.679.8511</a>
+            </h4>
+        </li>
+        <li class="navUser-item">
+            <a href="/search.php" class="navUser-action toggleSearch">
+                <img src="{{cdn 'webdav:icons/search-icon.png'}}" alt="Search" />
+                Search
+            </a>
+        </li>
+        <li class="navUser-item">
+            {{#if customer.id}}
+                <a href="/account.php" class="navUser-action">
+                    <img src="{{cdn 'webdav:icons/account-icon.png'}}" alt="Account" />
+                    Account
+                </a>
+            {{else}}
+                <a href="/login.php" class="navUser-action">
+                    <img src="{{cdn 'webdav:icons/account-icon.png'}}" alt="Account" />
+                    Account
+                </a>
+            {{/if}}
+        </li>
+        <li data-quote-number="" id="quote" class="navUser-item navUser-item--quote inactive">
+            <a class="navUser-action" href="/?show_quote_window=quote-view">
+                <img src="{{cdn 'webdav:icons/quote.svg'}}" alt="Cart" />
+                Quote
+            </a>
+        </li>
+        <li class="navUser-item">
+            <a href="/cart.php" class="navUser-action">
+                <img src="{{cdn 'webdav:icons/cart-icon.png'}}" alt="Cart" />
+                Cart
+            </a>
+        </li>
+        <li class="navUser-item navUser-item__cartNumber">
+            <span class="cartNumber" id="cartNumber"></span>
+        </li>
+    </ul>
+</nav>

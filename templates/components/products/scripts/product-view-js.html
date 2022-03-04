@@ -1,0 +1,221 @@
+{{> components/products/data/product-options}}
+<script>
+    var currentProductID, optionGroupID, optionGroup;
+
+    // each price needs to be requested individually and the productOptions object updated
+    async function getProductPrice(productID, optionGroupID, optionID, variationID, index) {
+
+        // set up request
+        const url = "/remote/v1/product-attributes/" + productID;
+        let params = "action=add&attribute[" + optionGroupID + "]="+optionID+"&product_id="+productID+"&qty[]=1";
+
+        if(variationID > 0) {
+            let variationGroupID = productOptions[productID].variationGroupID;
+            params += "&attribute[" + variationGroupID + "]=" + variationID;
+        }
+
+        let hiddenField = document.querySelector('.hidden-attribute');
+
+        if(hiddenField) {
+            params += '&' + hiddenField.name + '=' + hiddenField.value;
+        }
+        
+        let result;
+
+        try {
+           result  = await makeRequest("POST", url, params);
+        } catch(err) {
+            // console.log(err); // TypeError: failed to fetch
+            return;
+        }
+        
+        // save price to object
+        productOptions[productID].options[index].optionPrice = result.data.price.without_tax.value;
+
+        return result.data.price.without_tax.value;
+    }
+
+
+    function makeRequest(method, url, params) {
+
+        return new Promise(function (resolve, reject) {
+            let xhr = new XMLHttpRequest();
+            xhr.open(method, url, true);
+
+            //Send the proper header information along with the request
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            xhr.onload = function () {
+                if (this.status >= 200 && this.status < 300) {
+                    var jsonResponse = JSON.parse(xhr.responseText);
+                    resolve(jsonResponse);
+                } else {
+                    reject({
+                        status: this.status,
+                        statusText: xhr.statusText
+                    });
+                }
+            };
+            xhr.onerror = function () {
+                reject({
+                    status: this.status,
+                    statusText: xhr.statusText
+                });
+            };
+            xhr.send(params);
+        });
+    }
+
+    function calculateDiscounts(focusedVariationID) {
+
+        // get productID and optionGroupID for this product
+        currentProductID = document.getElementById('product_id').value;
+
+        // see if we have prices for this product. If not, we're done.
+        if(typeof productOptions[currentProductID] === 'undefined') {
+            return;
+        }
+
+        let variationGroupID = productOptions[currentProductID].variationGroupID;
+        let optionGroupID = productOptions[currentProductID].optionGroupID;
+
+        window.onProductOptionsChange = function(formSerializedArr) {
+            const selectedVariation = formSerializedArr.find(({ name }) => name === `attribute[${variationGroupID}]`);
+
+            if (selectedVariation) {
+                calculateDiscounts(selectedVariation.value);
+            }
+        };
+
+        if(typeof optionGroupID === 'undefined') {
+            return;
+        }
+
+        // get all of the pricing options
+        optionGroup = productOptions[currentProductID].options;
+
+        // make sure we have option groups
+        if( optionGroup.length < 2 ) {
+            return;
+        }
+
+        // do we have a variation?
+        let variationID = focusedVariationID || getVariationID(currentProductID);
+
+        var promises = [];
+        // loop through each option, get the price, calculate savings, place in the span
+        for(let i=0; i < optionGroup.length; i++) { 
+
+            promises.push(getProductPrice(currentProductID, optionGroupID, optionGroup[i].optionID, variationID, i));
+
+        }
+        
+        // after all of the promises resolve, add the discounts to the span tags
+        Promise.all(promises)
+        .then(() => {
+
+            // grab all of the span tags where we will place our sales messages
+            var messageSpans = Array.prototype.slice.apply(document.querySelectorAll(".savings-message"));
+
+            for(let i=0; i < optionGroup.length; i++){
+                // get the unit price
+                let unitPrice = optionGroup[i].optionPrice / optionGroup[i].quantity;
+
+                // the first price is always the base price
+                if(i === 0) {
+                    productOptions[currentProductID].baseUnitPrice = unitPrice;
+                    continue;
+                }
+                
+                // set single unit price
+                optionGroup[i].unitPrice = unitPrice;
+
+                // set comparison price
+                optionGroup[i].comparisonPrice = '$' + (optionGroup[i].quantity * productOptions[currentProductID].baseUnitPrice).toFixed(2)
+
+                // calculate discount
+                discountPercentage = (( 1.00 - (unitPrice / productOptions[currentProductID].baseUnitPrice )) * 100).toFixed(2);
+                discountPercentage = Math.round(discountPercentage);
+                messageSpans[i].innerHTML = "Save " + discountPercentage + '%';                 
+            }
+                
+            comparePrices();
+
+        })
+        .catch((e) => {
+            // handle errors here. Except we won't have any. Ever. I Promise();
+        });
+
+    }
+
+    function getVariationID(productID) {
+
+        // most products don't have variations but we at least need an empty array for our calculations
+        if (!Object.prototype.hasOwnProperty.call(productOptions[productID], 'variations')) { 
+            productOptions[productID].variations = [];
+        }
+
+        let variations = productOptions[productID].variations;
+
+        if(variations.length) {
+            return productOptions[productID].currentVariationID;
+        }
+
+        return 0;
+
+    }
+
+    function comparePrices(optionID) {
+
+        currentProductID = document.getElementById('product_id').value;
+
+        // see if we have prices for this product. If not, we're done.
+        if(typeof productOptions[currentProductID] === 'undefined') {
+            return;
+        }
+
+        // is this a variationID? If so, we need to recalculate all the prices
+        if(typeof productOptions[currentProductID].variations === 'object' && productOptions[currentProductID].variations.length) {
+            if(productOptions[currentProductID].variations.indexOf(optionID) > -1) {
+                // if this is a new variation, set currentVariationID and re-calculate prices
+                // using the first option
+                if(productOptions[currentProductID].currentVariationID != optionID) {
+                    productOptions[currentProductID].currentVariationID = optionID;
+                    let firstOptionID = productOptions[currentProductID].options[0].optionID;
+
+                    calculateDiscounts();
+
+                }
+
+            } else if(optionID > 0) {
+                productOptions[currentProductID].currentOption = optionID;
+            }
+
+        } else {
+            productOptions[currentProductID].currentOption = optionID;
+        }
+
+        const optionArray = productOptions[currentProductID].options;
+
+        for(let i=0; i < optionArray.length; i++) {
+
+            if(optionArray[i].optionID == productOptions[currentProductID].currentOption) {
+
+                if(optionArray[i].comparisonPrice === 0) {
+                    document.querySelector('.price-section').classList.remove("showComparison");
+                    document.querySelector('.data-product-price-without-discount').innerHTML = '';
+
+                    document.querySelector('.price').innerHTML = '$' + optionArray[i].optionPrice;
+                } else {
+                    document.querySelector('.price-section').classList.add("showComparison");
+                    document.querySelector('.data-product-price-without-discount').innerHTML = optionArray[i].comparisonPrice;
+
+                    document.querySelector('.price').innerHTML = '$' + optionArray[i].optionPrice;
+                }
+                
+            }
+        }
+    }
+
+    calculateDiscounts();
+</script>

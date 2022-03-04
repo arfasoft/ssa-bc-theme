@@ -1,0 +1,412 @@
+// =============================================================================
+// HEADER (CSS)
+//
+// 1. Setting font size of header-logo to 0, since wrapper element may vary, and
+//    inline-block whitespace messes with header height. Font-size is reset to
+//    appropriate size on header-logo-text.
+// 2. Needs left/right margin so it doesn't cover left/right nav bar toggles
+// 3. Offset the letter-spacing on the last character by adding a right negative
+//    margin. This centers the text logo properly.
+// 4. When the word "cart" is added to the mobile header's cart link, add more
+//    margin to compensate.
+// 5. When logo size is set to "original", we don't have advance knowledge of the
+//    image size, so we can't use absolute positioning + padding to reserve space
+//    for lazy loading.
+//
+// -----------------------------------------------------------------------------
+
+@keyframes height-grow {
+    from {
+        height: 0%;
+    }
+
+    to {
+        height: 100%;
+    }
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: zIndex("low");
+
+    @media screen and (max-width: 1249px) {
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000a12+0,37474f+100 */
+        background: #000a12; /* Old browsers */
+        background: -moz-linear-gradient(-45deg, #000a12 0%, #37474f 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(-45deg, #000a12 0%,#37474f 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(135deg, #000a12 0%,#37474f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000a12', endColorstr='#37474f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    }
+
+    @media screen and (min-width: 1250px) {
+        background: $header-bg;
+        position: fixed;
+    }
+
+    &.is-open {
+        animation: height-grow .25s ease;
+        height: 100vh;
+
+        @media screen and (min-width: 1250px) {
+            height: auto;
+        }
+    }
+}
+
+.header-row {
+    align-items: center;
+    justify-content: space-between;
+    background-color: $header-bg;
+    display: flex;
+    margin: 0 auto;
+    padding: 0 5%;
+    margin: 0;
+    text-align: left;
+    height: 75px;
+
+    @media screen and (max-width: 1249px) {
+        position: relative;
+
+        > div {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    }
+    
+    @media screen and (min-width: 1250px) {
+        align-items: center;
+        display: flex;
+        border-bottom: 1px solid #E0E0E0;
+        // grid-column-gap: 5.87%;
+        // grid-template-columns: min-content auto max-content;
+    }
+
+    .navPages-container-upper {
+        @media screen and (min-width: 1250px) {
+            order: 2;
+        }
+    }
+
+    .navUser-wrap {
+        @media screen and (min-width: 1250px) {
+            order: 3;
+        }
+    }
+
+    .logo-wrapper {
+        @media screen and (min-width: 1250px) {
+            padding-right: 30px;
+            flex: 2;
+        }
+    }
+
+    h1 {
+        line-height: 1;
+        margin: 0;
+    }
+
+    .logo {
+        display: none;
+        margin: 0;
+
+        svg {
+            max-height: 100%;
+        }
+
+        &-wrapper {
+            @media screen and (max-width: 1249px) {
+                padding-left: 16px;
+            }
+
+            a {
+                display: inline-block;
+
+                @media screen and (min-width: 1250px) {
+                    position: relative;
+                    top: 2px;
+                }
+            }
+        }
+
+        &--mobile {
+            display: block;
+        }
+
+        @media screen and (min-width: 1250px) {
+            display: block;
+
+            &--mobile {
+                display: none;
+            }
+        }
+
+        svg {
+            display: block;
+        }
+    }
+}
+
+.header-logo--left {
+    text-align: left;
+
+    @include breakpoint("medium") {
+        margin-left: remCalc(40px);
+    }
+
+    .header-logo-image {
+        right: unset;
+    }
+}
+
+.header-logo--right {
+    text-align: right;
+
+    @include breakpoint("medium") {
+        margin-right: remCalc(40px);
+    }
+
+    .header-logo-image {
+        left: unset;
+    }
+}
+
+.header-logo-text {
+    display: block;
+    font-family: $fontFamily-hero;
+    font-size: $fontSize-logo-small;   // 1
+    font-weight: stencilFontWeight("logo-font");
+    letter-spacing: remCalc(5px);
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    padding: remCalc(3px) 0;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    @include breakpoint("small") {
+        font-size: $fontSize-logo-medium;
+        letter-spacing: remCalc(9px);
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+
+    @include breakpoint("medium") {
+        display: inline;
+        font-size: $fontSize-logo-large;
+        margin-left: 0;
+        margin-right: -(remCalc(9px)); // 3
+        max-width: none;
+        overflow: auto;
+        white-space: normal;
+
+        .header.fixed & {
+            font-size: fontSize("larger");
+        }
+    }
+}
+
+.header-logo-image-container {
+    position: relative;
+}
+
+.header-logo-image-container:after {
+    content: '';
+    display: block;
+    padding-bottom: remCalc($header-height) - $header-logo-marginVertical * 2;
+
+    @include breakpoint("medium") {
+        padding-bottom: get-height(stencilString('logo_size'));
+    }
+}
+
+.header-logo-image {
+    @include lazy-loaded-img;
+    display: block;
+    margin-top: -13px;
+    max-height: remCalc($header-height) - $header-logo-marginVertical * 2;
+
+    @include breakpoint("medium") {
+        max-height: none;
+    }
+}
+
+.header-logo-image-unknown-size { // 5
+    max-height: remCalc($header-height) - $header-logo-marginVertical * 2;
+
+    @include breakpoint("medium") {
+        max-height: none;
+    }
+}
+
+#ie-warning {
+    text-align: center;
+    padding: 20px;
+    background-color: #0477BD;
+    color: white;
+    font-size: 32px;
+
+    p {
+        margin: 0;
+    }
+}
+
+//
+// Mobile Menu Toggle
+//
+// 1. Animate lines from 'x' to hamburger
+// -----------------------------------------------------------------------------
+
+.mobileMenu-toggle {
+    display: block;
+    font-size: 27px;
+    text-decoration: none;
+    width: 23px;
+    z-index: zIndex("high");
+
+    &-wrap {
+        width: 23px;
+
+        @media screen and (min-width: 1250px) {
+            display: none;
+        }
+    }
+
+    .hamburger-icon {
+        display: block;
+        height: 16px;
+        position: relative;
+
+        &:before {
+            background: transparent no-repeat;
+            content: '';
+            display: block;
+            height: 100%;
+        }
+    }
+}
+
+.phone-cta {
+    font-size: 13px;
+    padding-right: 20px;
+
+    h3,
+    h4 {
+        font-family: $fontFamily-noto;
+        line-height: 1.2;
+        margin: 0;
+    }
+
+    h3 {
+        display: none;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: -.2px;
+        text-transform: none;
+    }
+
+    h4 {
+        color: $color-brand;
+        font-size: 1.35em;
+        font-weight: $fontWeight-bold;
+
+        @media screen and (min-width: 400px) {
+            font-size: 1.84615em;
+        }
+
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    &-icon {
+        @media screen and (max-width: 1249px) {
+            vertical-align: text-bottom;
+
+            &:before {
+                content: '';
+                background: transparent no-repeat;
+                display: inline-block;
+                height: .8em;
+                width: .8em;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1249px) {
+        text-align: right;
+    }
+
+    @media screen and (min-width: 1250px) {
+        h3 {
+            display: block;
+        }
+
+        h4 .lnr {
+            display: none;
+        }
+    }
+
+}
+
+.sales-banner {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.search--desktop {
+    display: none;
+    height: 75px;
+    background-color: white;
+    position: absolute;
+    bottom: -75px;
+    width: 100%;
+    box-shadow: 1px 9px 15px 0 rgba(41,41,41,0.78);
+
+
+    form {
+        width: 95%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: #FFFFFF;
+
+        .search-icon-large {
+            margin-right: 20px;
+        }
+
+        .search-icon--desktop {
+            cursor: pointer;
+        }
+        
+        label {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .search-input {
+            width: 95%;
+
+            input[type="text"] {
+                display: inline-block;
+                height: 75px;
+                width: 90%;
+                font-size: 18px;
+                border: none;
+                outline: 1px solid $color-greyLighter;
+            }
+        }
+        .search-cancel {
+            height: 24px;
+        }
+
+        .search--desktop-submit {
+            transform: translateX(9000px);
+        }
+    }
+}

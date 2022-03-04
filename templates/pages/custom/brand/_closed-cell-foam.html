@@ -1,0 +1,59 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#if brand.image}}
+    <div class="brand-image-container">
+        <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage brand.image 'thumb_size'}}">
+    </div>
+{{/if}}
+{{{snippet 'brand'}}}
+<div class="page">
+    <aside class="page-sidebar" id="faceted-search-container">
+        {{> components/brand/sidebar}}
+    </aside>
+
+    <main class="page-content" id="product-listing-container">
+        <h1 class="page-heading">{{brand.name}}</h1>
+        <p>
+            Closed cell foam is a much more structurally sound foam due to its closed cell structure. These cells
+            are like tiny air pockets piled together in a compact configuration, resembling inflated balloons nestled 
+            tightly together. The closed cells are relatively impermeable to water, air, and heat. Because closed cell 
+            foam is a higher density foam than open cell foams (about 4x denser than <a href="/melamine-foam/">melamine foam</a>), 
+            it is both more firm and more durable. Its easy to confuse the two types, so you may want to learn more about
+             <a href="/heat-insulation/open-cell-foam-vs-closed-cell-foam/">closed cell foam vs open cell foam</a>.
+        </p>
+        <p>
+            Closed cell foam sheets are commonly used in automotive and marine applications due to their ease of use,
+            <a href="/heat-insulation/">thermal insulation</a>, and water resistance. Closed cell spray foams are more common in homes, usually as
+            insulation between walls studs or as a sealant.
+        </p>
+        <p>
+            Second Skin’s OverKill Pro and OverKill closed cell foam sheets were designed for automotive and marine use.
+            These OEM approved foams are infused with rubber to increase resistance to flames, compression, and automotive
+            fluids. Closed cell foam won’t absorb much noise, but it’s a lightweight thermal insulator and very effective
+            for decoupling rattling hard surfaces, like the car’s plastic panels.
+        </p>
+        {{#if brand.products}}
+            {{> components/brand/product-listing}}
+        {{else}}
+            <p>{{lang 'brands.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+{{/partial}}
+{{> layout/base}}

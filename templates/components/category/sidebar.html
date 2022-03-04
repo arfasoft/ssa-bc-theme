@@ -1,0 +1,9 @@
+<nav class="{{#if category.faceted_search_enabled}}facetedSearch-enabled{{/if}}">
+    {{#if template '!==' 'pages/custom/category/category-nofilters'}}
+    {{#if category.faceted_search_enabled}}
+        {{> components/faceted-search/index category}}
+    {{else if theme_settings.shop_by_price_visible}}
+        {{> components/category/shop-by-price shop_by_price=category.shop_by_price category_url=category.url}}
+    {{/if}}
+    {{/if}}
+</nav>

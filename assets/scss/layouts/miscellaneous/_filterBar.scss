@@ -1,0 +1,40 @@
+.filter-bar {
+  background: #f4f4f4;
+  font-family: $fontFamily-montserrat;
+  margin: 20px 0 60px;
+  padding: 14px 22px;
+  user-select: none;
+  
+  @include desktop-up {
+    display: flex;
+    justify-content: space-evenly;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &:before {
+    content: 'Filter';
+    display: block;
+    font-size: 15.4px;
+    font-weight: $fontWeight-semibold;
+    line-height: 1.64;
+    text-transform: uppercase;
+
+    @include desktop-up {
+      padding: 0 22px;
+    }
+  }
+
+  label {
+    cursor: pointer;
+    display: block;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    [type="checkbox"] {
+      margin-right: .5em;
+    }
+  }
+}

@@ -1,0 +1,869 @@
+<main class="soundproofing-page">
+  <section class="hero hero--hub-page" style="background-image:url('{{cdn 'webdav:hub-hero-bg.jpg'}}');">
+    <div class="container">
+        <h1>  
+          <div style="max-width:757px;margin:0 auto">
+              A Complete Guide to Soundproofing and How to Soundproof a Room
+          </div>
+        </h1>
+        <a href="/shop/" class="btn-new btn-new--primary">Shop Products</a>
+    </div>
+  </section>
+  
+  <section class="featured-products">
+  
+    {{#if template_file '!==' 'pages/home'}}
+        {{#if banners.top}}
+        <div class="banners" data-banner-location="top">
+            <div class="banner">
+                {{{limit banners.top 1}}}
+            </div>
+        </div>
+        {{/if}}
+    {{/if}}
+  
+    <div class="container">
+        <h3>Popular {{category.name}} Materials</h3>
+        {{#if category.products}}
+            <ul class="featured-products__product-list">
+                {{#each category.products}}
+                    <li class="featured-products__product-item">
+                        <div class="featured-products__product featured-product">
+                            <a class="featured-product__image-link" href="{{url}}">
+                                <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage image 'gallery_size' (cdn theme_settings.default_image_product)}}" alt="{{image.alt}}" title="{{image.alt}}">
+                            </a>
+                            <div class="featured-product__info">
+                                <h4><a href="{{url}}">{{name}}</a></h4>
+                                <footer class="featured-product__footer">
+                                    <div class="featured-product__info-row">
+                                        <span class="featured-product__price">
+                                            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                                                {{> components/products/price price=price}}
+                                            {{else}}
+                                                {{> components/common/login-for-pricing}}
+                                            {{/or}}
+                                        </span>
+                                        <div class="trustspot-inline-category" data-product-sku="{{id}}"></div>
+  
+                                    </div>
+                                    <a href="{{url}}" class="btn-new btn-new--primary">Shop Now</a>
+                                </footer>
+                            </div>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+        {{/if}}
+    </div>
+  </section>
+  
+  <section class="content content--two-col content--two-col-wide content--gray numbered-list__counter-context">
+    <div class="container">
+      <h2 class="h2--underline lowercase" style="margin-top:0;">Table of Contents</h3>
+    </div>
+    <div class="content__inner-wrapper">
+      <div class="content__col">
+        <div class="numbered-list__item">
+          <h3><a href="#how-sound-works">How sound works in a room</a></h3>
+          <p>Types of Noise: Airborne vs Impact</p>
+        </div>
+      </div>
+      <div class="content__col">
+        <div class="numbered-list__item">
+          <h3><a href="#difference-soundproofing-acoustics">The difference between soundproofing and acoustics</a></h3>
+          <p>Soundproofing vs Acoustic Treatments</p>
+        </div>
+      </div>
+    </div>
+    <div class="content__inner-wrapper">
+      <div class="content__col">
+        <div class="numbered-list__item">
+          <h3><a href="#basics-soundproofing">The Basics of Soundproofing &amp; Acoustics</a></h3>
+          <p>
+            What is an STC Rating?<br>
+            How Sound Moves<br>
+            What is NRC? 
+          </p>
+        </div>
+      </div>
+      <div class="content__col">
+        <div class="numbered-list__item">
+          <h3><a href="#how-soundproof-room">How to Soundproof a Room</a></h3>
+          <p>
+            3-Step Process<br>
+            Soundproofing a Door<br>
+            Soundproofing a Window<br>
+            Soundproofing a Wall<br>
+            Soundproofing a Ceiling<br>
+            Soundproofing a Floor
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="content content--light">
+    <div class="container">
+      <h5>
+        There's a misconception that everyone at Second Skin loves quiet, that we're all hermits that
+        sit in a padded room reading Charles Dickens novels with earplugs in because we hate sound.
+      </h5>
+      <p>
+        Frankly, that couldn't be further from the truth, we love hosting friends and family, or
+        watching the game too loud, or blasting AC/DC on our new stereo system. And sure, occasionally
+        after a long day, flopping down on the couch and basking in silence can be pretty relaxing. But
+        the point is we don't hate sound, in fact we love sound. What we do hate...is noise. And if you
+        think about the process of soundproofing, that's all it really is, finding ways to target and
+        keep out unwanted noise (actually, why isn't it called noiseproofing? We'll look into it).
+      </p>
+      <p>
+        We've worked with a lot of people over the years and have seen many reasons to soundproof your
+        space, whether it's work or home. You may live in a noisy area near construction or loud bars,
+        or have less-than-considerate neighbors that play their TV too loudly. Or maybe you're the noisy
+        one and you are trying to keep sound in. Many of our clients are musicians or creators who work
+        with power tools. Or maybe, like us, you just like to entertain and don't want to be a
+        less-than-considerate neighbor. When people look to us for soundproofing solutions, it's not
+        just about stopping noise, but to get the benefits that less noise can bring - helping reduce
+        their stress, get better sleep, feel more comfortable, or be more productive.
+      </p>
+      <p>
+        Soundproofing is a simple concept but can feel really complicated and overwhelming once you
+        start diving into it. We're going to try and share as much as we can about what we've learned
+        over the years, from the basics of sound, to defining technical industry terms. If you read
+        though this and feel like you still have questions, or if you just don't feel like reading,
+        reach out to us directly and we'll help you with your soundproofing solutions.
+      </p>
+    </div>
+  </section>
+
+  {{> components/redesign/components/klaviyo-form }}
+
+  <section class="content content--light content--two-col content--two-col-wide">
+    <div class="container">
+      <h2 id="how-sound-works">How Sound Works</h2>
+      <p>
+        Sound at its simplest form is just energy - technically a wave of energy traveling through
+        molecules. That energy is created due to an object vibrating and transmitting that energy
+        into the air or objects around it. A yell is the result of your focal cords vibrating. A
+        loud bang is the vibration caused by two objects colliding. Sound energy can travel through
+        all types of matter, but we like to categorize it as structural (traveling through something
+        solid like metal or wood) and airborne (traveling through the air). Eventually, those
+        vibrations reach the air inside our ears where we perceive the vibrations as sound.  That's
+        why we sell so much <a href="/sound-deadening/">car sound deadening material</a>.
+        The vibrating metal of the car creates a lot of noise. The concepts start simple enough, but 
+        they can get tricky. Imagine a metal door. While the door may do a good job
+        of preventing airborne sound waves from traveling through it, if someone were to bang on the
+        door the sound on the other side could be quite loud. To effectively stop unwanted sound,
+        you need to understand the different types of noises and the different types of sound
+        treatments.
+      </p>
+      <hr>
+      <h3>Types of Noise: Airborne vs Impact</h3>
+    </div>
+    <div class="content__inner-wrapper">
+      <div class="content__col">
+        <img src="{{cdn 'webdav:soundproofing/airborne_noise.svg'}}" width="400" alt="Airborne" />
+        <h4 class="h4 h4--blue">Airborne Noise</h4>
+        <p>
+          Airborne noise is sound that travels through the air, for example; loud talking, music
+          or TV, a dog barking - these are all sound waves traveling through the air and then
+          heard when they reach your ear. A metaphor we like to is how sound waves move like
+          water; they flow towards the weakest point. Which means an effective, airtight barrier
+          is key. Airborne sound waves find the path of least resistance to travel from space to
+          space, once they collide with your barrier, they will try to find a gap. If they can't,
+          they'll be forced to travel through the barrier.
+        </p>
+      </div>
+      <div class="content__col">
+        <img src="{{cdn 'webdav:soundproofing/impact_noise.svg'}}" width="400" alt="Impact" />
+        <h4 class="h4 h4--blue">Impact Noise</h4>
+        <p>
+          Unlike airborne noise which is defined by sound waves traveling through the air, impact
+          noise (also called structure-borne noise) is sound that occurs as a result of one object
+          "impacting" another and the vibrations being radiated through the object or to adjacent
+          objects. Basically the difference between a bang in the other room, and a bang directly
+          on the floor above you. Impact noise includes things like people walking or footfall, a
+          ball bouncing, a chair rolling, or things being dropped on the floor. These noises are
+          often so annoying because they are distinct and jarring - making them very noticeable.
+          The key to reducing impact noise is to prevent the energy from ever entering the
+          building's structure by dampening the vibrations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content content--lightGray content--two-col content--two-col-wide">
+    <div class="container">
+      <h2 id="difference-soundproofing-acoustics">
+        The Difference Between<br>
+        Soundproofing and Acoustics
+      </h2>
+      <p>
+        When researching soundproofing solutions you'll often run into information about improving
+        acoustics, it's important to understand that these are two distinct solutions to different
+        problems.
+      </p>
+    </div>
+    <div class="content__comparison">
+      <div class="content__inner-wrapper">
+        <div class="content__col">
+          <h4 class="h4 h4--blue">
+            Soundproofing
+            <span>(Blocking sound)</span>
+          </h4>
+          <p>
+            Noise is being created in the space I'm in or in an adjacent space, and I want to keep the
+            sound from traveling from one space to the other.
+          </p>
+          <img class="tablet-down" src="{{cdn 'webdav:soundproofing/soundproofing.svg'}}" alt="Soundproofing" />
+        </div>
+        <div class="content__col">
+          <h4 class="h4 h4--blue">
+            Acoustic Treatments
+            <span>(Absorbing Sound)</span>
+          </h4>
+          <p>
+            Noise is being created in the space I'm in, and I want to reduce the amount of time it's
+            audible in that space.
+          </p>
+          <img class="tablet-down" src="{{cdn 'webdav:soundproofing/acoustic_treatments.svg?05052021'}}" alt="Acoustic Treatments" />
+        </div>
+      </div>
+      <div class="content__inner-wrapper desktop-only">
+        <div class="content__col">
+          <img src="{{cdn 'webdav:soundproofing/soundproofing.svg'}}" alt="Soundproofing" />
+        </div>
+        <div class="content__col">
+          <img src="{{cdn 'webdav:soundproofing/acoustic_treatments.svg?05052021'}}" alt="Acoustic Treatments" />
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <p>
+        However improving acoustics involves using sound absorbing materials which will absorb sound
+        and prevent it from being reflected back into the room. Sound absorbing materials, while
+        helpful in soundproofing projects, do not block sound. For instance, a popular <a href="/acoustics/">acoustical material</a>
+        is acoustic foam. Open cell foam a very porous material and if you were to hold in
+        front of your face while you speak, you'd still be able to hear your voice quite clearly.
+        Foam is used over microphones, on top of speakers, and even over earphones, all proving it's
+        not an effective sound blocking material.
+      </p>
+      <p>
+        Acoustic foam (or as those uninitiated on the Second Skin website may affectionately call
+        "<a href="/soundproofing/soundproof-foam-vs-soundproof-panels/">soundproofing foam</a>") is not an acoustics option we
+        recommend very often (although <a href="/melamine foam/">hydrophobic melamine foam</a>
+        is great for some applications like vehicles). People use foam often because it's the only kind of
+        acoustical material they know about. It's super cheap, easy to install, and it'll improve sound quality and reduce echo
+        in a space. The problems are that it's not very durable and the cheap polyurethan foam is not Class A fire rated, so you can't
+        legally install it in a commercial building. That's why we offer a huge variety of other acoustic material
+        across a wide variety of spaces like a recording studio, gun range, or a space with loud machinery. Some options are
+        very economical and then others are designed for a more professional setting like an office. That's where we may steer you towards
+        <a href="/acoustics/acoustic-panels/">sound dampening panels</a> due to better aesthetics, durability, and requiring less space to be
+        effective.
+      </p>
+      <p>
+        The fact is that each of these strategies are helpful in different ways. To help you
+        understand how, let's break down soundproofing and acoustics further to illustrate how the
+        two methods can work separately and together.
+      </p>
+    </div>
+  </section>
+
+  <section class="content content--light content--three-col content--three-col-wide">
+    <div class="container">
+      <h3 id="basics-soundproofing">The Basics of Soundproofing</h3>
+      <p>
+        There are 3 main elements to consider when evaluating soundproofing materials.
+      </p>
+    </div>
+    <div class="content__inner-wrapper">
+      <div class="content__col">
+        <h4 class="h4 h4--blue">Mass</h4>
+        <p>
+          Sound is really nothing more than vibrations. Sound travels from room to room by sending
+          vibrations through the wall. The more mass something has, the more difficult it is to
+          vibrate, therefore, by adding mass to a given material, you can increase its ability to
+          block sound.
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">Limpness</h4>
+        <p>
+          Now this may seem counter-intuitive. But the less stiff a material is, the better it will
+          be at blocking sound. This is because a limper material is harder to vibrate. Think about
+          the difference between throwing a ball at a bedsheet versus at a piece of metal. The
+          bedsheet's limpness allows it to absorb the ball's energy without the impact noise.
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">Airtight</h4>
+        <p>
+          This one is pretty straight forward. Like water, sound will find gaps and go straight
+          through them. We call these openings sound leaks or flanking paths. Creating an airtight
+          barrier and sealing up gaps will keep sound waves from finding their way to you.
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <p>
+        It's important to understand that these three tenants of soundproofing need to ALL be in
+        place to be effective. A material that's heavy but has gaps, or a material that's limp but
+        not heavy, won't cut it.
+      </p>
+      <div class="basics-breakdown">
+        <h3 class="basics-breakdown__title">What is an STC Rating?</h3>
+        <div class="basics-breakdown__content">
+          <p>
+            When researching building materials for soundproofing, you may see products or
+            combinations of products that talk about their 
+            <a href="/sound-blocking/stc-rating/">STC rating</a>. STC, or Sound Transmission
+            Class is an agreed upon system used in the US to measure how well (or how poorly) sound
+            waves get through ceilings and walls. As STC is used primarily on home and commercial
+            construction, it bases it's measurements on sound that it's in the range of 125 - 4000Hz,
+            which includes the range of normal human voices and other frequencies you'd most likely
+            run into in a residential or office building. A poorly built wall that doesn't block much
+            sound would score an STC rating of about 20 - 25, while a VIP suite built to keep out all
+            sound would rate at least 60. The wall of your average suburban home rates between 30 and
+            45.
+          </p>
+          <img class="basics-breakdown__image" src="{{cdn 'webdav:soundproofing/mass_law_curve.png'}}" alt="Mass Law Curve">
+          <p>
+            STC does not measure how many decibels a material can block, so if you have a soundproof
+            wall that has an STC rating of 40, that *does not* mean it can block 40 dB of sound. STC
+            ratings also cannot be added together. If you have a material with an STC rating of 30,
+            and another material with a rating of 20, adding them together does not give you a rating
+            of 50. In fact, the STC rating would probably be closer to 35.
+          </p>
+          <p>
+            An illustration of this is the "Mass Law Curve". We've mentioned that weight is a key
+            tenant of soundproofing. When you double the weight (measured in pounds per square foot)
+            of a material, you can expect to increase the STC rating by 5.
+          </p>
+          <p>
+            However eventually the 'curve' part of the Mass Law Curve kicks in as you do run into the
+            law of diminishing returns. Eventually, it becomes impractical to double the weight to
+            continue increasing STC.
+          </p>
+        </div>
+      </div>
+      <h3>The Basics of Acoustics</h3>
+      <p>
+        So now that we've run through the basics of soundproofing, let's talk about acoustics.
+        When people talk about improving acoustics, they are trying to increase the sound quality
+        in a space by reducing the amount of noise. This is usually done through implementing
+        sound absorbing materials for reverberation and echo control and for noise reduction.
+      </p>
+      <p>
+        As we mentioned before soundproofing is all about blocking sound, and acoustics is about
+        absorbing sound. While both of these things aim to reduce noise, improving acoustics has a
+        specific goal of increasing sound quality in a space. To understand when and why you
+        should focus on acoustics, you need to understand how sound moves.
+      </p>
+      <div class="basics-breakdown">
+        <h3 class="basics-breakdown__title">How Sound Moves</h3>
+        <div class="basics-breakdown__content">
+          <p>
+            The world of acoustics is made up of two types of environments, free fields and
+            reverberant fields. A free field is a space where sound waves are unobstructed by any
+            reflective surfaces, think of a literal giant open field. In this type of environment
+            sound travels outward in every direction from the source spherically. In a free field
+            you can expect sound to decrease by 6 dB every time you double the distance from the
+            source.
+          </p>
+          <img class="basics-breakdown__image" src="{{cdn 'webdav:soundproofing/how_sound_moves.png'}}" alt="How Sound Moves">
+          <p>
+            However indoors, you don't have the luxury of distance to dissipate sound. Noise will
+            build as the sound waves run into hard surfaces and bounce back, over time the sound
+            dissipates but only after it's reverberated throughout the room. You've probably
+            experienced this if you've ever been in an empty house before it's been furnished or
+            decorated. In an environment like this, even speaking in a quiet voice seems amplified.
+          </p>
+          <p>
+            If these are the types of problems you're trying to solve you should pursue acoustic
+            treatments and sound absorption materials. See! We got there eventually. Note that sound
+            absorption, like the mass law,  also falls victim to diminishing returns. Each doubling
+            of sound absorption material will reduce noise about 3 dB, up to a practical maximum of
+            about 10 decibels (if the room started with no sound absorption). Each doubling will
+            also cut the reverberation time in half, which means it takes half the time for sound to
+            reduce to near-nothing once the source stops. 
+          </p>
+        </div>
+      </div>
+      <div class="basics-breakdown">
+        <h3 class="basics-breakdown__title">What is NRC?</h3>
+        <div class="basics-breakdown__content">
+          <img class="basics-breakdown__image" src="{{cdn 'webdav:soundproofing/what_is_nrc.png'}}" alt="What is NRC?">
+          <p>
+            Earlier we talked about the STC, which is a rating to help measure the effectiveness of
+            sound blocking materials. Similarly there is a measure for the effectiveness of sound
+            absorbing materials. The Noise Reduction Coefficient, or 
+             <a href="/acoustics/what-is-nrc-rating/">NRC rating</a>, measures how well
+            materials can absorb sound. The rating uses a 0 to 1.0 scale based on an average
+            of the sound absorption coefficients at 250 Hz, 500 Hz, 1000 Hz, and 2000 Hz rounded to the nearest 0.05.
+            The resulting number can be used as a rough approximation of how much 
+            sound a material absorbs. So open air has an NRC of 1.0 absorbing 100% of the sound
+            and reflecting none of it, but a brick wall has an NRC of .05 only absorbing 5% of the
+            sound and reflecting back 95% of it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content content--three-col content--three-wide content--gray">
+    <div class="container">
+      <h3 id="how-soundproof-room">How to Soundproof a Room</h3>
+      <p>
+        Ok, so now that you're practically a sound engineer, let's get started with your actual
+        soundproofing project.<br>
+        Before you go off and start buying up material, you should plan your strategy. 
+      </p>
+    </div>
+    <div class="content__inner-wrapper">
+      <div class="content__col">
+        <h4 class="h4 h4--blue">
+          Step 1
+          <span class="h4__white-text">Consider the Noise Source</span>
+        </h4>
+        <p>
+          Firstly, identify the noise problem. I know this sounds obvious, but people often jump
+          into complex soundproofing projects when they could just treat the source. Are you trying
+          to block out your kid's band practice in the garage? See if you can find another location
+          for them to play. Trying to drown out that noisy HVAC unit outside? Don't soundproof your
+          room. Build a soundproof enclosure or <a href="/sound-blocking/soundproof-fence/">soundproof fence</a>
+          with the Quiet Quilt <a href="/soundproofing/soundproof-blanket/">sound blanket</a> for your unit instead.
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">
+          Step 2
+          <span class="h4__white-text">Decide Where to Soundproof</span>
+        </h4>
+        <p>
+          Understanding where to add soundproofing is absolutely key. Sound is best reduced by
+          blocking sound at the source, blocking sound at the receiver, or increasing the distance
+          between the sound and the receiver. For example if you were sitting 20 feet from a loud
+          stereo, adding a barrier right in the middle at 10 feet would be the least effective
+          strategy. Instead you could; (1) put the stereo even further away, (2) create a box around
+          the stereo (blocking the source), or (3) put in earplugs (blocking the receiver).
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">
+          Step 3
+          <span class="h4__white-text">Determine How Sound is Getting In</span>
+        </h4>
+        <p>
+          Once you've identified the sources of noise, determine the path it's taking. Is there
+          anything between you and the noise? Is it coming from inside the building? Is it above or
+          below you? Any soundproofing barrier you create is only as good as its weakest point.
+          Sound behaves a lot like water, and it'll find its way through even the smallest gaps. If
+          you have big gaps, priority #1 is to plug them up so that your room is like a swimming
+          pool with no leaks. In most rooms, the biggest sound leaks are around the windows and
+          doors, but we're going to walk you through how to soundproof each part of a room.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="content content--light content--three-col content--three-col-wide">
+    <div class="container">
+      <h3>Soundproofing a Door</h3>
+      <p>
+        Doors are a weak point for sound because they're also a weak point for air. Air carries
+        sound, ergo, sound gets through your door. As the weakest link for letting sound in, there
+        are two major things to consider to effectively soundproof a door: the mass of the door and
+        whether there are any gaps between the door panel and frame. That's it. That's all you need
+        to solve.
+      </p>
+      <p>
+        The average STC of a typical wall in your house is 32, while many types of doors are much
+        lower than that. Because doors are a weak point for sound, this lowers the overall
+        effectiveness of sound blocking for your entire wall if there's a door in it - even if it's
+        closed.
+      </p>
+    </div>
+    <table class="rating-table">
+      <thead>
+        <tr>
+          <th>Type of Door</th>
+          <th width="23.5%" class="rating-table__highlighted-cell">STC Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <h3>Louvered Door</h3>
+            <p>
+              Your typical louvered door is about 25% open. You're done before you even start.
+              Might as well leave the door open&hellip; Come on in!
+            </p>
+          </td>
+          <td class="rating-table__highlighted-cell">
+            12
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3>Hollow Core Door</h3>
+            <p>
+              Typically used as bedroom doors or any other in-home entryways, these are made of
+              fiberboard or laminated wood and (true to their name) are mostly empty inside. These
+              doors are lightweight, easy to install, and aren't super expensive. On the downside,
+              hollow core doors are fragile and do little to stop sound from passing through.
+            </p>
+          </td>
+          <td class="rating-table__highlighted-cell">
+            17 - 20
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3>Solid Core Door</h3>
+            <p>
+              These doors are significantly heavier, made up of a combination of wood and wood
+              byproducts, and are usually used to partition your home or apartment from the
+              outdoors. They're more expensive but thanks to their density, solid core doors are
+              able to do a better job of blocking out noise.
+            </p>
+          </td>
+          <td class="rating-table__highlighted-cell">
+            30 - 35
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container">
+      <p>
+        Once you determine the types of doors in your space, the other key to remember is the gaps
+        around the door. Your typical door can easily have 1 sq ft of airspace around it. Not good.
+        Fortunately, there are a few things you can do to improve the soundproofing.
+      </p>
+      <div style="text-align: center;">
+        <div style="position:relative;display:inline-block;max-width:100%;">
+          <img src="{{cdn 'webdav:soundproofing/soundproof_a_door.svg'}}" width="100%">
+          <a href="/soundproofing/sound-lock-door-seals" style="width:16.2%; height:15.8%; left:66.9%; top:83.5%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+          <a href="/soundproofing/sound-lock-door" style="width:13.2%; height:16.0%; left:85.5%; top:83.5%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+        </div>
+      </div>
+    </div>
+    <div class="content__inner-wrapper">
+      <div class="content__col">
+        <h4 class="h4 h4--blue">Solid Core Doors</h4>
+        <p>
+          If you have hollow core or louvered doors, replace them with solid doors, or add mass with
+          soundproof blankets or mass loaded vinyl. Note that adding material to a door may not be
+          the most aesthetically pleasing solution.
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">Sound Lock Door Seal Kit</h4>
+        <p>
+          It may not look like much, but like we just said… the gaps around your door can often add
+          up to nearly 1 square foot of space. Imagine a foot-wide hole in the middle of your wall!
+          Seal up these gaps with a door seal kit. These kits are fairly easy to install and
+          cost-effective. Be sure to measure your door and frame thoroughly before-hand.
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">Soundproof Door</h4>
+        <p>
+          If significant sound blocking is key in your space, To really keep things quiet you can
+          install an acoustic door. Often used in recording studios, offices, conference rooms,
+          hotels, and dorms, acoustic doors have an STC rating up to 56.
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <p style="text-align: center;">
+        <a href="/sound-blocking/soundproof-door/" class="btn-new btn-new--dark">How to Soundproof a Door</a>
+      </p>
+    </div>
+  </section>
+  <section class="content content--lightGray content--three-col content--three-col-wide">
+    <div class="container">
+      <h3>Soundproofing a Window</h3>
+      <p>
+        Windows have a similar problem to doors in that they're also a weak point in your wall.
+        Again, the key components here are sealing up gaps, and adding mass. Like doors, not all
+        windows are made the same and some are better at sound blocking than others.
+      </p>
+    </div>
+    <table class="rating-table">
+      <thead>
+        <tr>
+          <th>Type of Window</th>
+          <th width="23.5%" class="rating-table__highlighted-cell">STC Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <h3>Monolithic Float Glass: 1/8" or 1/4"</h3>
+            <p>
+              This is standard glass produced using the tempered glass float process. Thicker
+              glass has more density, so it blocks more sound.
+            </p>
+          </td>
+          <td class="rating-table__highlighted-cell">
+            26 or 31
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3>Double Paned Glass: &frac14;" and &frac18;" with a 2" air gap</h3>
+            <p>
+              By adding an air gap between two panes of glass of different thicknesses, STC rating
+              is substantially improved. Any air gap should be at least &frac12;", and a bigger
+              gap improves soundproofing.
+            </p>
+          </td>
+          <td class="rating-table__highlighted-cell">
+            39
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3>
+              Double Paned Glass: &frac14;" laminated and 3/16" monolithic<br>
+              with a 2" air gap
+            </h3>
+            <p>
+              Laminated glass features a PVB sandwiched between two layers of glass to better
+              block sound. The laminated glass should always be on the warm side of the window.
+            </p>
+          </td>
+          <td class="rating-table__highlighted-cell">
+            45
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container">
+      <p>
+        Of course replacing your windows is always an option, but that cost can start to add up. And
+        if not installed properly, you may even be worse off than when you started. If you don't
+        feel like replacing windows is the right option for you, or you want additional sound
+        blocking, here are a few options.
+      </p>
+      <div style="text-align: center;">
+        <div style="position:relative;display:inline-block;max-width:100%;">
+          <img src="{{cdn 'webdav:soundproofing/soundproof_a_window.svg'}}" width="100%">
+          <a href="/soundproofing/acoustical-sealant" style="width:12.1%; height:18.0%; left:28.8%; top:76.7%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+          <a href="/soundproofing/fantastic-frame-inserts/" style="width:16.6%; height:23.0%; left:66.2%; top:77.0%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+          <a href="/soundproofing/tru-acoustics-window" href="#" style="width:13.9%; height:19.7%; left:85.1%; top:77.0%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+        </div>
+      </div>
+    </div>
+    <div class="content__inner-wrapper">
+      <div class="content__col">
+        <h4 class="h4 h4--blue">Soundproof Curtains</h4>
+        <p>
+          Adding soundproof blankets or curtains are an effective, albeit not always practical
+          solution. To get the most out of soundproof blankets or curtains, you'll need to seal the
+          edges and essentially block out the window.
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">Fantastic Frame Window Inserts</h4>
+        <p>
+          A more practical and visually appealing solution is installing a climate seal insert. In
+          addition to helping with sound, it can actually help with temperature control to reduce
+          your heating and cooling costs. They can also be removed as needed so you don't lose
+          access to your windows.
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">Soundproof Windows</h4>
+        <p>
+          Similar to our suggestion for doors, the ultimate soundproofing solution for windows, is
+          to install a soundproof window. As the name implies, this product is designed specifically
+          for blocking sound with STC ratings over 45.
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <p style="text-align: center;">
+        <a href="/soundproofing/soundproof-windows/" class="btn-new btn-new--dark">How to Soundproof a Window</a>
+      </p>
+    </div>
+  </section>
+  <section class="content content--light content--three-col content--three-col-wide">
+    <div class="container">
+      <h3>Soundproofing a Wall</h3>
+      <p>
+        Sometimes sealing up doors and windows isn't enough. Or maybe you're just dealing with a
+        wall that just isn't cutting it. As with any soundproofing project, start by finding any
+        weak points. Along with treating any doors or windows, use caulking or acoustic sealant
+        around outlets, switches, vents and any other potential gaps. Identifying and treating gaps
+        may be enough to find the volume you're comfortable with, if not you can take things a bit
+        further.
+      </p>
+
+      <div class="filter-bar" data-filter-bar-for-id="soundproof_a_wall">
+        <label><input type="checkbox" checked data-for-id="acoustic_caulk_complete">Acoustic Caulk</label>
+        <label><input type="checkbox" checked data-for-id="mlv_rolls_complete">Mass Loaded Vinyl</label>
+        <label><input type="checkbox" checked data-for-id="green_glue_complete">Green Glue</label>
+        <label><input type="checkbox" checked data-for-id="rsic_clips_complete">RSIC Clips</label>
+        <label><input type="checkbox" checked data-for-id="rsic_clips_green_glue_complete">RSIC Clips + Green Glue</label>
+      </div>
+
+      <div style="text-align: center;">
+        {{> components/redesign/components/soundproofing-wall-chart }}
+      </div>
+
+    </div>
+    <div class="content__inner-wrapper">
+      <div class="content__col">
+        <h4 class="h4 h4--blue">MLV or Green Glue</h4>
+        <p>
+          As always adding mass is a key component in helping to block sound. You can do this in several ways, but we always recommend
+          ⅝" drywall for any project where soundproofing mattters. For good soundproofing, you should apply 
+          <a href="/sound-blocking/">mass loaded vinyl</a> to the studs before the drywall or add a second layer of drywall with 
+          Green Glue as a decoupling layer between the two sheets of sheetrock. For either method, you'll need 
+          <a href="/soundproofing/acoustical-sealant">acooustical caulk</a> to seal up around the perimeter and around any penetrations
+          in the wall.
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">RSIC Clips</h4>
+        <p>
+          This solution is a bit more complex and involves a process called decoupling. Sound moves
+          as vibrations through a structure, if you can separate - or decouple - the structure some
+          way, it creates a gap that makes it more difficult for vibrations to cross. Use
+          resilient sound isolation clips (or RSIC) and 25 gauge aluminum hat channel to attach ⅝" drywall, which
+          allows you to "float" the drywall, making it more difficult for impact sound to travel through your structure. 
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">RSIC Clips + Green Glue</h4>
+        <p>
+          You can take our previous suggestion to the next level by adding a 2nd layer of 5/8" drywall with Green Glue between the 
+          two layers. This will substantially increase the density of your wall and if done right, adds 5+ STC point. That extra density is 
+          key if you want to continue blocking more sound.
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <p style="text-align: center;">
+        <a href="/sound-blocking/soundproofing-walls/" class="btn-new btn-new--dark">How to Soundproof a Wall</a>
+      </p>
+    </div>
+  </section>
+  <section class="content content--lightGray content--three-col content--three-col-wide">
+    <div class="container">
+      <h3>Soundproofing a Ceiling</h3>
+      <p>
+        Noise you are hearing through your ceiling may not necessarily be coming above you. It's
+        possible that airborne noise is travelling up and over your wall through gaps like air
+        vents. You can use the same strategies for soundproofing walls on your ceiling. But since
+        most of what you hear from your ceiling is impact noise, ideally you treat your ceiling and
+        floor assemblies together.
+      </p>
+      <div style="text-align: center;">
+        <div style="display:inline-block;position:relative;max-width:100%;">
+          <img src="{{cdn 'webdav:soundproofing/soundproof_a_ceiling.svg'}}" width="100%">
+          <a href="/soundproofing/acoustical-sealant" style="width:16.7%; height:4.9%; left:83.2%; top:94.5%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+          <a href="/soundproofing/green-glue" style="width:14.2%; height:6.2%; left:82.8%; top:81.3%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+          <a href="/soundproofing/rsic/" style="width:12.6%; height:6.5%; left:82.4%; top:69.1%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+          <a href="/soundproofing/acoustical-sealant" style="width:17.7%; height:7.3%; left:64.4%; top:81.0%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+          <a href="/soundproofing/rsic/" style="width:12.5%; height:7.0%; left:64.2%; top:68.3%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+          <a href="/soundproofing/acoustical-sealant" style="width:17.2%; height:7.3%; left:45.8%; top:81.0%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+          <a href="/soundproofing/green-glue" style="width:13.6%; height:8.3%; left:45.4%; top:67.5%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+        </div>
+      </div>
+    </div>
+    <div class="content__inner-wrapper">
+      <div class="content__col">
+        <h4 class="h4 h4--blue">Green Glue</h4>
+        <p>
+          Add mass with an additional layer of &frac58;" drywall on your existing ceiling. We
+          recommend you apply the drywall with a common noiseproofing product called Green Glue
+          which is excellent in stopping sound from transferring through materials.
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">RSIC Clips</h4>
+        <p>
+          Decouple your ceiling by adding the &frac58;" drywall with resilient sound isolation clips,
+          or RSIC, which will "float" the drywall and make it more difficult for sound to vibrate
+          through your structure. If you're going this route, make sure to add insulation in the gap
+          above the ceiling if there isn't some already there to increase the effectiveness of the
+          ceiling assembly.
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">RSIC Clips + Green Glue</h4>
+        <p>
+          Take our previous suggestion to the next level by replacing the standard drywall with
+          SoundBreak Wall Board. SoundBreak is a high STC rated gypsum board that will give you
+          maximum sound blocking.
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <p style="text-align: center;">
+        <a href="/soundproofing/soundproof-ceiling/" class="btn-new btn-new--primary">How to Soundproof a Ceiling</a>
+      </p>
+    </div>
+  </section>
+  <section class="content content--light content--two-col content--two-col-wide">
+    <div class="container">
+      <h3>Soundproofing a Floor</h3>
+      <p>
+        You may be trying to block sound coming from beneath you, but usually treating the floor is
+        to protect the room below. Either way soundproofing your floor will help with the transfer
+        of noise in either direction.
+      </p>
+      <div style="text-align: center;">
+        <div style="position:relative;display:inline-block;max-width:100%;">
+          <img src="{{cdn 'webdav:soundproofing/soundproof_flooring.svg?04292021'}}" width="100%">
+          <a href="/soundproofing/underblock" style="width:16.2%; height:21.3%; left:83.7%; top:78.1%; position:absolute; cursor:pointer; display:block; z-index:5; overflow:hidden;"></a>
+        </div>
+      </div>
+    </div>
+    <div class="content__inner-wrapper">
+      <div class="content__col">
+        <h4 class="h4 h4--blue">Thick Carpets</h4>
+        <p>
+          Add mass with an additional layer of &frac58;" drywall on your existing ceiling. We
+          recommend you apply the drywall with a common noiseproofing product called Green Glue
+          which is excellent in stopping sound from transferring through materials.
+        </p>
+      </div>
+      <div class="content__col">
+        <h4 class="h4 h4--blue">Rubber Floor Underlayment</h4>
+        <p>
+          Decouple your ceiling by adding the &frac58;" drywall with resilient sound isolation
+          clips, or RSIC, which will "float" the drywall and make it more difficult for sound to
+          vibrate through your structure. If you're going this route, make sure to add insulation in
+          the gap above the ceiling if there isn't some already there to increase the effectiveness
+          of the ceiling assembly.
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <p style="text-align: center;">
+        <a href="/soundproofing/soundproof-floor/" class="btn-new btn-new--dark">How to Soundproof a Floor</a>
+      </p>
+    </div>
+  </section>
+  <section class="content content--lightGray">
+    <div class="container">
+      <h3>You Did It!</h3>
+      <p>
+        Congratulations, you now have your soundproofing phD. We'll be sending your copy in the mail
+        for you to frame and hang on your newly soundproof wall.
+      </p>
+      <p>
+        Ok, so not quite - but you certainly know enough to school your friends and family.
+        Soundproofing is complex, but we hope that now you have the knowledge to identify your
+        specific soundproofing problem and start to make a plan. We've been doing this for a long
+        time, and helped a lot of people with a variety of different issues and circumstances. We
+        know that some of this is easier said than done.
+      </p>
+      <p>
+        Before you tackle your soundproofing project, reach out. We're here to help you figure out
+        the right materials, and the right strategy.
+      </p>
+    </div>
+  </section>
+</main>

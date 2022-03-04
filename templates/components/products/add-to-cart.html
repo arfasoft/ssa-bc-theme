@@ -1,0 +1,141 @@
+<div class="form-field form-field--increments">
+    <label class="form-label form-label--alternate" for="qty[]">{{lang 'products.quantity'}}</label>
+
+    <div class="form-increment" data-quantity-change>
+        <button class="button button--icon" data-action="dec" type="button">
+            <span class="is-srOnly">{{lang 'products.quantity_decrease'}}</span>
+            <i class="icon" aria-hidden="true">
+                <svg>
+                    <use xlink:href="#icon-keyboard-arrow-down" />
+                </svg>
+            </i>
+        </button>
+        <input class="form-input form-input--incrementTotal" id="qty[]" name="qty[]" type="tel"
+            value="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}1{{/if}}"
+            data-quantity-min="{{product.min_purchase_quantity}}" data-quantity-max="{{product.max_purchase_quantity}}"
+            min="1" pattern="[0-9]*" aria-live="polite">
+        <button class="button button--icon" data-action="inc" type="button">
+            <span class="is-srOnly">{{lang 'products.quantity_increase'}}</span>
+            <i class="icon" aria-hidden="true">
+                <svg>
+                    <use xlink:href="#icon-keyboard-arrow-up" />
+                </svg>
+            </i>
+        </button>
+    </div>
+</div>
+
+{{#or product.min_purchase_quantity product.max_purchase_quantity}}
+    <div class="min-max-purchase">
+{{/or}}
+{{#if product.min_purchase_quantity}}
+    <div>
+        <dt class="productView-info-name">{{lang 'products.min_purchase_quantity'}}</dt>
+        <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.min_purchase_quantity}}
+        </dd>
+    </div>
+{{/if}}
+{{#if product.max_purchase_quantity}}
+    <div>
+        <dt class="productView-info-name">{{lang 'products.max_purchase_quantity'}}</dt>
+        <dd class="productView-info-value">{{lang 'products.purchase_units' quantity=product.max_purchase_quantity}}
+        </dd>
+    </div>
+{{/if}}
+{{#or product.min_purchase_quantity product.max_purchase_quantity}}
+    </div>
+{{/or}}
+
+<div class="alertBox productAttributes-message" style="display:none">
+    <div class="alertBox-column alertBox-icon">
+        <icon glyph="ic-success" class="icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                height="24" viewBox="0 0 24 24">
+                <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z">
+                </path>
+            </svg></icon>
+    </div>
+    <p class="alertBox-column alertBox-message"></p>
+</div>
+{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+    <script>
+        function buyNow(productid) {
+            let radioOptions = [];
+            let selectOptions = [];
+            let selectOptionName = '';
+
+            // get list of options. Sometimes it's radio buttons.
+            radioOptions = Array.prototype.slice.apply(document.querySelectorAll(".form-radio:checked"));
+            
+            // sometimes it's a pulldown.
+            selectOptions = Array.prototype.slice.apply(document.querySelectorAll(".form-select option:checked"));
+            if(selectOptions.length) {
+                // since this isn't a radio button, we have to get the name from the parent
+                selectOptionName = document.querySelector(".form-select").name;
+            }
+
+            const options = radioOptions.length ? radioOptions : selectOptions;
+
+            // Additions
+            var checkboxOptions = Array.prototype.slice.apply(document.querySelectorAll(".form-checkbox:checked"));
+
+            let skuList = [];
+            if (checkboxOptions.length > 0) {
+                skuList = [].concat(options, checkboxOptions);
+            } else {
+                skuList = [...options];
+            }
+
+            const qty = document.getElementById('qty[]').value;
+
+            const url = "/remote/v1/cart/add";
+
+            // start the query string
+            let params = "action=add&product_id=" + productid + "&qty[]=" + qty;
+
+            // add options
+            for (let i = 0; i < skuList.length; i++) {
+                let name = skuList[i].name ? skuList[i].name : selectOptionName;
+                params += "&" + name + "=" + skuList[i].value;
+            }
+            
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", url, true);
+
+            //Send the proper header information along with the request
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send(params);
+
+            // send to checkout
+            xhr.onreadystatechange = (e) => {
+                if (xhr.status === 200) {
+                    window.location.href = '/checkout';
+                }
+            }
+            
+        }
+    </script>
+    <div class="form-action buy-buttons">
+        {{#unless product.pre_order}}
+            <input id="form-action-buyNow" data-wait-message="{{lang 'products.adding_to_cart'}}"
+                class="btn-new btn-new--primary btn-new--big" type="button" value="Buy Now"
+                onclick="buyNow( {{product.id}})">
+        {{/unless}}
+
+        <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}"
+            class="btn-new btn-new--primary btn-new--big" type="submit"
+            value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
+    </div>
+    <script>
+        function removingBuyNowBtn() {
+            const $acousticPanelPage = window.location.href.indexOf('acoustic-pro-fabric-wrapped-panel');
+            const $acousticCloudsPage = window.location.href.indexOf('acoustic-pro-ceiling-cloud');
+            const $buyNowBtn = document.querySelector('#form-action-buyNow');
+            if (($acousticPanelPage > -1) || ($acousticCloudsPage > -1)) {
+                $buyNowBtn.style.display = "none";
+            }
+        };
+        removingBuyNowBtn();
+    </script>
+    {{{snippet 'product_addtocart'}}}
+{{/or}}

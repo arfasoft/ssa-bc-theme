@@ -1,0 +1,108 @@
+$vertical-item-gutter: 30px;
+
+.remarks {
+  background-color: $color-remark;
+  color: $color-white;
+  padding: 42px 0 37px;
+  position: relative;
+
+  h3 {
+    color: $color-white;
+    font-family: $fontFamily-montserrat;
+    font-size: 14px;
+    font-weight: $fontWeight-bold;
+    margin: 0;
+
+    span {
+      display: inline-block;
+
+      @include desktop-down {
+        display: block;
+      }
+    }
+  }
+  
+  &__content-wrapper {
+    @include tablet {
+      display: grid;
+      grid-row-gap: $vertical-item-gutter;
+      grid-template-columns: auto auto;
+    }
+
+    @include desktop-up {
+      @include grid-row;
+    }
+  }
+
+  &__item {
+    @include desktop-up {
+      @include grid-column(3);
+    }
+  }
+
+  &__item + &__item {
+    @include mobile {
+      margin-top: $vertical-item-gutter;
+    }
+  }
+}
+
+.remarks--nobackground {
+  background-color: transparent;
+
+  h3 {
+    color: #28343A;
+  }
+}
+
+.remark {
+  text-align: center;
+  overflow: auto;
+
+  @include mobile {
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 20px;
+
+    .remark__image {
+      margin: 0;
+    }
+
+    h3 {
+      width: 50%;
+      float: right;
+    }
+
+  }
+
+  .founded2000 {
+    margin-top: -10px;
+  }
+
+  .flag {
+    margin-bottom: 6px;
+  }
+
+  &__image {
+    margin: -10px 0 7px;
+
+    @include mobile {
+      float: left;
+
+    }
+  }
+
+  &__image.icon--36 {
+    height: 36px;
+    margin-top: 0;
+
+    &.flag {
+      margin-left: -10px;
+      margin-top: -5px;
+    }
+  }
+
+}
+
+

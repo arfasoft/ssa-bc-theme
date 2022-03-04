@@ -1,0 +1,82 @@
+// =============================================================================
+// COLORS
+// =============================================================================
+
+
+// Basics
+// -----------------------------------------------------------------------------
+
+$color-black:                       stencilColor("color-black");
+$color-white:                       stencilColor("color-white");
+$color-whitesBase:                  stencilColor("color-whitesBase");
+
+$color-grey:                        stencilColor("color-grey");
+$color-greyDarkest:                 stencilColor("color-greyDarkest");
+$color-greyDarker:                  stencilColor("color-greyDarker");
+$color-greyDark:                    stencilColor("color-greyDark");
+$color-greyMedium:                  stencilColor("color-greyMedium");
+$color-greyLight:                   stencilColor("color-greyLight");
+$color-greyLighter:                 stencilColor("color-greyLighter");
+$color-greyLightest:                stencilColor("color-greyLightest");
+
+$color-blueGray:                    #37474f;
+$color-blueGrayDark:                #28343a;
+
+
+// Branding
+// -----------------------------------------------------------------------------
+
+$color-primary:                     stencilColor("color-primary");
+$color-primaryDarker:               stencilColor("color-primaryDarker");
+$color-primaryDark:                 stencilColor("color-primaryDark");
+$color-primaryLight:                stencilColor("color-primaryLight");
+
+$color-secondary:                   stencilColor("color-secondary");
+$color-secondaryDarker:             stencilColor("color-secondaryDarker");
+$color-secondaryDark:               stencilColor("color-secondaryDark");
+
+$color-highlight:                   stencilColor("color-highlight");
+$color-highlightDarker:             stencilColor("color-highlightDarker");
+$color-highlightDark:               stencilColor("color-highlightDark");
+
+$color-brand:                       stencilColor("color-brand");
+$color-remark:                      stencilColor("color-remark");
+
+
+// States
+// -----------------------------------------------------------------------------
+
+$color-error:                       stencilColor("color-error");
+$color-errorLight:                  stencilColor("color-errorLight");
+
+$color-info:                        stencilColor("color-info");
+$color-infoLight:                   stencilColor("color-infoLight");
+
+$color-success:                     stencilColor("color-success");
+$color-successLight:                stencilColor("color-successLight");
+
+$color-warning:                     stencilColor("color-warning");
+$color-warningLight:                stencilColor("color-warningLight");
+
+
+// Text
+// -----------------------------------------------------------------------------
+
+$color-textHeading:                    stencilColor("color-textHeading");
+
+$color-textBase:                    stencilColor("color-textBase");
+$color-textBase-hover:              stencilColor("color-textBase--hover");
+$color-textBase-active:             stencilColor("color-textBase--active");
+
+$color-textSecondary:               stencilColor("color-textSecondary");
+$color-textSecondary-hover:         stencilColor("color-textSecondary--hover");
+$color-textSecondary-active:        stencilColor("color-textSecondary--active");
+
+$color-textLink:                    stencilColor("color-textLink");
+$color-textLink-hover:              stencilColor("color-textLink--hover");
+$color-textLink-active:             stencilColor("color-textLink--hover");
+
+// Button
+// -----------------------------------------------------------------------------
+
+$button--secondary-backgroundColor: stencilColor("button--default-backgroundColor");

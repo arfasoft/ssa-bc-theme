@@ -1,0 +1,495 @@
+// =============================================================================
+// USER NAVIGATION (CSS)
+// =============================================================================
+//
+// 1. Corrects the spacing added by .navUser-or
+// 2. Can't use top: 50% because its container `.header` changes its height to
+//    100% when mobile menu is expanded
+// 3. Make the triangle for store credit dropdown centered
+// 4. Needs to be 100% so its dropdown can take full width in mobile viewport
+// 5. Needs to be lower than logo zIndex, otherwise, logo is not clickable
+// 6. Make the triangle for currency dropdown right aligned
+// 7. Corrects mini cart positioned outside viewport. Since this resets right
+//    position, nudge dropdown away from the side of viewport in mobile viewport.
+// 8. This corrects mini cart dropdown arrow alignment in mobile viewport by
+//    setting the previous styles to medium breakpoint and adjusts for nudge in (7).
+//
+// -----------------------------------------------------------------------------
+
+.navUser {
+    
+    .navUser-sub-components {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0;
+
+        ul {
+            display: none;
+        }
+
+        .navUser-item a {
+            display: block;
+            height: 100%;
+            text-align: center;
+
+            img {
+                display: block;
+                width: 20px;
+                margin: 0 auto;            
+            }
+        }
+    }
+
+    .dropdown-menu {
+        background-color: stencilColor("navUser-dropdown-backgroundColor");
+        border: 1px solid stencilColor("navUser-dropdown-borderColor");
+        box-shadow: container("dropShadow");
+        position: absolute;
+
+        // scss-lint:disable NestingDepth
+        &.is-open {
+            &:before {
+                @include css-triangle(
+                    $triangle-direction: "bottom",
+                    $triangle-size: 10px,
+                    $triangle-color: stencilColor("navUser-dropdown-borderColor")
+                );
+                bottom: 100%;
+                left: spacing("half");
+                position: absolute;
+            }
+
+            &:after {
+                @include css-triangle(
+                    $triangle-direction: "bottom",
+                    $triangle-size: 8px,
+                    $triangle-color: stencilColor("navUser-dropdown-backgroundColor")
+                );
+                bottom: 100%;
+                left: spacing("half") + remCalc(2px);
+                position: absolute;
+            }
+        }
+    }
+
+    // Instead of rewritting all of the breakpoints just adding this media
+    // query to handle the mobile nav icons.
+    
+
+
+    @media screen and (min-width: 960px) {
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 spacing("single");
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        z-index: zIndex("high");
+    }
+}
+
+.navUser-section {
+    @include breakpoint("medium") {
+        position: relative; // 7
+    }
+}
+
+.navUser-action {
+    color: stencilColor("navUser-color");
+    font-weight: fontWeight("bold");
+    padding: spacing("base") spacing("half");
+    text-decoration: none;
+
+    &:hover,
+    &.is-open {
+        color: stencilColor("navUser-color-hover");
+
+        // scss-lint:disable NestingDepth
+        svg {
+            fill: stencilColor("navUser-color-hover");
+            stroke: stencilColor("navUser-color-hover");
+        }
+        // scss-lint:enable NestingDepth
+    }
+
+    .icon {
+        @include square(10px);
+        margin: -1px .2em 0 0;
+    }
+
+    svg {
+        fill: stencilColor("navUser-color");
+        stroke: stencilColor("navUser-color");
+        transition: all 0.15s ease;
+    }
+
+    img {
+        margin-bottom: 3px;
+    }
+
+    &--badge {
+        // display: none;
+        position: absolute;
+        background: $color-brand;
+        color: $color-white;
+        font-size: 7.5px;
+        border-radius: 50%;
+        height: 11px;
+        width: 11px;
+        text-align: center;
+        vertical-align: center;
+        top: 3px;
+        right: 14px;
+    }
+
+    &--badge[data-badge-cart-quantity="0"] {
+        display: none;
+    }
+}
+
+.navUser-action--currencySelector + .dropdown-menu {
+    &:before {
+        // scss-lint:disable ImportantRule
+        left: auto !important; // 6
+        right: spacing("half"); // 6
+    }
+
+    &:after {
+        // scss-lint:disable ImportantRule
+        left: auto !important; // 6
+        right: spacing("half") + remCalc(2px); // 6
+    }
+}
+
+.navUser-action--storeCredit + .dropdown-menu {
+    max-width: remCalc(300px);
+    padding: spacing("single");
+
+    &:before {
+        // scss-lint:disable ImportantRule
+        left: remCalc(140px) !important; // 3
+    }
+
+    &:after {
+        // scss-lint:disable ImportantRule
+        left: remCalc(142px) !important; // 3
+    }
+}
+
+.navUser-action-divider {
+    border-right: container("border");
+    color: stencilColor("color-textSecondary");
+    display: inline-block;
+    padding: 0 remCalc(20) 0 0;
+    text-decoration: none;
+}
+
+.navUser-item {
+    display: none;
+
+    @include breakpoint("medium") {
+        display: block;
+
+        &.navUser-item--social {
+            margin-top: rem-calc(5px);
+            padding-right: rem-calc(5px);
+        }
+
+        &.navUser-item--divider {
+            font-size: rem-calc(25px);
+            margin-top: rem-calc(8px);
+            padding-left: rem-calc(2px);
+        }
+    }
+}
+
+.navUser-item__cartNumber {
+    .cartNumber {
+        display: none;
+        
+        &.active {
+            background-color: red;
+            border-radius: 50%;
+            color: white;
+            display: block;
+            font-size: 16px;
+            font-weight: 900;
+            height: 24px;
+            line-height: 24px;
+            position: absolute;
+            right: 14px;
+            text-align: center;
+            top: -6px;
+            width: 24px;
+        }
+    }
+}
+
+.navUser-item--mobile {
+    display: none;
+    list-style-type: none;
+
+    @include breakpoint("xsmall") {
+        display: flex;
+
+        &.navUser-item--social {
+            margin-top: rem-calc(5px);
+            padding-right: rem-calc(5px);
+        }
+
+        &.navUser-item--divider {
+            font-size: rem-calc(25px);
+            margin-top: rem-calc(8px);
+            padding-left: rem-calc(2px);
+        }
+    }
+}
+
+.navUser-item--cart {
+    display: block;
+
+    .navUser-action {
+        color: stencilColor("navUser-color");
+
+        // scss-lint:disable NestingDepth
+        &:hover,
+        &.is-open {
+            color: stencilColor("navUser-color-hover");
+        }
+    }
+
+    .dropdown-menu {
+        max-width: remCalc(320px);
+
+        // scss-lint:disable NestingDepth
+        &.is-open {
+            top: auto !important; // 7
+            left: auto !important; // 7
+            right: remCalc(5px); // 7
+            @include breakpoint("medium") {
+                right: 0; // 7
+            }
+
+            &:before,
+            &:after {
+                left: auto;
+            }
+
+            &:before {
+                right: spacing("half") - remCalc(5px); // 8
+                @include breakpoint("medium") {
+                    right: spacing("half"); // 8
+                }
+            }
+
+            &:after {
+                right: spacing("half") - remCalc(3px); // 8
+                @include breakpoint("medium") {
+                    right: spacing("half") + remCalc(2px); // 8
+                }
+            }
+        }
+    }
+}
+
+.navUser-item-cartLabel {
+    display: none;
+
+    @include breakpoint("small") {
+        display: inline;
+    }
+}
+
+.navUser-item--compare {
+    display: none;
+
+    &.show {
+        display: block;
+    }
+}
+
+.navUser-item--account {
+
+    .navUser-or {
+
+        // scss-lint:disable NestingDepth
+        + .navUser-action {
+            margin-right: -0.5rem; // 1
+        }
+    }
+
+    .navUser-action {
+        display: inline-block;
+    }
+}
+
+.navUser-or {
+    color: stencilColor("navUser-color");
+    cursor: default;
+    display: inline-block;
+    margin: 0 remCalc(-12px);
+    padding: 0 2px;
+    position: relative;
+    z-index: 1;
+}
+
+// .logo-wrapper {
+    // @media screen and (max-width: 800px) {
+    //     background: lightblue;
+    //     max-width: 100px;
+    //     width: 100px;
+    //     // margin-right: 0;
+    // }
+// }
+
+// Quick search
+// -----------------------------------------------------------------------------
+//
+// 1. Overriding the inline styles from Foundation as this is a unique dropdown.
+//
+// -----------------------------------------------------------------------------
+
+.navUser-action--quickSearch {
+
+    &.is-open {
+        position: relative;
+
+        // scss-lint:disable NestingDepth
+        &:before {
+            @include css-triangle(
+                $triangle-direction: "bottom",
+                $triangle-size: 10px,
+                $triangle-color: color("greys", "lightest")
+            );
+            bottom: 0;
+            left: 50%;
+            position: absolute;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+.dropdown--quickSearch {
+    background-color: $dropdown--quickSearch-backgroundColor;
+    padding: spacing("single") 0;
+
+    @include breakpoint("small") {
+        padding: spacing("double");
+    }
+
+    &.is-open {
+        // scss-lint:disable ImportantRule
+        left: 0 !important; // 1
+        outline: none;
+        right: 0 !important; // 1
+        width: 100% !important;
+        z-index: zIndex("high");
+    }
+
+    .form {
+        margin: auto;
+        max-width: 30rem;
+    }
+
+    .form,
+    .form-field {
+        margin-bottom: 0;
+    }
+
+    .form-input {
+        font-size: fontSize("small");
+        height: unset;
+    }
+
+    .productGrid {
+        padding: spacing("single") 0 0;
+
+        @include breakpoint("small") {
+            padding: spacing("double") 0 0;
+        }
+    }
+}
+
+// Counter Pill
+// -----------------------------------------------------------------------------
+//
+// 1. Hardcoded intentionally for precise pixels.
+//
+// -----------------------------------------------------------------------------
+
+.countPill {
+    background-color: stencilColor("navUser-indicator-backgroundColor");
+    border-radius: 50%;
+    color: color("whites", "bright");
+    display: none;
+    font-size: fontSize("tiny");
+    font-weight: fontWeight("bold");
+    height: 20px; // 1
+    line-height: 20px; // 1
+    margin-left: spacing("eighth");
+    text-align: center;
+    width: 20px; // 1
+}
+
+.countPill--positive {
+    display: inline-block;
+}
+
+.countPill--alt {
+    background-color: color("greys", "lighter");
+    color: color("greys", "darker");
+}
+
+.navUser-item--mobile .cartNumber.active, .cartNumber.active {
+    display: inline-block;
+    margin-left: 10px;
+    color: #fff;
+    background-color: red;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    font-size: 16px;
+    top: 13px;
+    line-height: 24px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.navUser-item--quote.inactive {
+    display: none;
+}
+.navUser-item.navUser-item--quote.active {
+    position: relative;
+    @media screen and (min-width: 1249) {
+        display: block;
+    }
+    &:after {
+        content: attr(data-quote-number);
+        color: white;
+        background-color: red;
+        border-radius: 50%;
+        height: 24px;
+        width: 24px;
+        font-size: 16px;
+        line-height: 24px;
+        position: absolute;
+        top: -6px;
+        right: 0px;
+        text-align: center;
+        font-weight: bold;
+    }
+}
+
+.header-row .navPages-container-upper.is-open .navPages-upper-list .navUser-item--mobile.navUser-item--mobile-quote {
+    
+    &.inactive {
+        display: none !important;
+    }
+    .active {
+        display: inline-block;
+    }
+}
+

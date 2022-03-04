@@ -1,0 +1,63 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#if brand.image}}
+    <div class="brand-image-container">
+        <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage brand.image 'thumb_size'}}">
+    </div>
+{{/if}}
+{{{snippet 'brand'}}}
+<div class="page">
+    <aside class="page-sidebar" id="faceted-search-container">
+        {{> components/brand/sidebar}}
+    </aside>
+
+    <main class="page-content" id="product-listing-container">
+        <h1 class="page-heading">{{brand.name}}</h1>
+
+        <p>Heat shields are designed to protect structures from extreme temperatures by reflecting or absorbing heat. A good heat
+        shield needs to have high thermal resistance and thermal emittance, so it can withstand high temperatures and reflect and
+        release the heat away from itself. Heat shields are commonly used in the automotive and aerospace industries.
+        </p>
+
+        <p>
+            A car heat shield can be an important tool to protect key components and bodywork from heat damage. The heat given off
+            by your engine and traveling through the exhaust tunnel can reduce your engine’s performance, increase the temperature
+            in your car cabin, damage mechanical parts behind the dash, and reduce the expected life of your paint job. Applying an
+            engine heat shield or exhaust heat shield can help solve these problems.
+        </p>
+        <p>
+            Second Skin offers two types of radiant heat insulation. Mega Block is temperature rated to 1000 F and is backed with
+            insulating melamine foam for best-in-class <a href="/heat-insulation/">automotive heat insulation</a>. Thermal Block 
+            is temperature rated to 800 F and backed with organic fibers. Both heat shields
+            are lightweight, 98% reflective, and include a peel and stick backing for easy application. If you are concerned about 
+            heat in your car, a heat shield can be a great solution to increase the longevity of your vehicle and your comfort level
+            while driving it.
+        </p>
+
+        {{> components/products/videos-products embedCode="jnvhzg-pmj0" }}
+
+        {{#if brand.products}}
+            {{> components/brand/product-listing}}
+        {{else}}
+            <p>{{lang 'brands.no_products'}}</p>
+        {{/if}}
+    </main>
+</div>
+
+{{/partial}}
+{{> layout/base}}
